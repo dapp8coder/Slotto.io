@@ -60,7 +60,7 @@ async function checkDoubleSend(outGoingTransfers) {
             await sendPrize(sendList[i].name, sendList[i].STEEM, sendList[i].SBD, sendList[i].winningDraw, 0);
         } else {
             console.log("");
-            console.log("already sent: " + sendList[i].winningDraw + " " + receiver);
+            console.log("already sent: " + sendList[i].winningDraw + " " + receiver + " " + sendList[i].STEEM + " STEEM");
         }
     }
 }
