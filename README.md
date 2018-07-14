@@ -1,4 +1,4 @@
 # Slotto.Ninja
-Slotto.Ninja
-https://www.slotto.ninja
+Slotto.Ninja <br>
+https://www.slotto.ninja <br>
 https://steemit.com/@roundbeargames
