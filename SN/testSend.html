@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Test Send</title>
+    <script src="https://cdn.steemjs.com/lib/latest/steem.min.js"></script>
+    <script src="https://cdn.rawgit.com/emn178/js-sha512/master/build/sha512.min.js"></script>
+    <script src="https://cdn.rawgit.com/emn178/js-sha512/master/src/sha512.js"></script>
+    <link rel="stylesheet" type="text/css" href="basicFormat.css">
+    <script src="fortuna.min.js"></script>
+    <script type="text/javascript" src="fortunaGenerator.js"></script>
+    <script type="text/javascript" src="steemNode.js"></script>
+    <script type="text/javascript" src="ticketPrice.js"></script>
+    <script type="text/javascript" src="testSend.js"></script>
+</head>
+
+<body>
+    <div class="leftPad">
+        <h2>Test Send</h2>
+        <br> Account 1:<br><input id="sender" value="hitmanchoi" type="text" value="">
+        <br>
+        <br> Active Key:<br><input id="senderKey" type="password" value="">
+        <br>
+        <br> Account 2:<br><input id="sender2" value="slotto.game" type="text" value="">
+        <br>
+        <br> Active Key:<br><input id="senderKey2" type="password" value="">
+        <br>
+        <br> Memo:<br><input type="text" id="memo" value="">
+        <br>
+        <br>
+        <button class="buttonGreen button1" onclick="repeatSend()">Start Sending</button>
+        <br>
+        <br> 50,50,50 <input type="checkbox" id="fifty" onclick="onClickFifty()" class="largerCheckbox">
+        <br>
+        <br>
+        <div id="entropy"></div>
+        <br>
+        <br>
+        <br> Account:<br><input id="receiver" value="slotto.ninja" type="text" value="">
+        <br>
+        <br> Active Key:<br><input id="receiverKey" type="password" value="">
+        <br>
+        <br> Return Amount:<br><input id="amount" value="0.015 STEEM" type="text" value="">
+        <br>
+        <br>
+        <button class="buttonGreen button1" onclick="returnSteem()">Return STEEM</button>
+    </div>
+</body>
+
+</html>

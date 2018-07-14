@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Auto Sender</title>
+
+    <script src="https://cdn.steemjs.com/lib/latest/steem.min.js"></script>
+    <script type="text/javascript" src="steemNode.js"></script>
+    <script type="text/javascript" src="sortSteem.js"></script>
+    <script type="text/javascript" src="history.js"></script>
+    <script type="text/javascript" src="transfer.js"></script>
+    <script type="text/javascript" src="watcher.js"></script>
+    <script type="text/javascript" src="ticketPrice.js"></script>
+    <script type="text/javascript" src="autoSender.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="basicFormat.css">
+</head>
+
+<body>
+    <div class=leftPad>
+        <h1>Auto Sender</h1>
+        <br> - Auto update every 3 mins
+        <br><br>
+        <br> Sender Account:<br><input id="sender" value="slotto.ninja" type="text" value="">
+        <br>
+        <br> Active Key:<br><input id="senderKey" type="password" value="">
+        <br>
+        <br><button class="buttonGreen button1" onclick="downloadWinners()">Start Sending</button>
+        <br>
+        <br>
+        <h3>
+            <div id="currentTime">CURRENT TIME</div>
+        </h3>
+        <div id="winners"></div>
+        <br> Check Time:
+        <div id="checkTime">none</div>
+    </div>
+    <script>
+        getUTC();
+    </script>
+</body>
+
+</html>

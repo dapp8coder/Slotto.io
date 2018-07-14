@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Auto PRNG</title>
+
+    <script src="https://cdn.steemjs.com/lib/latest/steem.min.js"></script>
+    <script src="https://cdn.rawgit.com/emn178/js-sha512/master/build/sha512.min.js"></script>
+    <script src="https://cdn.rawgit.com/emn178/js-sha512/master/src/sha512.js"></script>
+
+    <script src="fortuna.min.js"></script>
+    <script type="text/javascript" src="fortunaGenerator.js"></script>
+    <script type="text/javascript" src="steemNode.js"></script>
+    <script type="text/javascript" src="generateWinner.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="basicFormat.css">
+</head>
+
+<body>
+    <div class="leftPad">
+        <h1>Auto PRNG</h1>
+    </div>
+
+    <div id="description" class="leftPad">
+        - 0.001 STEEM required for both dummy accounts
+    </div>
+    <br>
+    <div id="form1" class="leftPad">
+        <h2>Generator</h2>
+
+        <br>Account:
+        <br><input id="senderAccount" value="slotto.gen" type="text" value="">
+
+        <br>Active Key:
+        <br><input id="senderActiveKey" type="password" value="">
+
+        <br><br>
+        <h2>Receiver</h2>
+
+        <br>Account:<br><input id="receiverAccount" value="slotto.ninja" type="text" value="">
+        <br>Active Key:<br><input id="receiverActiveKey" type="password" value="">
+
+        <br><br>
+        <h2>Generation per Minute</h2>
+        (min:1 max:59)
+        <br><input id="minsDeadline" type="text" value="5">
+        <br>
+        <br>
+        <br>
+        <br><button class="buttonGreen button1" onclick="startProcess()">Start Generating</button>
+    </div>
+
+    <div id="status" class="leftPad">
+        <div class="utc" id="utcDisplay">UTC</div>
+
+        <br>Latest Draw:
+        <div id="lastGen">None</div>
+
+        <br>Winner:
+        <div id="lastDraw">None</div>
+
+        <br>Entropy:
+        <div id="entropy">None</div>
+
+        <br>
+        <br> 50,50,50 <input type="checkbox" id="fifty" onclick="onClickFifty()" class="largerCheckbox">
+
+        <br>
+        <br><button class="buttonGreen button1" onclick="refresh()">Cancel</button>
+    </div>
+
+    <script>
+        InitRandomGenerator();
+    </script>
+</body>
+
+</html>
