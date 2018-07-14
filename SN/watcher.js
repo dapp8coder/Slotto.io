@@ -5,6 +5,7 @@ async function downloadTransferHistory() {
     setSearchLimit("01,02,10 Sun, 08 Jul 2018 11:05:00 GMT 151", "slotto.gen");
 
     // @ts-ignore
+    //account, sender, receiver
     await getTransfers("slotto.ninja", null, "slotto.ninja");
 }
 
@@ -110,19 +111,21 @@ function inspectTransfers(transfers) {
     let outstandingTickets = new Array();
     // @ts-ignore
     let sumOutstanding = new CurrencySort();
+
+    console.log("wtf");
+    console.log(allTickets);
+
     for (let i = 0; i < allTickets.length; i++) {
         let winnerFound = false;
 
-        if (allTickets[i].op[1].from != "slotto.gen" &&
-            allTickets[i].op[1].from != "roundbeargames") {
+        if (allTickets[i].op[1].from != "slotto.gen") {
             outstandingTickets.push(allTickets[i]);
             sumOutstanding.sortCurrency(allTickets[i].op[1].amount, "STEEM");
             sumOutstanding.sortCurrency(allTickets[i].op[1].amount, "SBD");
         }
 
         if (allTickets[i].op[1].from == "slotto.gen") {
-            for (let k = 0; k < prevWinningDraws.length; i++) {
-                console.log(prevWinningDraws[k] + " vs " + allTickets[i].op[1].memo);
+            for (let k = 0; k < prevWinningDraws.length; k++) {
                 if (allTickets[i].op[1].memo == prevWinningDraws[k]) {
                     winnerFound = true;
                     break;
@@ -220,7 +223,11 @@ function Prize() {
 function isSlottoFormat(data) {
     const memo = String(data.op[1].memo);
 
-    if (memo.length > 8) {
+    if (data.op[1].from == "roundbeargames") {
+        if (data.op[1].memo == "51,51,51") {
+            return true;
+        }
+    } else if (memo.length > 8) {
         const comma1 = memo.substr(2, 1);
         const comma2 = memo.substr(5, 1);
         const num1 = memo.substr(0, 2);
@@ -231,11 +238,7 @@ function isSlottoFormat(data) {
             if (isNaN(Number(num1)) == false &&
                 isNaN(Number(num2)) == false &&
                 isNaN(Number(num3)) == false) {
-                if (data.op[1].from == "roundbeargames") {
-                    if (data.op[1].memo.substring(0, 8) == "51,51,51") {
-                        return true;
-                    }
-                } else if (data.op[1].from != "slotto.gen") {
+                if (data.op[1].from != "slotto.gen") {
                     // @ts-ignore
                     if (data.op[1].amount == getTicketPrice()) {
                         return true;
@@ -262,6 +265,7 @@ function createBlocks(allTickets) {
         if (allTickets[i].op[1].from == "slotto.gen") {
             let b = new Block();
             b.draw = allTickets[i].op[1].memo;
+
             //place outstanding tickets into a block
             for (let t = i + 1; t < allTickets.length; t++) {
                 if (allTickets[t].op[1].from != "slotto.gen") {
