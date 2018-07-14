@@ -1,0 +1,2 @@
+# Slotto.Ninja
+Slotto.Ninja
