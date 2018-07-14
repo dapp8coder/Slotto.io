@@ -21,7 +21,6 @@
 <body>
     <div class=leftPad>
         <h1>Auto Sender</h1>
-        <br> - Auto update every 3 mins
         <br><br>
         <br> Sender Account:<br><input id="sender" value="slotto.ninja" type="text" value="">
         <br>
@@ -29,6 +28,7 @@
         <br>
         <br><button class="buttonGreen button1" onclick="downloadWinners()">Start Sending</button>
         <br>
+        <br> Repeat Every 3 Mins <input type="checkbox" id="repeat" class="largerCheckbox">
         <br>
         <h3>
             <div id="currentTime">CURRENT TIME</div>
@@ -38,6 +38,7 @@
         <div id="checkTime">none</div>
     </div>
     <script>
+        initAutoSend();
         getUTC();
     </script>
 </body>

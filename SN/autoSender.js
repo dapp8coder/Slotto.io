@@ -1,3 +1,7 @@
+function initAutoSend() {
+    document.getElementById("repeat").checked = true;
+}
+
 async function downloadWinners() {
     const date = new Date();
     const utc = date.toUTCString();
@@ -24,7 +28,11 @@ async function downloadWinners() {
 
     checkDoubleSend(outGoingTransfers.transfers);
 
-    setTimeout("downloadWinners()", 180000); //3 mins
+    if (document.getElementById("repeat").checked == true) {
+        console.log("");
+        console.log("updating again in 3 mins..");
+        setTimeout("downloadWinners()", 180000); //3 mins
+    }
 }
 
 /**
