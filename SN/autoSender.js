@@ -6,12 +6,13 @@ function initAutoSend() {
 }
 
 async function downloadWinners() {
-    const date = new Date();
-    const utc = date.toUTCString();
+    let date = new Date();
+    let utc = date.toUTCString();
     document.getElementById("checkTime").textContent = utc;
 
     console.clear();
 
+    // @ts-ignore
     let receivehistory = new SteemHistory("slotto.ninja");
     // @ts-ignore
     receivehistory.setSearchLimit(null, null, null);
@@ -21,6 +22,7 @@ async function downloadWinners() {
     let receiveTransfers = new SteemTransfers();
     receiveTransfers.filterTransfers(null, "slotto.ninja", receivehistory.result);
 
+    // @ts-ignore
     let watcher = new Watcher();
     watcher.getWinners(receiveTransfers.result);
     let winners = watcher.result;
@@ -46,6 +48,7 @@ async function downloadWinners() {
     console.log("---send list---");
     console.log(sendList);
 
+    // @ts-ignore
     let sendHistory = new SteemHistory("slotto.ninja");
     // @ts-ignore
     sendHistory.setSearchLimit(null, null, null);
@@ -61,6 +64,9 @@ async function downloadWinners() {
     if (document.getElementById("repeat").checked == true) {
         console.log("");
         console.log("updating again in 3 mins..");
+        date = new Date();
+        utc = date.toUTCString();
+        console.log(utc);
         setTimeout("downloadWinners()", 180000); //3 mins
     }
 }
