@@ -12,8 +12,8 @@ function repeatSend() {
     let message = "";
 
     let pick = Math.floor(Math.random() * 10);
-    //console.log(pick);
 
+    console.log("");
     if (getFifty == true) {
         message = "50,50,50 " + utc + " " + miliseconds;
     } else {
@@ -25,7 +25,6 @@ function repeatSend() {
 
     if (key == "") {
         console.log("skipping send..");
-        console.log("");
         setTimeout("repeatSend()", repeatTime);
     } else {
         if (pick <= 4) {
@@ -42,8 +41,7 @@ async function testSend(key, sender, receiver, amount, message) {
     try {
         let result = await steem.broadcast.transferAsync(key, sender, receiver, amount, message);
         console.log(result);
-        console.log("send complete " + message);
-        console.log("");
+        console.log("send complete ");
         setTimeout("repeatSend()", repeatTime);
     } catch (err) {
         console.log(err);
