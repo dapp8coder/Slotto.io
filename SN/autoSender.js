@@ -12,8 +12,17 @@ async function downloadWinners() {
 
     console.clear();
 
+    let receivehistory = new SteemHistory("slotto.ninja");
+    // @ts-ignore
+    receivehistory.setSearchLimit(null, null, null);
+    await receivehistory.download();
+
+    // @ts-ignore
+    let receiveTransfers = new SteemTransfers();
+    receiveTransfers.filterTransfers(null, "slotto.ninja", receivehistory.result);
+
     let watcher = new Watcher();
-    await watcher.getWinners();
+    watcher.getWinners(receiveTransfers.result);
     let winners = watcher.result;
 
     sendList = new Array();
@@ -37,16 +46,16 @@ async function downloadWinners() {
     console.log("---send list---");
     console.log(sendList);
 
-    let history = new SteemHistory("slotto.ninja");
+    let sendHistory = new SteemHistory("slotto.ninja");
     // @ts-ignore
-    history.setSearchLimit(null, null, null);
-    await history.download();
+    sendHistory.setSearchLimit(null, null, null);
+    await sendHistory.download();
 
     // @ts-ignore
-    let transfers = new SteemTransfers();
-    transfers.filterTransfers("slotto.ninja", null, history.result);
+    let sendTransfers = new SteemTransfers();
+    sendTransfers.filterTransfers("slotto.ninja", null, sendHistory.result);
 
-    await checkDoubleSend(transfers.result);
+    await checkDoubleSend(sendTransfers.result);
 
     // @ts-ignore
     if (document.getElementById("repeat").checked == true) {

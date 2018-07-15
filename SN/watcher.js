@@ -1,18 +1,13 @@
 //@ts-check
 
-Watcher.prototype.getWinners = async function() {
+/**
+ * 
+ * @param {array} transfers 
+ */
+Watcher.prototype.getWinners = function(transfers) {
     this.result = null;
 
-    let history = new SteemHistory("slotto.ninja");
-    // @ts-ignore
-    history.setSearchLimit(null, null, null);
-    await history.download();
-
-    // @ts-ignore
-    let transfers = new SteemTransfers();
-    transfers.filterTransfers(null, "slotto.ninja", history.result);
-
-    this.result = inspectTransfers(transfers.result, this);
+    this.result = inspectTransfers(transfers, this);
 
     console.log("");
     console.log("---winners---");
