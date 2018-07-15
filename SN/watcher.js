@@ -8,6 +8,7 @@ Watcher.prototype.getWinners = async function() {
     history.setSearchLimit(null, null, null);
     await history.download();
 
+    // @ts-ignore
     let transfers = new SteemTransfers();
     transfers.filterTransfers(null, "slotto.ninja", history.result);
 
