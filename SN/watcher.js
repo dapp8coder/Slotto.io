@@ -181,7 +181,6 @@ function searchBlock(draw, block, prize, node) {
         prize.sum.sortCurrency(block.tickets[i].op[1].amount, "SBD");
 
         if (draw.substr(0, 8) == t) {
-            console.log("WINNER FOUND! " + block.tickets[i].op[1].from);
             //console.log(block.tickets[i]);
 
             if (node.prevWinningDraws.includes(draw) == false) {
@@ -192,11 +191,13 @@ function searchBlock(draw, block, prize, node) {
                 prize.winningDraw = draw;
             }
 
-            if (block.tickets[i].op[1].from in prize.winnerNames == false) {
+            if (prize.winnerNames.includes(block.tickets[i].op[1].from) == false) {
                 prize.winnerNames.push(block.tickets[i].op[1].from);
+                console.log("WINNER FOUND! " + block.tickets[i].op[1].from);
+                console.log(prize);
+            } else {
+                console.log("duplicate winning ticket from " + block.tickets[i].op[1].from);
             }
-
-            console.log(prize);
         }
     }
 }
