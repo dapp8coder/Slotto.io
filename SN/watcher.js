@@ -108,12 +108,11 @@ function inspectTransfers(transfers) {
     let winners = findWinner(blocks);
 
     //remaining outstanding tickets (for double checking)
-    let outstandingTickets = new Array();
+    outstandingTickets = new Array();
     // @ts-ignore
     let sumOutstanding = new CurrencySort();
 
-    console.log("wtf");
-    console.log(allTickets);
+    //    console.log(allTickets);
 
     for (let i = 0; i < allTickets.length; i++) {
         let winnerFound = false;
@@ -143,6 +142,10 @@ function inspectTransfers(transfers) {
     console.log(sumOutstanding);
 
     return winners;
+}
+
+function getOutstandingTickets() {
+    return outstandingTickets;
 }
 
 /**
@@ -292,3 +295,4 @@ function Block() {
 
 let finalResult = null;
 let prevWinningDraws = null;
+let outstandingTickets = null;

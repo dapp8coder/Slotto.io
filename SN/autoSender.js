@@ -12,9 +12,16 @@ async function downloadWinners() {
     let winners = getFinalResult();
     sendList = new Array();
     winnerString = "";
-    winnerString = "---winners---<br>";
+    winnerString = "<br>---winners---<br>";
     for (let i = 0; i < winners.length; i++) {
         calcPrize(winners[i]);
+    }
+
+    let outstanding = getOutstandingTickets();
+
+    winnerString += "<br><br>---outstanding tickets---<br><br>";
+    for (let i = 0; i < outstanding.length; i++) {
+        winnerString += outstanding[i].op[1].from + " " + outstanding[i].op[1].memo + "<br>";
     }
 
     document.getElementById("winners").innerHTML = winnerString;
