@@ -289,6 +289,3 @@ function Watcher() {
     this.outstandingTickets = null;
     this.sumOutstanding = null;
 }
-
-//let w = new Watcher();
-//w.getWinners();
