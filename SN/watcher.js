@@ -1,36 +1,29 @@
 //@ts-check
 
-async function downloadTransferHistory() {
-    // @ts-ignore
-    setSearchLimit("01,02,10 Sun, 08 Jul 2018 11:05:00 GMT 151", "slotto.gen");
+Watcher.prototype.getWinners = async function() {
+    this.result = null;
 
     // @ts-ignore
-    //account, sender, receiver
-    await getTransfers("slotto.ninja", null, "slotto.ninja");
-}
+    let history = new SteemHistory("slotto.ninja");
+    history.setSearchLimit(null, null, null);
+    await history.download();
 
-async function getWinners() {
-    finalResult = null;
+    let transfers = new SteemTransfers();
+    transfers.filterTransfers(null, "slotto.ninja", history.result);
 
-    await downloadTransferHistory();
-    // @ts-ignore
-    let transfers = getTransferHistory().transfers;
-    finalResult = inspectTransfers(transfers);
+    this.result = inspectTransfers(transfers.result, this);
 
     console.log("");
-    console.log("---final result---");
-    console.log(finalResult);
-}
-
-function getFinalResult() {
-    return finalResult
+    console.log("---winners---");
+    console.log(this.result);
 }
 
 /**
  * 
  * @param {array} transfers 
+ * @param {Watcher} node
  */
-function inspectTransfers(transfers) {
+function inspectTransfers(transfers, node) {
     let allTickets = new Array();
     // @ts-ignore
     let allSum = new CurrencySort();
@@ -105,7 +98,7 @@ function inspectTransfers(transfers) {
 
     console.log("");
     console.log("---finding winner---");
-    let winners = findWinner(blocks);
+    let winners = findWinner(blocks, node);
 
     //remaining outstanding tickets (for double checking)
     outstandingTickets = new Array();
@@ -122,8 +115,8 @@ function inspectTransfers(transfers) {
         }
 
         if (allTickets[i].op[1].from == "slotto.gen") {
-            for (let k = 0; k < prevWinningDraws.length; k++) {
-                if (allTickets[i].op[1].memo == prevWinningDraws[k]) {
+            for (let k = 0; k < node.prevWinningDraws.length; k++) {
+                if (allTickets[i].op[1].memo == node.prevWinningDraws[k]) {
                     winnerFound = true;
                     break;
                 }
@@ -150,9 +143,9 @@ function getOutstandingTickets() {
  * 
  * @param {array} blocks 
  */
-function findWinner(blocks) {
+function findWinner(blocks, node) {
     let results = new Array();
-    prevWinningDraws = new Array();
+    node.prevWinningDraws = new Array();
 
     for (let i = 0; i < blocks.length; i++) {
         let draw = blocks[i].draw;
@@ -161,7 +154,7 @@ function findWinner(blocks) {
         for (let k = i; k >= 0; k--) {
             let deprecated = false;
 
-            prevWinningDraws.forEach(function(element) {
+            node.prevWinningDraws.forEach(function(element) {
                 if (blocks[k].draw == element) {
                     deprecated = true;
                 }
@@ -171,7 +164,7 @@ function findWinner(blocks) {
                 break;
             }
 
-            searchBlock(draw, blocks[k], prize, prevWinningDraws);
+            searchBlock(draw, blocks[k], prize, node);
         }
 
         if (prize.winnerNames.length > 0) {
@@ -182,11 +175,11 @@ function findWinner(blocks) {
     return results;
 }
 
-function searchBlock(draw, block, prize, prevWinningDraws) {
-    console.log("");
+function searchBlock(draw, block, prize, node) {
+    /*console.log("");
     console.log("searching for winner on draw: " + draw);
     console.log("       ----> searching block: " + block.draw);
-    console.log(block.tickets.length);
+    console.log(block.tickets.length);*/
 
     for (let i = 0; i < block.tickets.length; i++) {
         let t = String(block.tickets[i].op[1].memo);
@@ -197,9 +190,11 @@ function searchBlock(draw, block, prize, prevWinningDraws) {
 
         if (draw.substr(0, 8) == t) {
             console.log("WINNER FOUND! " + block.tickets[i].op[1].from);
-            console.log(block.tickets[i]);
+            //console.log(block.tickets[i]);
 
-            prevWinningDraws.push(draw);
+            if (node.prevWinningDraws.includes(draw) == false) {
+                node.prevWinningDraws.push(draw);
+            }
 
             if (prize.winningDraw == null) {
                 prize.winningDraw = draw;
@@ -291,8 +286,12 @@ function Block() {
     this.sum = new CurrencySort();
 }
 
-let finalResult = null;
-let prevWinningDraws = null;
+function Watcher() {
+    this.result = null;
+    this.prevWinningDraws = new Array();
+}
+
 let outstandingTickets = null;
 
-//getWinners();
+let w = new Watcher();
+w.getWinners();

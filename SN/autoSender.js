@@ -31,6 +31,7 @@ async function downloadWinners() {
     console.log("---send list---");
     console.log(sendList);
 
+
     await getTransfers("slotto.ninja", "slotto.ninja", null);
     let outGoingTransfers = getTransferHistory();
 
