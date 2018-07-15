@@ -3,8 +3,8 @@
 Watcher.prototype.getWinners = async function() {
     this.result = null;
 
-    // @ts-ignore
     let history = new SteemHistory("slotto.ninja");
+    // @ts-ignore
     history.setSearchLimit(null, null, null);
     await history.download();
 
@@ -102,17 +102,17 @@ function inspectTransfers(transfers, node) {
     let winners = findWinner(blocks, node);
 
     //remaining outstanding tickets (for double checking)
-    outstandingTickets = new Array();
+    node.outstandingTickets = new Array();
     // @ts-ignore
-    let sumOutstanding = new CurrencySort();
+    node.sumOutstanding = new CurrencySort();
 
     for (let i = 0; i < allTickets.length; i++) {
         let winnerFound = false;
 
         if (allTickets[i].op[1].from != "slotto.gen") {
-            outstandingTickets.push(allTickets[i]);
-            sumOutstanding.sortCurrency(allTickets[i].op[1].amount, "STEEM");
-            sumOutstanding.sortCurrency(allTickets[i].op[1].amount, "SBD");
+            node.outstandingTickets.push(allTickets[i]);
+            node.sumOutstanding.sortCurrency(allTickets[i].op[1].amount, "STEEM");
+            node.sumOutstanding.sortCurrency(allTickets[i].op[1].amount, "SBD");
         }
 
         if (allTickets[i].op[1].from == "slotto.gen") {
@@ -130,14 +130,10 @@ function inspectTransfers(transfers, node) {
     }
     console.log("");
     console.log("---outstanding tickets---")
-    console.log(outstandingTickets);
-    console.log(sumOutstanding);
+    console.log(node.outstandingTickets);
+    console.log(node.sumOutstanding);
 
     return winners;
-}
-
-function getOutstandingTickets() {
-    return outstandingTickets;
 }
 
 /**
@@ -290,9 +286,9 @@ function Block() {
 function Watcher() {
     this.result = null;
     this.prevWinningDraws = new Array();
+    this.outstandingTickets = null;
+    this.sumOutstanding = null;
 }
 
-let outstandingTickets = null;
-
-let w = new Watcher();
-w.getWinners();
+//let w = new Watcher();
+//w.getWinners();

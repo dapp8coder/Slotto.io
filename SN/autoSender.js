@@ -1,4 +1,7 @@
+//@ts-check
+
 function initAutoSend() {
+    // @ts-ignore
     document.getElementById("repeat").checked = true;
 }
 
@@ -8,8 +11,11 @@ async function downloadWinners() {
     document.getElementById("checkTime").textContent = utc;
 
     console.clear();
-    await getWinners();
-    let winners = getFinalResult();
+
+    let watcher = new Watcher();
+    await watcher.getWinners();
+    let winners = watcher.result;
+
     sendList = new Array();
     winnerString = "";
     winnerString = "<br>---winners---<br>";
@@ -17,7 +23,7 @@ async function downloadWinners() {
         calcPrize(winners[i]);
     }
 
-    let outstanding = getOutstandingTickets();
+    let outstanding = watcher.outstandingTickets;
 
     winnerString += "<br><br>---outstanding tickets---<br>";
     winnerString += "(" + outstanding.length + " tickets)<br><br>";
@@ -31,12 +37,18 @@ async function downloadWinners() {
     console.log("---send list---");
     console.log(sendList);
 
+    let history = new SteemHistory("slotto.ninja");
+    // @ts-ignore
+    history.setSearchLimit(null, null, null);
+    await history.download();
 
-    await getTransfers("slotto.ninja", "slotto.ninja", null);
-    let outGoingTransfers = getTransferHistory();
+    // @ts-ignore
+    let transfers = new SteemTransfers();
+    transfers.filterTransfers("slotto.ninja", null, history.result);
 
-    checkDoubleSend(outGoingTransfers.transfers);
+    checkDoubleSend(transfers.result);
 
+    // @ts-ignore
     if (document.getElementById("repeat").checked == true) {
         console.log("");
         console.log("updating again in 3 mins..");
@@ -75,6 +87,7 @@ async function checkDoubleSend(outGoingTransfers) {
 }
 
 async function sendPrize(name, STEEM, SBD, message, errCount) {
+    // @ts-ignore
     let senderKey = document.getElementById("senderKey").value;
     let count = errCount;
 
@@ -82,6 +95,7 @@ async function sendPrize(name, STEEM, SBD, message, errCount) {
         try {
             console.log(name + " " + STEEM + " " + SBD);
             let amount = STEEM + " STEEM";
+            // @ts-ignore
             let result = await steem.broadcast.transferAsync(senderKey, "slotto.ninja", name, amount, message);
             console.log(result);
         } catch (err) {
