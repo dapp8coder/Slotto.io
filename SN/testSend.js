@@ -26,7 +26,7 @@ function repeatSend() {
     if (key == "") {
         console.log("skipping send..");
         console.log("");
-        setTimeout("repeatSend()", 60000);
+        setTimeout("repeatSend()", repeatTime);
     } else {
         if (pick <= 4) {
             console.log("sending with account1");
@@ -38,19 +38,18 @@ function repeatSend() {
     }
 }
 
-function testSend(key, sender, receiver, amount, message) {
-    steem.broadcast.transfer(key, sender, receiver, amount, message, function(err, result) {
+async function testSend(key, sender, receiver, amount, message) {
+    try {
+        let result = await steem.broadcast.transferAsync(key, sender, receiver, amount, message);
         console.log(result);
-        if (err == null) {
-            console.log("send complete");
-            console.log("");
-            setTimeout("repeatSend()", 60000);
-        } else {
-            console.log(err);
-            console.log("");
-            setTimeout("repeatSend()", 60000);
-        }
-    });
+        console.log("send complete " + message);
+        console.log("");
+        setTimeout("repeatSend()", repeatTime);
+    } catch (err) {
+        console.log(err);
+        console.log("");
+        setTimeout("repeatSend()", repeatTime);
+    }
 }
 
 function returnSteem() {
@@ -78,3 +77,4 @@ function onClickFifty() {
 }
 
 let getFifty = null;
+const repeatTime = 10000; //10 secs
