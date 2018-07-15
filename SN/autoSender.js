@@ -23,6 +23,7 @@ async function downloadWinners() {
     for (let i = 0; i < outstanding.length; i++) {
         winnerString += outstanding[i].op[1].from + " " + outstanding[i].op[1].memo + "<br>";
     }
+    winnerString += "(" + outstanding.length + " tickets)"
 
     document.getElementById("winners").innerHTML = winnerString;
 
