@@ -46,7 +46,7 @@ async function downloadWinners() {
     let transfers = new SteemTransfers();
     transfers.filterTransfers("slotto.ninja", null, history.result);
 
-    checkDoubleSend(transfers.result);
+    await checkDoubleSend(transfers.result);
 
     // @ts-ignore
     if (document.getElementById("repeat").checked == true) {
