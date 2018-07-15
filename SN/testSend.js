@@ -75,4 +75,4 @@ function onClickFifty() {
 }
 
 let getFifty = null;
-const repeatTime = 10000; //10 secs
+const repeatTime = 5000; //5 secs
