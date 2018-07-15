@@ -105,9 +105,6 @@ function calcPrize(data) {
     let sbd = Math.trunc((data.sum.SBD * 0.99 * 1000 / namesArray.length)) / 1000;
     let winningDraw = data.winningDraw;
 
-    //winnerString += "<br>" + winningDraw;
-    //winnerString += "<br>" + "prize: " + steem + " STEEM";
-
     for (let i = 0; i < namesArray.length; i++) {
         let packet = new PrizeReceiver();
         packet.name = namesArray[i];
