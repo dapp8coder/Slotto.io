@@ -123,6 +123,7 @@ function inspectTransfers(transfers, node) {
             break;
         }
     }
+
     console.log("");
     console.log("---outstanding tickets---")
     console.log(node.outstandingTickets);

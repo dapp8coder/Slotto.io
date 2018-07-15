@@ -3,11 +3,15 @@
 function initAutoSend() {
     // @ts-ignore
     document.getElementById("repeat").checked = true;
+    // @ts-ignore
+    document.getElementById("showOutstanding").checked = false;
+    document.getElementById("checkTimeLabel").style.display = "none";
 }
 
 async function downloadWinners() {
     let date = new Date();
     let utc = date.toUTCString();
+    document.getElementById("checkTimeLabel").style.display = "block";
     document.getElementById("checkTime").textContent = utc;
 
     console.clear();
@@ -29,17 +33,24 @@ async function downloadWinners() {
 
     sendList = new Array();
     winnerString = "";
-    winnerString = "<br>---winners---<br>";
+    winnerString = "<br><h3>Winners</h3>";
     for (let i = 0; i < winners.length; i++) {
         calcPrize(winners[i]);
+
+        if (i != winners.length - 1) {
+            winnerString += "<br>";
+        }
     }
 
-    let outstanding = watcher.outstandingTickets;
+    // @ts-ignore
+    if (document.getElementById("showOutstanding").checked) {
+        let outstanding = watcher.outstandingTickets;
 
-    winnerString += "<br><br>---outstanding tickets---<br>";
-    winnerString += "(" + outstanding.length + " tickets)<br><br>";
-    for (let i = 0; i < outstanding.length; i++) {
-        winnerString += outstanding[i].op[1].from + " " + outstanding[i].op[1].memo + "<br>";
+        winnerString += "<br><h3>outstanding Tickets</h3>";
+        winnerString += "(" + outstanding.length + " tickets)<br><br>";
+        for (let i = 0; i < outstanding.length; i++) {
+            winnerString += outstanding[i].op[1].from + " " + outstanding[i].op[1].memo + "<br>";
+        }
     }
 
     document.getElementById("winners").innerHTML = winnerString;
@@ -135,10 +146,17 @@ function calcPrize(data) {
     let sbd = Math.trunc((data.sum.SBD * 0.99 * 1000 / namesArray.length)) / 1000;
     let winningDraw = data.winningDraw;
 
+    winnerString += "<br>" + winningDraw + "<br>";
+
     for (let i = 0; i < namesArray.length; i++) {
         let packet = new PrizeReceiver();
         packet.name = namesArray[i];
-        winnerString += "<br> " + namesArray[i] + " " + steem + " STEEM" + " (" + winningDraw + ")";
+
+        if (i != 0) {
+            winnerString += "<br> ";
+        }
+
+        winnerString += namesArray[i] + " " + steem + " STEEM";
         packet.STEEM = steem;
         packet.SBD = sbd;
         packet.winningDraw = winningDraw;
