@@ -47,11 +47,11 @@ function updateDraw() {
         if (isGenerated() == false) {
             saveOnBlockchain(drawWinner());
         } else {
-            console.log(getNextDrawTime(lastGen));
+            //console.log(getNextDrawTime(lastGen));
             nextDraw();
         }
     } else {
-        console.log(getNextDrawTime(lastGen));
+        //console.log(getNextDrawTime(lastGen));
         nextDraw();
     }
 }
@@ -59,17 +59,20 @@ function updateDraw() {
 function getNextDrawTime(lastGen) {
     // @ts-ignore
     let deadline = new Date(lastGen).getTime();
+
     var extraMins = Math.floor((deadline % (1000 * 60 * 60)) / (1000 * 60));
     extraMins = extraMins % getMinsDeadline();
-    let extraMilliSeconds = Math.floor(deadline % (1000 * 60));
+    let extraSeconds = Math.floor(deadline % (1000 * 60));
+    let extraMilliSecconds = Math.floor(deadline % 1000 / 10);
 
-    deadline = deadline + (getMinsDeadline() * 1000 * 60) - (extraMilliSeconds) - (extraMins * 60 * 1000) - 1000;
+    deadline = deadline + (getMinsDeadline() * 1000 * 60) - (extraMins * 60 * 1000) - (extraSeconds) - (extraMilliSecconds);
 
     let now = new Date().getTime();
     let distance = deadline - now;
 
     let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    let milliSeconds = Math.floor(distance % 1000 / 10);
 
     if (minutes <= 0) {
         // @ts-ignore
@@ -87,12 +90,17 @@ function getNextDrawTime(lastGen) {
         seconds = "0" + seconds;
     }
 
-    return (minutes + " : " + seconds);
+    if (milliSeconds <= 0) {
+        // @ts-ignore
+        milliSeconds = "00";
+    }
+
+    return (minutes + " : " + seconds + " : " + milliSeconds);
 }
 
 function nextDraw() {
     // @ts-ignore
-    let interval = getFortunaRand(900, 999, 0);
+    let interval = getFortunaRand(0, 100, 0);
     setTimeout("updateDraw()", interval);
 }
 
