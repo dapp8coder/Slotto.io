@@ -71,20 +71,20 @@ function getNextDrawTime(lastGen) {
     let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    if (minutes < 10) {
-        // @ts-ignore
-        minutes = "0" + minutes;
-    } else if (minutes <= 0) {
+    if (minutes <= 0) {
         // @ts-ignore
         minutes = "00";
+    } else if (minutes < 10) {
+        // @ts-ignore
+        minutes = "0" + minutes;
     }
 
-    if (seconds < 10) {
-        // @ts-ignore
-        seconds = "0" + seconds;
-    } else if (seconds <= 0) {
+    if (seconds <= 0) {
         // @ts-ignore
         seconds = "00";
+    } else if (seconds < 10) {
+        // @ts-ignore
+        seconds = "0" + seconds;
     }
 
     return (minutes + " : " + seconds);
