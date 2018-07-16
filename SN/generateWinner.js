@@ -7,10 +7,7 @@ function InitRandomGenerator() {
 
 function getMinsDeadline() {
     // @ts-ignore
-    let minsDeadline = document.getElementById("minsDeadline").value
-
-    minsDeadline = Math.floor(minsDeadline);
-    minsDeadline = parseInt(minsDeadline);
+    let minsDeadline = getGenerationMin();
 
     if (minsDeadline <= 0) {
         minsDeadline = 1;
@@ -43,33 +40,60 @@ function updateDraw() {
     document.getElementById("utcDisplay").textContent = utc;
 
     const minsDeadline = getMinsDeadline();
-    if (isGenerationMinute(min, minsDeadline)) {
-        if (lastGen.includes("None")) {
-            drawWinner();
-        } else if (isGenerated() == false) {
-            drawWinner();
+
+    if (lastGen.includes("None")) {
+        saveOnBlockchain(drawWinner());
+    } else if (isGenerationMinute(min, minsDeadline)) {
+        if (isGenerated() == false) {
+            saveOnBlockchain(drawWinner());
         } else {
+            console.log(getNextDrawTime(lastGen));
             nextDraw();
         }
     } else {
+        console.log(getNextDrawTime(lastGen));
         nextDraw();
     }
 }
 
-function nextDraw() {
-    setTimeout("updateDraw()", getSimpleFortunaRand(900, 999));
+function getNextDrawTime(lastGen) {
+    // @ts-ignore
+    let deadline = new Date(lastGen).getTime();
+    var extraMins = Math.floor((deadline % (1000 * 60 * 60)) / (1000 * 60));
+    extraMins = extraMins % getMinsDeadline();
+    let extraMilliSeconds = Math.floor(deadline % (1000 * 60));
+
+    deadline = deadline + (getMinsDeadline() * 1000 * 60) - (extraMilliSeconds) - (extraMins * 60 * 1000) - 1000;
+
+    let now = new Date().getTime();
+    let distance = deadline - now;
+
+    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    if (minutes < 10) {
+        // @ts-ignore
+        minutes = "0" + minutes;
+    } else if (minutes <= 0) {
+        // @ts-ignore
+        minutes = "00";
+    }
+
+    if (seconds < 10) {
+        // @ts-ignore
+        seconds = "0" + seconds;
+    } else if (seconds <= 0) {
+        // @ts-ignore
+        seconds = "00";
+    }
+
+    return (minutes + " : " + seconds);
 }
 
-function getSimpleFortunaRand(min, max) {
+function nextDraw() {
     // @ts-ignore
-    fortuna.init({ timeBasedEntropy: true, accumulateTimeout: 100 });
-    // @ts-ignore
-    let r = parseInt((fortuna.random() * (max - min)) + min);
-    let sr = "";
-    if (r < 10) {
-        sr = "0" + r;
-    }
-    return sr;
+    let interval = getFortunaRand(900, 999, 0);
+    setTimeout("updateDraw()", interval);
 }
 
 /**
@@ -185,7 +209,7 @@ function drawWinner() {
     document.getElementById("lastGen").textContent = utc;
     document.getElementById("lastDraw").textContent = message;
 
-    saveOnBlockchain(message);
+    return message;
 }
 
 function hideInputFields() {
