@@ -25,7 +25,7 @@ function startProcess() {
 
     console.log("starting process at.. 1 generation per ", getMinsDeadline(), " minute(s)");
     // @ts-ignore
-    console.log("test rand: ", getFortunaRand(1, 50, 0));
+    console.log("test rand: ", getFortunaRand(800, 900, 0));
     updateDraw();
 }
 
@@ -44,14 +44,12 @@ function updateDraw() {
     if (lastGen.includes("None")) {
         saveOnBlockchain(drawWinner());
     } else if (isGenerationMinute(min, minsDeadline)) {
-        if (isGenerated() == false) {
+        if (isGenerated(document.getElementById("lastGen").textContent) == false) {
             saveOnBlockchain(drawWinner());
         } else {
-            //console.log(getNextDrawTime(lastGen));
             nextDraw();
         }
     } else {
-        //console.log(getNextDrawTime(lastGen));
         nextDraw();
     }
 }
@@ -72,7 +70,7 @@ function getNextDrawTime(lastGen) {
 
     let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    let milliSeconds = Math.floor(distance % 1000 / 10);
+    let milliSeconds = Math.floor(distance % 1000 / 100);
 
     if (minutes <= 0) {
         // @ts-ignore
@@ -98,7 +96,8 @@ function getNextDrawTime(lastGen) {
         milliSeconds = "0" + milliSeconds;
     }
 
-    return (minutes + " : " + seconds + " : " + milliSeconds);
+    return (minutes + " : " + seconds);
+    //return (minutes + " : " + seconds + " : " + milliSeconds);
 }
 
 function nextDraw() {
@@ -164,8 +163,8 @@ function isGenerationMinute(currentUTCMin, deadlineMin) {
     }
 }
 
-function isGenerated() {
-    const lastGen = document.getElementById("lastGen").textContent;
+function isGenerated(lastGen) {
+    //const lastGen = document.getElementById("lastGen").textContent;
 
     if (lastGen.includes("None")) {
         return false;
