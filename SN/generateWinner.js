@@ -93,6 +93,9 @@ function getNextDrawTime(lastGen) {
     if (milliSeconds <= 0) {
         // @ts-ignore
         milliSeconds = "00";
+    } else if (milliSeconds < 10) {
+        // @ts-ignore
+        milliSeconds = "0" + milliSeconds;
     }
 
     return (minutes + " : " + seconds + " : " + milliSeconds);
