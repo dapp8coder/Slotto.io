@@ -14,6 +14,7 @@ async function getRecentDraws() {
     let gen = new Array();
 
     for (let i = 0; i < all.length; i++) {
+        // @ts-ignore
         if (isSlottoFormat(all[i])) {
             gen.push(all[i]);
             if (gen.length >= 100) {
