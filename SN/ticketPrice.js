@@ -3,5 +3,5 @@ function getTicketPrice() {
 }
 
 function getGenerationMin() {
-    return 5;
+    return 1;
 }

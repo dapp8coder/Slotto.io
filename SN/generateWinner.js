@@ -207,7 +207,8 @@ function drawWinner() {
     const rand = generateTicket(3, miliseconds);
     let message = "";
 
-    if (getFifty == true) {
+    // @ts-ignore
+    if (document.getElementById("fifty").checked == true) {
         message = "50,50,50 " + utc + " " + miliseconds;
     } else {
         message = rand + " " + utc + " " + miliseconds;
@@ -230,12 +231,3 @@ function hideInputFields() {
 function refresh() {
     location.reload();
 }
-
-function onClickFifty() {
-    // @ts-ignore
-    getFifty = document.getElementById("fifty").checked;
-    console.log("");
-    console.log("getFifty: " + getFifty)
-}
-
-let getFifty = null;
