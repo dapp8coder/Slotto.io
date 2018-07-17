@@ -27,6 +27,7 @@ function purchaseTicket(memo) {
     }, "http://localhost:8000/demo/");
 
     console.log("transfer link: ", link)
+    window.open(link);
 }
 
 function generateRandomTicket() {
