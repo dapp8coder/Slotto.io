@@ -5,3 +5,7 @@ function getTicketPrice() {
 function getGenerationMin() {
     return 1;
 }
+
+function getDefaultRegisterAcount() {
+    return "slotto.register";
+}

@@ -19,11 +19,10 @@ function buy() {
 
 function purchaseTicket(memo) {
     let amount = getTicketPrice();
-
     console.log(amount);
-
+    let receiver = getDefaultRegisterAcount();
     let link = api.sign("transfer", {
-        to: "slotto.ninja",
+        to: receiver,
         amount: amount,
         memo: memo,
     }, "http://localhost:8000/demo/");
