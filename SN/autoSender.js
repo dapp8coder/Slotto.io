@@ -152,17 +152,13 @@ function calcPrize(data) {
     let sbd = Math.trunc((data.sum.SBD * 0.99 * 1000 / namesArray.length)) / 1000;
     let winningDraw = data.winningDraw;
 
-    winnerString += "<br>" + winningDraw + "<br>";
+    winnerString += winningDraw + "<br>";
 
     for (let i = 0; i < namesArray.length; i++) {
         let packet = new PrizeReceiver();
         packet.name = namesArray[i];
 
-        if (i != 0) {
-            winnerString += "<br> ";
-        }
-
-        winnerString += namesArray[i] + " " + steem + " STEEM";
+        winnerString += namesArray[i] + " " + steem + " STEEM<br>";
         packet.STEEM = steem;
         packet.SBD = sbd;
         packet.winningDraw = winningDraw;
