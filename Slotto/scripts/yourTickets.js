@@ -25,7 +25,7 @@ async function findYourTickets() {
 }
 
 async function getYours(account) {
-
+    // @ts-ignore
     let defaultRegister = getDefaultRegisterAcount();
 
     // @ts-ignore
