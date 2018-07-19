@@ -42,7 +42,7 @@ function inspectTransfers(transfers, node) {
             allSum.sortCurrency(transfers[i].op[1].amount, "STEEM");
             allSum.sortCurrency(transfers[i].op[1].amount, "SBD");
 
-            if (transfers[i].op[1].from != "gen") {
+            if (transfers[i].op[1].from != "slotto.gen") {
                 validTickets.push(transfers[i]);
                 validSum.sortCurrency(transfers[i].op[1].amount, "STEEM");
                 validSum.sortCurrency(transfers[i].op[1].amount, "SBD");
@@ -196,7 +196,7 @@ function searchBlock(draw, block, prize, node) {
             if (prize.winnerNames.includes(block.tickets[i].op[1].from) == false) {
                 prize.winnerNames.push(block.tickets[i].op[1].from);
                 console.log("WINNER FOUND! " + block.tickets[i].op[1].from);
-                console.log(prize);
+                //console.log(prize);
             } else {
                 console.log("duplicate winning ticket from " + block.tickets[i].op[1].from);
             }
