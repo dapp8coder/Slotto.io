@@ -1,6 +1,8 @@
 //@ts-check
 
 async function findYourTickets() {
+    console.clear();
+
     // @ts-ignore
     let account = document.getElementById("accountName").value;
     let accountInfo = null;
@@ -23,15 +25,18 @@ async function findYourTickets() {
 }
 
 async function getYours(account) {
+
+    let defaultRegister = getDefaultRegisterAcount();
+
     // @ts-ignore
-    let receivehistory = new SteemHistory("slotto.ninja");
+    let receivehistory = new SteemHistory(defaultRegister);
     // @ts-ignore
     receivehistory.setSearchLimit(null, null, null);
     await receivehistory.download();
 
     // @ts-ignore
     let receiveTransfers = new SteemTransfers();
-    receiveTransfers.filterTransfers(null, "slotto.ninja", receivehistory.result);
+    receiveTransfers.filterTransfers(null, defaultRegister, receivehistory.result);
 
     // @ts-ignore
     let watcher = new Watcher();
