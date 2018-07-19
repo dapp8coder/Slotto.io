@@ -2,13 +2,13 @@
 
 async function getRecentDraws() {
     // @ts-ignore
-    let history = new SteemHistory("slotto.ninja");
+    let history = new SteemHistory("slotto.register");
     history.setSearchLimit(null, null, null);
     await history.download();
 
     // @ts-ignore
     let transfers = new SteemTransfers();
-    transfers.filterTransfers("slotto.gen", "slotto.ninja", history.result);
+    transfers.filterTransfers("slotto.gen", "slotto.register", history.result);
 
     let all = transfers.result;
     let gen = new Array();
