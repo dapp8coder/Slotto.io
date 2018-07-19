@@ -182,9 +182,9 @@ function searchBlock(draw, block, prize, node) {
         prize.sum.sortCurrency(block.tickets[i].op[1].amount, "SBD");
         prize.tickets.push(block.tickets[i]);
 
-        if (draw.substr(0, 8) == t) {
-            //console.log(block.tickets[i]);
+        //console.log(draw.substr(0, 8) + " vs " + t);
 
+        if (draw.substr(0, 8) == t) {
             if (node.prevWinningDraws.includes(draw) == false) {
                 node.prevWinningDraws.push(draw);
             }
