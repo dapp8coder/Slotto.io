@@ -15,9 +15,9 @@ function repeatSend() {
 
     console.log("");
     if (document.getElementById("fifty").checked == true) {
-        message = "50,50,50 " + utc + " " + miliseconds;
+        message = "50,50,50"; // + utc + " " + miliseconds;
     } else {
-        message = rand + " " + utc + " " + miliseconds;
+        message = rand; // + " " + utc + " " + miliseconds;
     }
 
     document.getElementById("memo").value = message;
