@@ -23,16 +23,18 @@ function repeatSend() {
     document.getElementById("memo").value = message;
     console.log(message);
 
+    let receiver = document.getElementById("receiver").value;
+
     if (key == "") {
         console.log("skipping send..");
         setTimeout("repeatSend()", repeatTime);
     } else {
         if (pick <= 4) {
             console.log("sending with account1");
-            testSend(key, sender, "slotto.ninja", getTicketPrice(), message);
+            testSend(key, sender, receiver, getTicketPrice(), message);
         } else {
             console.log("sending with account2");
-            testSend(key2, sender2, "slotto.ninja", getTicketPrice(), message);
+            testSend(key2, sender2, receiver, getTicketPrice(), message);
         }
     }
 }
