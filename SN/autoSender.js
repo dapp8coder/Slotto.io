@@ -17,14 +17,17 @@ async function downloadWinners() {
     console.clear();
 
     // @ts-ignore
-    let receivehistory = new SteemHistory("slotto.ninja");
+    let sender = document.getElementById("sender").value;
+
+    // @ts-ignore
+    let receivehistory = new SteemHistory(sender);
     // @ts-ignore
     receivehistory.setSearchLimit(null, null, null);
     await receivehistory.download();
 
     // @ts-ignore
     let receiveTransfers = new SteemTransfers();
-    receiveTransfers.filterTransfers(null, "slotto.ninja", receivehistory.result);
+    receiveTransfers.filterTransfers(null, sender, receivehistory.result);
 
     // @ts-ignore
     let watcher = new Watcher();
@@ -60,14 +63,14 @@ async function downloadWinners() {
     console.log(sendList);
 
     // @ts-ignore
-    let sendHistory = new SteemHistory("slotto.ninja");
+    let sendHistory = new SteemHistory(sender);
     // @ts-ignore
     sendHistory.setSearchLimit(null, null, null);
     await sendHistory.download();
 
     // @ts-ignore
     let sendTransfers = new SteemTransfers();
-    sendTransfers.filterTransfers("slotto.ninja", null, sendHistory.result);
+    sendTransfers.filterTransfers(sender, null, sendHistory.result);
 
     await checkAndSend(sendTransfers.result);
 
@@ -114,6 +117,9 @@ async function checkAndSend(outGoingTransfers) {
 
 async function sendPrize(name, STEEM, SBD, message, errCount) {
     // @ts-ignore
+    let sender = document.getElementById("sender").value;
+
+    // @ts-ignore
     let senderKey = document.getElementById("senderKey").value;
     let count = errCount;
 
@@ -122,7 +128,7 @@ async function sendPrize(name, STEEM, SBD, message, errCount) {
             console.log(name + " " + STEEM + " " + SBD);
             let amount = STEEM + " STEEM";
             // @ts-ignore
-            let result = await steem.broadcast.transferAsync(senderKey, "slotto.ninja", name, amount, message);
+            let result = await steem.broadcast.transferAsync(senderKey, sender, name, amount, message);
             console.log(result);
         } catch (err) {
             if (count <= 3) {
