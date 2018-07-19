@@ -14,7 +14,7 @@ function repeatSend() {
     let pick = Math.floor(Math.random() * 10);
 
     console.log("");
-    if (getFifty == true) {
+    if (document.getElementById("fifty").checked == true) {
         message = "50,50,50 " + utc + " " + miliseconds;
     } else {
         message = rand + " " + utc + " " + miliseconds;
@@ -71,10 +71,4 @@ function returnSteem() {
     });
 }
 
-function onClickFifty() {
-    getFifty = document.getElementById("fifty").checked;
-    console.log("getFifty: " + getFifty)
-}
-
-let getFifty = null;
 const repeatTime = 5000; //5 secs
