@@ -180,6 +180,7 @@ function searchBlock(draw, block, prize, node) {
 
         prize.sum.sortCurrency(block.tickets[i].op[1].amount, "STEEM");
         prize.sum.sortCurrency(block.tickets[i].op[1].amount, "SBD");
+        prize.tickets.push(block.tickets[i]);
 
         if (draw.substr(0, 8) == t) {
             //console.log(block.tickets[i]);
@@ -208,6 +209,7 @@ function Prize() {
     this.sum = new CurrencySort();
     this.winnerNames = new Array();
     this.winningDraw = null;
+    this.tickets = new Array();
 }
 
 function isSlottoFormat(data) {
