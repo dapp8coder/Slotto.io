@@ -42,7 +42,7 @@ function inspectTransfers(transfers, node) {
             allSum.sortCurrency(transfers[i].op[1].amount, "STEEM");
             allSum.sortCurrency(transfers[i].op[1].amount, "SBD");
 
-            if (transfers[i].op[1].from != "slotto.gen") {
+            if (transfers[i].op[1].from != "gen") {
                 validTickets.push(transfers[i]);
                 validSum.sortCurrency(transfers[i].op[1].amount, "STEEM");
                 validSum.sortCurrency(transfers[i].op[1].amount, "SBD");
