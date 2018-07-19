@@ -213,11 +213,13 @@ function Prize() {
 function isSlottoFormat(data) {
     const memo = String(data.op[1].memo);
 
-    if (data.op[1].from == "roundbeargames") {
+    /*if (data.op[1].from == "roundbeargames") {
         if (data.op[1].memo == "51,51,51") {
             return true;
         }
-    } else if (memo.length > 8) {
+    } else*/
+
+    if (memo.length >= 8) {
         const comma1 = memo.substr(2, 1);
         const comma2 = memo.substr(5, 1);
         const num1 = memo.substr(0, 2);
