@@ -111,6 +111,8 @@ function nextDraw() {
  * @param {string} message 
  */
 function saveOnBlockchain(message) {
+    console.clear();
+
     // @ts-ignore
     const senderAccount = document.getElementById("senderAccount").value;
     // @ts-ignore
