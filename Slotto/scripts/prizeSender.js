@@ -72,7 +72,19 @@ async function downloadWinners() {
     let sendTransfers = new SteemTransfers();
     sendTransfers.filterTransfers(sender, null, sendHistory.result);
 
-    await checkAndSend(sendTransfers.result);
+    let sentPrizes = new Array();
+
+    for (let i = 0; i < sendTransfers.result.length; i++) {
+        if (sendTransfers.result[i].op[1].to != "slotto.gen") {
+            sentPrizes.push(sendTransfers.result[i]);
+        }
+    }
+
+    console.log("");
+    console.log("---prizes already sent---");
+    console.log(sentPrizes);
+
+    await checkAndSend(sentPrizes);
 
     // @ts-ignore
     if (document.getElementById("repeat").checked == true) {
@@ -95,6 +107,7 @@ async function checkAndSend(outGoingTransfers) {
         let receiver = null;
         for (let k = 0; k < outGoingTransfers.length; k++) {
             // check for same account, same winning draw
+            //console.log(outGoingTransfers[k].op[1].memo + " vs " + sendList[i].winningDraw);
             if (outGoingTransfers[k].op[1].memo == sendList[i].winningDraw) {
                 if (outGoingTransfers[k].op[1].to == sendList[i].name) {
                     alreadySent = true;
@@ -125,7 +138,7 @@ async function sendPrize(name, STEEM, SBD, message, errCount) {
 
     if (senderKey != "") {
         try {
-            console.log(name + " " + STEEM + " " + SBD);
+            console.log(name + " " + STEEM + " STEEM" + " and " + SBD + " SBD");
             let amount = STEEM + " STEEM";
             // @ts-ignore
             let result = await steem.broadcast.transferAsync(senderKey, sender, name, amount, message);

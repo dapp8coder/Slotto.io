@@ -178,8 +178,9 @@ function searchBlock(draw, block, prize, node) {
         let t = String(block.tickets[i].op[1].memo);
         t = t.substring(0, 8);
 
-        prize.sum.sortCurrency(block.tickets[i].op[1].amount, "STEEM");
-        prize.sum.sortCurrency(block.tickets[i].op[1].amount, "SBD");
+        // @ts-ignore
+        prize.sum.sortCurrency(getTicketPrice(), "STEEM");
+        //prize.sum.sortCurrency(block.tickets[i].op[1].amount, "SBD");
         prize.tickets.push(block.tickets[i]);
 
         //console.log(draw.substr(0, 8) + " vs " + t);
@@ -227,6 +228,14 @@ function isSlottoFormat(data) {
         const num1 = memo.substr(0, 2);
         const num2 = memo.substr(3, 2);
         const num3 = memo.substr(6, 2);
+
+
+        if (memo == "51,51,51") {
+            console.log("");
+            console.log("---donations---");
+            console.log(data);
+            return true;
+        }
 
         if (comma1 == "," && comma2 == ",") {
             if (isNaN(Number(num1)) == false &&
