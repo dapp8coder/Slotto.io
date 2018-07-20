@@ -224,7 +224,11 @@ function Prize() {
 function isSlottoFormat(data) {
     const memo = String(data.op[1].memo);
 
-    if (data.op[1].amount.includes("SBD")) {
+    if (memo.includes(".")) {
+        return false;
+    }
+
+    if (data.op[1].amount.includes("STEEM") == false) {
         return false;
     }
 
@@ -240,7 +244,6 @@ function isSlottoFormat(data) {
         const num1 = memo.substr(0, 2);
         const num2 = memo.substr(3, 2);
         const num3 = memo.substr(6, 2);
-
 
         if (memo == "51,51,51") {
             console.log("");
