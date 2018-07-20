@@ -45,6 +45,8 @@ async function downloadWinners() {
         }
     }
 
+    winnerString += "<br>";
+
     // @ts-ignore
     if (document.getElementById("showOutstanding").checked) {
         let outstanding = watcher.outstandingTickets;
@@ -177,8 +179,6 @@ function calcPrize(data) {
         packet.winningDraw = winningDraw;
         sendList.push(packet);
     }
-
-    winnerString += "<br>";
 }
 
 function PrizeReceiver() {
