@@ -113,7 +113,7 @@ function inspectTransfers(transfers, node) {
         if (allTickets[i].op[1].from == "slotto.gen") {
             for (let k = 0; k < node.prevWinningDraws.length; k++) {
                 let purchased = allTickets[i].op[1].memo.substring(0, 8) + " " + allTickets[i].timestamp;
-                console.log(purchased + " vs " + node.prevWinningDraws[k])
+                //console.log(purchased + " vs " + node.prevWinningDraws[k])
                 if (purchased == node.prevWinningDraws[k]) {
                     winnerFound = true;
                     break;
