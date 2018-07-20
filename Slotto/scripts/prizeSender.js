@@ -52,10 +52,11 @@ async function downloadWinners() {
         let outstanding = watcher.outstandingTickets;
 
         winnerString += "<br><h3>outstanding Tickets</h3>";
-        winnerString += "(" + outstanding.length + " tickets)<br><br>";
         for (let i = 0; i < outstanding.length; i++) {
-            winnerString += outstanding[i].op[1].from + " " + outstanding[i].op[1].memo + "<br>";
+            winnerString += outstanding[i].op[1].from + " " + outstanding[i].op[1].memo /* + " " + outstanding[i].op[1].amount*/ + "<br>";
         }
+        winnerString += "<br>total " + outstanding.length + " tickets<br>";
+        winnerString += "prize: " + watcher.sumOutstanding.STEEM + " STEEM";
     }
 
     document.getElementById("winners").innerHTML = winnerString;
