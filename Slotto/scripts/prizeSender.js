@@ -5,6 +5,8 @@ function initAutoSend() {
     document.getElementById("repeat").checked = true;
     // @ts-ignore
     document.getElementById("showOutstanding").checked = false;
+    // @ts-ignore
+    document.getElementById("operationalFee").checked = true;
     document.getElementById("checkTimeLabel").style.display = "none";
 }
 
@@ -177,8 +179,18 @@ async function sendPrize(name, STEEM, SBD, message, errCount) {
 
 function calcPrize(data) {
     let namesArray = data.winnerNames;
-    let steem = Math.trunc((data.sum.STEEM * 0.99 * 1000 / namesArray.length)) / 1000;
-    let sbd = Math.trunc((data.sum.SBD * 0.99 * 1000 / namesArray.length)) / 1000;
+    let steem = null;
+    let sbd = null;
+
+    // @ts-ignore
+    if (document.getElementById("operationalFee").checked) {
+        steem = Math.trunc((data.sum.STEEM * 0.99 * 1000 / namesArray.length)) / 1000;
+        sbd = Math.trunc((data.sum.SBD * 0.99 * 1000 / namesArray.length)) / 1000;
+    } else {
+        steem = Number(data.sum.STEEM);
+        sbd = Number(data.sum.SBD);
+    }
+
     let winningDraw = data.winningDraw;
 
     winnerString += winningDraw + "<br>";
