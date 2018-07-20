@@ -5,16 +5,50 @@ function init() {
     generateRandomTicket();
 }
 
+function ticketIsValid(num1, num2, num3) {
+    if (num1.includes(".") || num2.includes(".") || num3.includes(".")) {
+        return false;
+    }
+
+    if (isNaN(Number(num1)) == false &&
+        isNaN(Number(num2)) == false &&
+        isNaN(Number(num3)) == false) {
+        if (num1 >= 1 && num1 <= 49) {
+            if (num2 >= 1 && num2 <= 49) {
+                if (num3 >= 1 && num3 <= 49) {
+                    return true;
+                }
+            }
+        }
+    }
+
+    return false;
+}
+
 function buy() {
     console.log("");
     console.log("purchasing ticket..");
-    const num1 = document.getElementById("num1").value;
-    const num2 = document.getElementById("num2").value;
-    const num3 = document.getElementById("num3").value;
-    const memo = num1 + "," + num2 + "," + num3;
-    console.log(memo);
+    let num1 = document.getElementById("num1").value;
+    let num2 = document.getElementById("num2").value;
+    let num3 = document.getElementById("num3").value;
 
-    purchaseTicket(memo);
+    if (ticketIsValid(num1, num2, num3)) {
+        if (num1 < 10) {
+            num1 = "0" + num1;
+        }
+
+        if (num2 < 10) {
+            num2 = "0" + num2;
+        }
+
+        if (num3 < 10) {
+            num3 = "0" + num3;
+        }
+        const memo = num1 + "," + num2 + "," + num3;
+        purchaseTicket(memo);
+    } else {
+        //alert("please enter an integer between 1~49");
+    }
 }
 
 function purchaseTicket(memo) {
