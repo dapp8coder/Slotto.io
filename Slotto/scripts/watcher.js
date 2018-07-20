@@ -180,11 +180,11 @@ function searchBlock(draw, block, prize, node) {
         let t = String(block.tickets[i].op[1].memo);
         t = t.substring(0, 8);
 
-        // @ts-ignore
-        prize.sum.sortCurrency(getTicketPrice(), "STEEM");
-
         if (t == "51,51,51") {
             prize.sum.sortCurrency(block.tickets[i].op[1].amount, "STEEM");
+        } else {
+            // @ts-ignore
+            prize.sum.sortCurrency(getTicketPrice(), "STEEM");
         }
         //prize.sum.sortCurrency(block.tickets[i].op[1].amount, "SBD");
 
