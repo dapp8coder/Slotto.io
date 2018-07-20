@@ -258,7 +258,7 @@ function createBlocks(allTickets) {
         //get draws only from slotto.gen
         if (allTickets[i].op[1].from == "slotto.gen") {
             let b = new Block();
-            b.draw = allTickets[i].op[1].memo;
+            b.draw = allTickets[i].op[1].memo.substring(0, 8) + " " + allTickets[i].timestamp;
 
             //place outstanding tickets into a block
             for (let t = i + 1; t < allTickets.length; t++) {
