@@ -96,7 +96,7 @@ function inspectTransfers(transfers, node) {
     console.log("---finding winner---");
     let winners = findWinner(blocks, node);
 
-    //remaining outstanding tickets (for double checking)
+    //remaining outstanding tickets
     node.outstandingTickets = new Array();
     // @ts-ignore
     node.sumOutstanding = new CurrencySort();
@@ -112,7 +112,9 @@ function inspectTransfers(transfers, node) {
 
         if (allTickets[i].op[1].from == "slotto.gen") {
             for (let k = 0; k < node.prevWinningDraws.length; k++) {
-                if (allTickets[i].op[1].memo == node.prevWinningDraws[k]) {
+                let purchased = allTickets[i].op[1].memo.substring(0, 8) + " " + allTickets[i].timestamp;
+                console.log(purchased + " vs " + node.prevWinningDraws[k])
+                if (purchased == node.prevWinningDraws[k]) {
                     winnerFound = true;
                     break;
                 }
