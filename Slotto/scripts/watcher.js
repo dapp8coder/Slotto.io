@@ -180,7 +180,12 @@ function searchBlock(draw, block, prize, node) {
 
         // @ts-ignore
         prize.sum.sortCurrency(getTicketPrice(), "STEEM");
+
+        if (t == "51,51,51") {
+            prize.sum.sortCurrency(block.tickets[i].op[1].amount, "STEEM");
+        }
         //prize.sum.sortCurrency(block.tickets[i].op[1].amount, "SBD");
+
         prize.tickets.push(block.tickets[i]);
 
         //console.log(draw.substr(0, 8) + " vs " + t);
