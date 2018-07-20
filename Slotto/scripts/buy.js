@@ -26,28 +26,31 @@ function ticketIsValid(num1, num2, num3) {
 }
 
 function buy() {
-    console.log("");
-    console.log("purchasing ticket..");
     let num1 = document.getElementById("num1").value;
     let num2 = document.getElementById("num2").value;
     let num3 = document.getElementById("num3").value;
-
+    //console.log(String(num1).substr(0, 1));
     if (ticketIsValid(num1, num2, num3)) {
-        if (num1 < 10) {
+        if (num1 < 10 && String(num1).substr(0, 1) != "0") {
             num1 = "0" + num1;
         }
 
-        if (num2 < 10) {
+        if (num2 < 10 && String(num2).substr(0, 1) != "0") {
             num2 = "0" + num2;
         }
 
-        if (num3 < 10) {
+        if (num3 < 10 && String(num3).substr(0, 1) != "0") {
             num3 = "0" + num3;
         }
         const memo = num1 + "," + num2 + "," + num3;
+
+        console.log("");
+        console.log("purchasing ticket..");
+        console.log(memo);
         purchaseTicket(memo);
     } else {
-        //alert("please enter an integer between 1~49");
+        console.log("");
+        console.log("ticket is invalid!");
     }
 }
 
