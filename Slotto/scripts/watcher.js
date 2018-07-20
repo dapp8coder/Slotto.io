@@ -203,6 +203,7 @@ function searchBlock(draw, block, prize, node) {
 
             if (prize.winnerNames.includes(block.tickets[i].op[1].from) == false) {
                 prize.winnerNames.push(block.tickets[i].op[1].from);
+                console.log("");
                 console.log("WINNER FOUND! " + block.tickets[i].op[1].from);
                 //console.log(prize);
             } else {
