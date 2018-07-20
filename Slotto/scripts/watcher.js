@@ -223,6 +223,10 @@ function Prize() {
 function isSlottoFormat(data) {
     const memo = String(data.op[1].memo);
 
+    if (data.op[1].amount.includes("SBD")) {
+        return false;
+    }
+
     /*if (data.op[1].from == "roundbeargames") {
         if (data.op[1].memo == "51,51,51") {
             return true;
