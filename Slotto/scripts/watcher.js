@@ -228,15 +228,13 @@ function isSlottoFormat(data) {
         return false;
     }
 
-    if (data.op[1].amount.includes("STEEM") == false) {
+    if (memo.includes("-")) {
         return false;
     }
 
-    /*if (data.op[1].from == "roundbeargames") {
-        if (data.op[1].memo == "51,51,51") {
-            return true;
-        }
-    } else*/
+    if (data.op[1].amount.includes("STEEM") == false) {
+        return false;
+    }
 
     if (memo.length >= 8) {
         const comma1 = memo.substr(2, 1);
