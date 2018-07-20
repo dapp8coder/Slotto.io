@@ -143,10 +143,8 @@ async function sendPrize(name, STEEM, SBD, message, errCount) {
             console.log(name + " " + STEEM + " STEEM" + " and " + SBD + " SBD");
 
             STEEM = STEEM.toString();
-
             if (STEEM.includes(".")) {
                 let decimals = STEEM.split(".")[1].length;
-
                 if (decimals == 1) {
                     STEEM += "00"
                 } else if (decimals == 2) {
