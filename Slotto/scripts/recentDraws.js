@@ -5,6 +5,7 @@ async function getRecentDraws() {
 
     // @ts-ignore
     let history = new SteemHistory("slotto.register");
+    // @ts-ignore
     history.setSearchLimit(getMemoLimit().memo, getMemoLimit().sender, null);
     await history.download();
 
@@ -14,6 +15,7 @@ async function getRecentDraws() {
 
     let all = transfers.result;
     let gen = new Array();
+    // @ts-ignore
     let draws = "all draws since " + getMemoLimit().memo.substring(9, getMemoLimit().memo.length) + " (UTC)" + "<br><br>";
 
     for (let i = 0; i < all.length; i++) {
