@@ -52,7 +52,7 @@ async function testSend(key, sender, receiver, amount, message) {
     }
 }
 
-function returnSteem() {
+/*function returnSteem() {
     console.log("sending back money..")
     const key = document.getElementById("receiverKey").value;
     const receiver = document.getElementById("receiver").value;
@@ -69,6 +69,6 @@ function returnSteem() {
         console.log(err);
         console.log(result);
     });
-}
+}*/
 
 const repeatTime = getTestSendMilliSeconds();
