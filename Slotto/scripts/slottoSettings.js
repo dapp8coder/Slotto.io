@@ -3,7 +3,7 @@ function getTicketPrice() {
 }
 
 function getGenerationMin() {
-    return 3;
+    return 5;
 }
 
 function getDefaultRegisterAcount() {
