@@ -11,7 +11,7 @@ function getDefaultRegisterAcount() {
 }
 
 function getMemoLimit() {
-    return null;
+    return { memo: "40,44,46 2018-07-21T05:50:09", sender: "slotto.register" };
 }
 
 function getTestSendMilliSeconds() {

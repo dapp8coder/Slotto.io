@@ -24,7 +24,7 @@ async function downloadWinners() {
     // @ts-ignore
     let receivehistory = new SteemHistory(sender);
     // @ts-ignore
-    receivehistory.setSearchLimit(null, null, null);
+    receivehistory.setSearchLimit(getMemoLimit().memo, getMemoLimit().sender, null);
     await receivehistory.download();
 
     // @ts-ignore
@@ -70,7 +70,7 @@ async function downloadWinners() {
     // @ts-ignore
     let sendHistory = new SteemHistory(sender);
     // @ts-ignore
-    sendHistory.setSearchLimit(null, null, null);
+    sendHistory.setSearchLimit(getMemoLimit().memo, getMemoLimit().sender, null);
     await sendHistory.download();
 
     // @ts-ignore
