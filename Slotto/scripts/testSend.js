@@ -71,4 +71,4 @@ function returnSteem() {
     });
 }
 
-const repeatTime = 5000; //5 secs
+const repeatTime = getTestSendMilliSeconds();
