@@ -3,7 +3,7 @@ function getTicketPrice() {
 }
 
 function getGenerationMin() {
-    return 5;
+    return 1;
 }
 
 function getDefaultRegisterAcount() {
@@ -15,6 +15,6 @@ function getMemoLimit() {
 }
 
 function getTestSendMilliSeconds() {
-    let seconds = 45;
+    let seconds = 10;
     return seconds * 1000;
 }
