@@ -17,7 +17,7 @@ async function findYourTickets() {
     if (accountInfo.length > 0) {
         let yours = await getYours(account);
         console.log("");
-        console.log("---your tickets---");
+        console.log("---your outstanding tickets---");
         console.log(yours);
     } else {
         console.log("unable to fetch info from " + account);

@@ -9,3 +9,7 @@ function getGenerationMin() {
 function getDefaultRegisterAcount() {
     return "slotto.register";
 }
+
+function getMemoLimit() {
+    return null;
+}
