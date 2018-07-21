@@ -15,9 +15,9 @@ function repeatSend() {
 
     console.log("");
     if (document.getElementById("fifty").checked == true) {
-        message = "50,50,50"; // + utc + " " + miliseconds;
+        message = "50,50,50";
     } else {
-        message = rand; // + " " + utc + " " + miliseconds;
+        message = rand;
     }
 
     document.getElementById("memo").value = message;
@@ -51,24 +51,5 @@ async function testSend(key, sender, receiver, amount, message) {
         setTimeout("repeatSend()", repeatTime);
     }
 }
-
-/*function returnSteem() {
-    console.log("sending back money..")
-    const key = document.getElementById("receiverKey").value;
-    const receiver = document.getElementById("receiver").value;
-    const sender = document.getElementById("sender").value;
-    const sender2 = document.getElementById("sender2").value;
-    const amount = document.getElementById("amount").value;
-
-    steem.broadcast.transfer(key, receiver, sender, amount, "", function(err, result) {
-        console.log(err);
-        console.log(result);
-    });
-
-    steem.broadcast.transfer(key, receiver, sender2, amount, "", function(err, result) {
-        console.log(err);
-        console.log(result);
-    });
-}*/
 
 const repeatTime = getTestSendMilliSeconds();
