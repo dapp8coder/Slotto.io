@@ -5,7 +5,7 @@ async function getRecentDraws() {
 
     // @ts-ignore
     let history = new SteemHistory("slotto.register");
-    history.setSearchLimit(null, null, null);
+    history.setSearchLimit(getMemoLimit().memo, getMemoLimit().sender, null);
     await history.download();
 
     // @ts-ignore
@@ -21,14 +21,11 @@ async function getRecentDraws() {
         if (isSlottoFormat(all[i])) {
             gen.push(all[i]);
             draws += all[i].op[1].memo.substring(0, 8) + " (" + all[i].timestamp + ")" + "<br><br>";
-            if (gen.length >= 100) {
-                break;
-            }
         }
     }
 
     console.log("");
-    console.log("---recent 100 draws---");
+    console.log("---recent draws---");
     console.log(gen);
 
     document.getElementById("recentDraws").innerHTML = draws;
