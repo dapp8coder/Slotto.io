@@ -14,7 +14,7 @@ async function getRecentDraws() {
 
     let all = transfers.result;
     let gen = new Array();
-    let draws = "all draws since " + getMemoLimit().memo.substring(9, getMemoLimit().memo.length) + "<br><br>";
+    let draws = "all draws since " + getMemoLimit().memo.substring(9, getMemoLimit().memo.length) + " (UTC)" + "<br><br>";
 
     for (let i = 0; i < all.length; i++) {
         // @ts-ignore
