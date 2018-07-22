@@ -35,8 +35,8 @@
 		<div class="site-info-wrapper clear">
 			<?php penscratch_2_social_menu(); ?>
 			<div class="site-info">
-			<a href="https://steemit.com/@roundbeargames" target="_blank">Built by ROUNDBEARGAMES</a>
-			
+			Built by ROUNDBEARGAMES
+			<br><a href="https://steemit.com/@roundbeargames" target="_blank">support us on steemit</a>
 			</div><!-- .site-info -->
 		</div><!-- .site-info-wrapper -->
 	</footer><!-- #colophon -->
