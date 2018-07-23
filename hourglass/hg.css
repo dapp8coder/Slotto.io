@@ -7,7 +7,19 @@
     margin: 6px;
     box-sizing: border-box;
     border: 26px solid rgb(0, 0, 0);
-    border-color: rgb(0, 0, 0) transparent rgb(0, 0, 0) transparent;
+    border-color: rgb(93, 167, 185) transparent rgb(233, 111, 30) transparent;
+}
+
+.lds-hourglass:hover {
+    content: " ";
+    display: block;
+    border-radius: 50%;
+    width: 0;
+    height: 0;
+    margin: 6px;
+    box-sizing: border-box;
+    border: 26px solid rgb(131, 64, 64);
+    border-color: rgb(170, 74, 74) transparent rgb(114, 207, 85) transparent;
 }
 
 .lds-hourglass:active {
@@ -19,7 +31,7 @@
     margin: 6px;
     box-sizing: border-box;
     border: 26px solid rgb(0, 0, 0);
-    border-color: rgb(0, 0, 0) transparent rgb(0, 0, 0) transparent;
+    border-color: rgb(203, 206, 56) transparent rgb(104, 55, 161) transparent;
     animation: lds-hourglass 1.2s infinite;
 }
 
