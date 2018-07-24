@@ -81,3 +81,5 @@ function generateRandomTicket() {
     const string = num1 + "," + num2 + "," + num3;
     console.log(string);
 }
+
+initBuy();
