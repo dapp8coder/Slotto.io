@@ -13,6 +13,10 @@
     box-shadow: 1.5px 1.5px 0 1px #ccc;
 }
 
+.darkBackground {
+    background: #222222;
+}
+
 .title {
     font-family: "Montserrat";
     font-size: 20px;
@@ -72,4 +76,5 @@
     font-size: 15px;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
+    color: #fff;
 }

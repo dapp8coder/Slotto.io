@@ -17,25 +17,23 @@
 
 .btn {
     display: inline-block;
-    box-shadow: 1.8px 2.2px;
-    appearance: none;
+    box-shadow: 1.8px 2.2px #ccc;
     border: 0;
     outline: 0;
-    background-color: #ffbb4e;
+    color: #fff;
+    background-color: #ffb663;
     height: 70px;
     width: 250px;
     line-height: 42px;
     font-size: 24px;
     border-radius: 50px;
-    color: #282d32;
     cursor: pointer;
-    transition: all 0.15s;
-    transition-timing-function: cubic-bezier(0.2, 3, 0.4, 1);
+    transition: all 0.175s;
     user-select: none;
 }
 
 .btn:hover {
-    transform: scale(1.03, 1.03);
+    transform: scale(1.08, 1.03);
 }
 
 .btn:active {

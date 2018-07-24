@@ -31,7 +31,7 @@ function draw() {
 
 function drawBg() {
     ctx.rect(0, 0, c.width, c.height);
-    ctx.fillStyle = "rgb(255, 255, 255)";
+    ctx.fillStyle = "rgb(34, 34, 34)";
     ctx.fill();
 }
 
