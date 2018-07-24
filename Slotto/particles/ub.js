@@ -6,7 +6,7 @@ c.width = window.innerWidth;
 c.height = window.innerHeight;
 
 var mouseX = c.width / 2;
-var mouseY = c.height / 2;
+var mouseY = c.width / 2;
 var txtPosition = 0;
 
 var particles = [];
