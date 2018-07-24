@@ -57,7 +57,7 @@
 }
 
 .ticketPrice {
-    font-size: 15px;
+    font-size: 18px;
     padding: 5px 0 0 0;
     font-family: 'Roboto', sans-serif;
 }
@@ -133,10 +133,10 @@
     border: none;
     cursor: pointer;
     line-height: 1.5;
-    font-size: 25px;
+    font-size: 30px;
     font-family: 'Open Sans', sans-serif;
     padding: 20px;
-    margin: 65px 0 10px 0;
+    margin: 10px 0 10px 0;
 }
 
 .drawbtn:focus {

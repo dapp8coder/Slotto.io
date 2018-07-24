@@ -16,14 +16,14 @@
 }
 
 .btn {
+    height: 70px;
+    width: 260px;
     display: inline-block;
     box-shadow: 2.5px 2.85px #ccc;
     border: 0;
     outline: 0;
     color: #fff;
     background-color: #ffb663;
-    height: 70px;
-    width: 250px;
     font-size: 20px;
     border-radius: 50px;
     cursor: pointer;
