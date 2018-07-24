@@ -25,8 +25,7 @@
             width: 65px;
             height: 65px;
             font-size: 18px;
-            padding: 5px;
-            margin: 1px 10px;
+            margin: 5px 5px;
             display: inline-block;
             border: 2px solid #7a7a7a;
             border-radius: 5px;
@@ -81,17 +80,31 @@
 </head>
 
 <body>
-    <div class="center">
-        <button class="button" onclick="generateRandomTicket()">Generate Ticket</button>
-        <br><br>
-        <input id="num1" type="text"> <input id="num2" type="text"> <input id="num3" type="text">
-        <br><br>
-        <button class="button" onclick="buy() ">Purchase<br>(0.1 STEEM)</button>
+
+    <!--button particles-->
+    <div class="btn-wrapper">
+
+        <button type="button" onclick="generateRandomTicket()" class="btn">Generate Ticket</button>
+
+        <!--ticket/purchase field-->
+        <div class="center">
+            <br>
+            <br>
+            <input id="num1" type="text"> <input id="num2" type="text"> <input id="num3" type="text">
+            <br><br>
+            <button class="button" onclick="buy() ">Purchase<br>(0.1 STEEM)</button>
+        </div>
+
+        <!--notes-->
+        <div class="desc ">
+            <br>You can see your purchases here
+        </div>
+
     </div>
 
-    <div class="desc ">
-        <br>You can see your purchases here
-    </div>
+    <canvas id="canvas"></canvas>
+    <script type="text/javascript" src="particles/ub.js"></script>
+    <link rel="stylesheet" type="text/css" href="particles/ub.css">
 
     <div id="entropy"></div>
     <script>
