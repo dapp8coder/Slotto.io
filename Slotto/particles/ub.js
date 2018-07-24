@@ -5,13 +5,15 @@ var btn = document.getElementsByClassName('btn')[0];
 c.width = window.innerWidth;
 c.height = window.innerHeight;
 
-var posX = c.width / 2;
-var posY = c.height / 2;
+var mouseX = c.width / 2;
+var mouseY = c.height / 2;
 var txtPosition = 0;
 
 var particles = [];
 
 btn.addEventListener('mouseup', function(e) {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
     createParticles();
 });
 
@@ -63,8 +65,8 @@ function incParticles() {
 function createParticles() {
     for (i = 0; i < 40; i++) {
         particles.push({
-            x: posX,
-            y: posY,
+            x: mouseX,
+            y: mouseY,
             size: parseInt(Math.random() * 10),
             color: 'rgb(' + ranRgb() + ')',
             velX: ranVel() * 10,
