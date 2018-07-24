@@ -14,11 +14,9 @@
 
 .title {
     font-family: "Montserrat";
-    background: -webkit-linear-gradient(right, rgb(35, 137, 253), rgb(35, 246, 141));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     height: 150px;
     font-size: 50px;
+    color: #7a7a7a;
 }
 
 .button {
