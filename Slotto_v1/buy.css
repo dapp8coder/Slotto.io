@@ -18,22 +18,22 @@
 }
 
 .title {
+    color: transparent;
     background: url("https://media.giphy.com/media/26BROrSHlmyzzHf3i/giphy.gif");
     background-repeat: repeat;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: #ccc;
-    color: transparent;
     font-size: 90px;
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
 }
 
 .prize {
+    color: #222222;
     -webkit-text-stroke-width: 3px;
     -webkit-text-stroke-color: #ccc;
-    color: #222222;
     font-size: 100px;
     font-family: 'Open Sans', sans-serif;
 }
