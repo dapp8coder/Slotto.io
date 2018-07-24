@@ -1,7 +1,7 @@
-function init() {
+function initBuy() {
     console.log("wtf");
-    console.log(document.getElementById("entropy"));
-    document.getElementById("entropy").style.display = "none";
+    //console.log(document.getElementById("entropy"));
+    //document.getElementById("entropy").style.display = "none";
     generateRandomTicket();
 }
 

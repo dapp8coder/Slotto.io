@@ -14,7 +14,9 @@ function entropyFunction() {
     array[99] += mili;
     const cRand = window.crypto.getRandomValues(array);
     const entropy = sha512(cRand);
-    document.getElementById("entropy").textContent = entropy;
+    if (document.getElementById("entropy") != null) {
+        document.getElementById("entropy").textContent = entropy;
+    }
     return entropy;
 }
 
