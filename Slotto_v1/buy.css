@@ -31,12 +31,11 @@
 }
 
 .prize {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 100px;
-    color: #222222;
     -webkit-text-stroke-width: 3px;
     -webkit-text-stroke-color: #ccc;
-    text-transform: uppercase;
+    color: #222222;
+    font-size: 100px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .button {
