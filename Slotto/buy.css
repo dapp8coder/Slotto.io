@@ -15,7 +15,7 @@
 .title {
     font-family: "Montserrat";
     color: #FFF;
-    height: 200px;
+    height: 150px;
 }
 
 h1 {
@@ -25,9 +25,7 @@ h1 {
     -moz-background-clip: text;
     -webkit-background-clip: text;
     text-transform: uppercase;
-    font-size: 120px;
-    line-height: .75;
-    margin: 10px 0;
+    font-size: 100px;
 }
 
 .button {
