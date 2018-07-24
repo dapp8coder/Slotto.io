@@ -1,15 +1,16 @@
 .ticketNumber {
-    width: 68px;
-    height: 68px;
-    font-size: 20px;
-    margin: 20px 5px;
-    display: inline-block;
-    border: 2px solid #7a7a7a;
-    border-radius: 5px;
+    width: 85px;
+    height: 95px;
+    font-size: 40px;
+    margin: 20px 7px;
+    border-radius: 8px;
     box-sizing: border-box;
     text-align: center;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Lato', sans-serif;
     font-weight: bold;
+    color: #ea4c4c;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 1.5px 1.5px 0 1px #ccc;
 }
 
 .title {
