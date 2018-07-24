@@ -13,7 +13,7 @@ var particles = [];
 
 btn.addEventListener('mouseup', function(e) {
     mouseX = e.clientX;
-    mouseY = e.clientY / 2;
+    mouseY = e.clientY / 3.6;
     createParticles();
 });
 
