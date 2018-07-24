@@ -9,7 +9,7 @@
 
 .btn-wrapper {
     position: fixed;
-    top: calc(50%);
+    top: calc(22%);
     left: 0;
     width: 100%;
     text-align: center;
@@ -22,14 +22,14 @@
     border: 0;
     outline: 0;
     background-color: #00f0a8;
-    height: 80px;
+    height: 70px;
     width: 250px;
     line-height: 42px;
     font-size: 24px;
     border-radius: 50px;
     color: #282d32;
     cursor: pointer;
-    transition: all 0.1s;
+    transition: all 0.15s;
     transition-timing-function: cubic-bezier(0.2, 3, 0.4, 1);
     user-select: none;
 }
@@ -39,5 +39,5 @@
 }
 
 .btn:active {
-    transform: scale(1.015, 1.015);
+    transform: scale(1, 1);
 }
