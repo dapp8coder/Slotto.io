@@ -69,8 +69,8 @@ function createParticles() {
             y: mouseY,
             size: parseInt(Math.random() * 10),
             color: 'rgb(' + ranRgb() + ')',
-            velX: ranVel() * 10,
-            velY: ranVel() * 10
+            velX: ranVel() * 9,
+            velY: ranVel() * 9
         });
     }
 }
