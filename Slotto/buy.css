@@ -1,9 +1,8 @@
-input[type=text],
-select {
+.ticketNumber {
     width: 65px;
     height: 65px;
     font-size: 18px;
-    margin: 5px 5px;
+    margin: 30px 5px;
     display: inline-block;
     border: 2px solid #7a7a7a;
     border-radius: 5px;

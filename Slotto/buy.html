@@ -34,16 +34,21 @@
 
         <button type="button" onclick="generateRandomTicket()" class="btn">Generate Ticket</button>
 
-        <!--ticket/purchase field-->
         <div class="center">
-            <input id="num1" type="text"> <input id="num2" type="text"> <input id="num3" type="text">
-            <br>
-            <button class="button" onclick="buy() ">Purchase<br>(0.1 STEEM)</button>
+            <!--ticket/purchase field-->
+            <input class="ticketNumber" id="num1" type="text">
+            <input class="ticketNumber" id="num2" type="text">
+            <input class="ticketNumber" id="num3" type="text">
+
+            <!--purchase button-->
+            <div>
+                <button class="button" onclick="buy() ">Purchase<br>(0.1 STEEM)</button>
+            </div>
         </div>
 
         <!--notes-->
-        <div class="desc ">
-            <br>You can see your purchases here
+        <div class="desc">
+            You can see your purchases here
         </div>
 
     </div>
