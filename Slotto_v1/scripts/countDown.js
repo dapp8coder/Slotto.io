@@ -30,5 +30,7 @@ function stampCurrentTime() {
     const date = new Date();
     const utc = date.toUTCString()
     lastGen = utc;
+
+    console.log("");
     console.log("stamp time: " + utc);
 }
