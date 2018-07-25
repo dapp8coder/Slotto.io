@@ -20,6 +20,8 @@ async function getRecentDraws() {
 
         setTimeout("getRecentDraws()", 5000);
     } finally {
+        document.getElementById("spinner").style.display = "none";
+
         // @ts-ignore
         let transfers = new SteemTransfers();
         transfers.filterTransfers("slotto.gen", "slotto.register", history.result);
@@ -27,7 +29,7 @@ async function getRecentDraws() {
         let all = transfers.result;
         let gen = new Array();
         // @ts-ignore
-        let draws = "all draws since " + getMemoLimit().memo.substring(9, getMemoLimit().memo.length) + " (UTC)" + "<br><br>";
+        let draws = ""; // "all draws since " + getMemoLimit().memo.substring(9, getMemoLimit().memo.length) + " (UTC)" + "<br><br>";
 
         for (let i = 0; i < all.length; i++) {
             // @ts-ignore
@@ -44,7 +46,7 @@ async function getRecentDraws() {
         document.getElementById("recentDraws").innerHTML = draws;
 
         // @ts-ignore
-        let g = getGenerationMin() * 60 / 2 * 1000;
+        let g = getGenerationMin() * 60 * 1000;
         setTimeout("getRecentDraws()", g);
     }
 }

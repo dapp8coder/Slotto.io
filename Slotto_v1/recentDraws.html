@@ -25,6 +25,8 @@
     <script type="text/javascript" src="scripts/generateWinner.js"></script>
     <script type="text/javascript" src="scripts/countDown.js"></script>
 
+    <link href=" https://fonts.googleapis.com/css?family=Roboto:100 " rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:800" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="scripts/slottoStatus.css">
 
     <style type="text/css">
@@ -35,15 +37,19 @@
 </head>
 
 <body>
-    <div class="drawStatus">Next draw in</div>
-    <div class="drawStatus" id="timer"></div>
+    <div class="drawTimer">Next Draw</div>
+    <div class="timerStatus" id="timer"></div>
 
     <!--
     <div class="drawStatus entropy">Entropy</div>
     <div class="drawStatus entropy" id="entropy"></div>
     -->
 
-    <div class="drawStatus " id="recentDraws">Loading Draws</div>
+    <div class="drawStatus " id="recentDraws">Loading</div>
+    <div id="spinner">
+        <div class="lds-dual-ring"></div>
+    </div>
+
 
     <script>
         initCountDown();
