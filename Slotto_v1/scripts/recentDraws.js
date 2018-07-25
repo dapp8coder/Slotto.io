@@ -4,6 +4,9 @@ async function getRecentDraws() {
     console.clear();
 
     // @ts-ignore
+    console.log("test rand: ", getFortunaRand(800, 900, 0));
+
+    // @ts-ignore
     let history = new SteemHistory("slotto.register");
     // @ts-ignore
     history.setSearchLimit(getMemoLimit().memo, getMemoLimit().sender, null);

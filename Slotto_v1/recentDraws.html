@@ -6,6 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Recent Draws</title>
     <script src="https://cdn.steemjs.com/lib/latest/steem.min.js"></script>
+    <script src="https://cdn.rawgit.com/emn178/js-sha512/master/build/sha512.min.js"></script>
+    <script src="https://cdn.rawgit.com/emn178/js-sha512/master/src/sha512.js"></script>
+
+    <script src="scripts/fortuna.min.js"></script>
+    <script type="text/javascript" src="scripts/fortunaGenerator.js"></script>
 
     <script type="text/javascript" src="scripts/slottoSettings.js"></script>
     <script type="text/javascript" src="scripts/steemNode.js"></script>
@@ -15,17 +20,28 @@
     <script type="text/javascript" src="scripts/watcher.js"></script>
     <script type="text/javascript" src="scripts/recentDraws.js"></script>
 
+    <script type="text/javascript" src="scripts/generateWinner.js"></script>
+    <script type="text/javascript" src="scripts/countDown.js"></script>
+
     <link rel="stylesheet" type="text/css" href="scripts/slottoStatus.css">
 
     <style type="text/css">
         body {
-            background: #393D46;
+            background: #222222;
         }
     </style>
 </head>
 
 <body>
-    <div class="drawStatus" id="recentDraws">LOADING</div>
+    <div class="drawStatus">Next draw in</div>
+    <div class="drawStatus" id="timer"></div>
+    <div class=" drawStatus entropy">Entropy</div>
+    <div class="drawStatus entropy" id="entropy"></div>
+    <div class="drawStatus " id="recentDraws">LOADING</div>
+
+    <script>
+        initCountDown();
+    </script>
 </body>
 
 </html>
