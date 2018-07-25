@@ -1,7 +1,7 @@
+//@ts-check
+
 function initBuy() {
     console.log("wtf");
-    //console.log(document.getElementById("entropy"));
-    //document.getElementById("entropy").style.display = "none";
     generateRandomTicket();
 }
 
@@ -26,8 +26,11 @@ function ticketIsValid(num1, num2, num3) {
 }
 
 function buy() {
+    // @ts-ignore
     let num1 = document.getElementById("num1").value;
+    // @ts-ignore
     let num2 = document.getElementById("num2").value;
+    // @ts-ignore
     let num3 = document.getElementById("num3").value;
 
     if (ticketIsValid(num1, num2, num3)) {
@@ -55,9 +58,12 @@ function buy() {
 }
 
 function purchaseTicket(memo) {
+    // @ts-ignore slotto.Settings.js
     let amount = getTicketPrice();
     console.log(amount);
-    let receiver = getDefaultRegisterAcount();
+    // @ts-ignore slotto.Settings.js
+    let receiver = getDefaultRegisterAccount();
+    // @ts-ignore steemConnect2.js
     let link = api.sign("transfer", {
         to: receiver,
         amount: amount,
@@ -71,12 +77,18 @@ function purchaseTicket(memo) {
 function generateRandomTicket() {
     console.log("");
     console.log("generating random ticket..");
+    // @ts-ignore fortunaGenerator.js
     document.getElementById("num1").value = getFortunaRand(1, 50, 0);
+    // @ts-ignore fortunaGenerator.js
     document.getElementById("num2").value = getFortunaRand(1, 50, 0);
+    // @ts-ignore fortunaGenerator.js
     document.getElementById("num3").value = getFortunaRand(1, 50, 0);
 
+    // @ts-ignore
     const num1 = document.getElementById("num1").value;
+    // @ts-ignore
     const num2 = document.getElementById("num2").value;
+    // @ts-ignore
     const num3 = document.getElementById("num3").value;
     const string = num1 + "," + num2 + "," + num3;
     console.log(string);

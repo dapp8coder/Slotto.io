@@ -24,7 +24,7 @@ function startProcess() {
     document.getElementById("status").style.display = "block";
 
     console.log("starting process at.. 1 generation per ", getMinsDeadline(), " minute(s)");
-    // @ts-ignore
+    // @ts-ignore fortunaGenerator.js
     console.log("test rand: ", getFortunaRand(800, 900, 0));
     updateDraw();
 }
@@ -101,7 +101,7 @@ function getNextDrawTime(lastGen) {
 }
 
 function nextDraw() {
-    // @ts-ignore
+    // @ts-ignore fortunaGenerator.js
     let interval = getFortunaRand(0, 100, 0);
     setTimeout("updateDraw()", interval);
 }

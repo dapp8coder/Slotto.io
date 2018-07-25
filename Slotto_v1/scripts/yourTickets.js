@@ -25,8 +25,8 @@ async function findYourTickets() {
 }
 
 async function getYours(account) {
-    // @ts-ignore
-    let defaultRegister = getDefaultRegisterAcount();
+    // @ts-ignore slotto.Settings.js
+    let defaultRegister = getDefaultRegisterAccount();
 
     // @ts-ignore
     let receivehistory = new SteemHistory(defaultRegister);

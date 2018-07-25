@@ -1,4 +1,3 @@
-//exclusive
 function getFortunaRand(min, max, miliseconds) {
     mili = miliseconds
     fortuna.init({ timeBasedEntropy: true, accumulateTimeout: 100, entropyFxn: entropyFunction });

@@ -1,3 +1,5 @@
+//@ts-check
+
 function getTicketPrice() {
     return "0.001 STEEM";
 }
@@ -6,7 +8,8 @@ function getGenerationMin() {
     return 1;
 }
 
-function getDefaultRegisterAcount() {
+// @ts-ignore slotto.Settings.js
+function getDefaultRegisterAccount() {
     return "slotto.register";
 }
 
