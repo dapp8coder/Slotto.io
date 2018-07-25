@@ -40,8 +40,7 @@ async function getRecentDraws() {
         }
 
         // @ts-ignore
-        draws += "for draws before " + getMemoLimit().memo.substring(9, getMemoLimit().memo.length) + " (UTC)," +
-            "<br> please visit <a href='https://steemd.com/@slotto.gen' style='color:#ccc;' target='_blank'> https://steemd.com/@slotto.gen</a>";
+        draws += "entire history can be viewed at <a href='https://steemd.com/@slotto.gen' style='color:#ccc;' target='_blank'> https://steemd.com/@slotto.gen</a>";
 
         console.log("");
         console.log("---recent draws---");
