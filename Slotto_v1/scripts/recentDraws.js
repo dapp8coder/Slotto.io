@@ -28,8 +28,8 @@ async function getRecentDraws() {
 
         let all = transfers.result;
         let gen = new Array();
-        // @ts-ignore
-        let draws = "all draws since " + getMemoLimit().memo.substring(9, getMemoLimit().memo.length) + " (UTC)" + "<br><br>";
+
+        let draws = "";
 
         for (let i = 0; i < all.length; i++) {
             // @ts-ignore
@@ -38,6 +38,10 @@ async function getRecentDraws() {
                 draws += all[i].op[1].memo.substring(0, 8) + " (" + all[i].timestamp + ")" + "<br><br>";
             }
         }
+
+        // @ts-ignore
+        draws += "for draws before " + getMemoLimit().memo.substring(9, getMemoLimit().memo.length) + " (UTC)," +
+            "<br> please visit <a href='https://steemd.com/@slotto.gen' style='color:#ccc;' target='_blank'> https://steemd.com/@slotto.gen</a>";
 
         console.log("");
         console.log("---recent draws---");
