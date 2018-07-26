@@ -55,7 +55,7 @@ async function downloadWinners() {
 
         winnerString += "<br><h3>outstanding Tickets</h3>";
         for (let i = 0; i < outstanding.length; i++) {
-            winnerString += outstanding[i].op[1].from + " " + outstanding[i].op[1].memo /* + " " + outstanding[i].op[1].amount*/ + "<br>";
+            winnerString += outstanding[i].op[1].from + " " + outstanding[i].op[1].memo + "<br>";
         }
         winnerString += "<br>total " + outstanding.length + " tickets<br>";
         winnerString += "prize: " + watcher.sumOutstanding.STEEM + " STEEM";
