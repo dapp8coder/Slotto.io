@@ -73,32 +73,39 @@ async function getYours(account) {
     let watcher = new Watcher();
     watcher.getWinners(receiveTransfers.result);
 
-    console.log("");
-    console.log("---wtf---");
-    console.log(watcher.result);
-
-    //get outstanding tickets
-    /*let outstanding = watcher.outstandingTickets;
-    let currentYours = new Array();
-    for (let i = 0; i < outstanding.length; i++) {
-        if (outstanding[i].op[1].from == account) {
-            currentYours.push(outstanding[i]);
-        }
-    }*/
-
     //get all tickets
-    let allYours = new Array();
+    let outStanding = new Array();
+    let prevTickets = new Array();
+    let winnerFound = false;
     for (let i = 0; i < receiveTransfers.result.length; i++) {
-        if (receiveTransfers.result[i].op[1].from == account) {
-            allYours.push(receiveTransfers.result[i]);
+
+
+        if (receiveTransfers.result[i].op[1].from == "slotto.gen") {
+            for (let w = 0; w < watcher.prevWinningDraws.length; w++) {
+                if (watcher.prevWinningDraws[w] == receiveTransfers.result[i].op[1].memo.substring(0, 8) + " " + receiveTransfers.result[i].timestamp) {
+                    winnerFound = true;
+                }
+            }
+        }
+
+        if (winnerFound == false) {
+            if (receiveTransfers.result[i].op[1].from == account) {
+                outStanding.push(receiveTransfers.result[i]);
+            }
+        } else {
+            prevTickets.push(receiveTransfers.result[i])
         }
     }
 
-    //console.log("");
-    //console.log("---all your tickets---");
-    //console.log(allYours);
+    console.log("");
+    console.log("---your outStanding tickets---");
+    console.log(outStanding);
 
-    return allYours;
+    console.log("");
+    console.log("---your previous tickets---");
+    console.log(prevTickets);
+
+    return outStanding;
 }
 
 function initTicketStatus() {
