@@ -24,16 +24,17 @@
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: #ccc;
+    -webkit-text-stroke-color: rgb(119, 119, 119);
     font-size: 90px;
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
 }
 
-.prize {
-    color: #222222;
-    -webkit-text-stroke-width: 3px;
-    -webkit-text-stroke-color: #ccc;
+.prizeAmount {
+    background: -webkit-linear-gradient(#ccc, #333);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-size: 100px;
     font-family: 'Open Sans', sans-serif;
 }
@@ -141,4 +142,22 @@
 
 .drawbtn:focus {
     outline: 2px dotted #55d7dc;
+}
+
+.shadow {
+    color: #fff;
+    font-family: Arvo;
+    font-weight: bold;
+    text-shadow: -3px -3px 0 #222, 3px -3px 0 #222, -3px 3px 0 #222, 3px 3px 0 #222, 4px 4px 0 #fff, 5px 5px 0 #fff, 6px 6px 0 #fff, 7px 7px 0 #fff;
+    line-height: 0.8em;
+    letter-spacing: 0.1em;
+    transform: scaleY(0.7);
+    -webkit-transform: scaleY(0.7);
+    -moz-transform: scaleY(0.7);
+    margin: 0;
+    text-align: center;
+}
+
+.text2 {
+    font-size: 100px;
 }

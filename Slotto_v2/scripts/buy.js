@@ -1,8 +1,17 @@
 //@ts-check
 
 function initBuy() {
-    console.log("wtf");
     generateRandomTicket();
+
+    window.addEventListener("scroll", function() {
+        var elementTarget = document.getElementById("titleSection");
+        if (window.scrollY > (elementTarget.offsetTop + elementTarget.offsetHeight)) {
+            if (showPrizeAnim == false) {
+                showPrizeAnim = true;
+                console.log("showing prize anim");
+            }
+        }
+    });
 }
 
 function ticketIsValid(num1, num2, num3) {
@@ -94,4 +103,4 @@ function generateRandomTicket() {
     console.log(string);
 }
 
-initBuy();
+let showPrizeAnim = false;
