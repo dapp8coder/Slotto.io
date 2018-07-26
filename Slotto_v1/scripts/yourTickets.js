@@ -3,6 +3,10 @@
 async function findYourTickets() {
     console.clear();
 
+    document.getElementById("showTickets").style.display = "block";
+    document.getElementById("ticketsList").innerHTML = "loading";
+    document.getElementById("spinner").style.display = "block";
+
     // @ts-ignore
     let account = document.getElementById("accountName").value;
     let accountInfo = null;
@@ -19,9 +23,25 @@ async function findYourTickets() {
         console.log("");
         console.log("---your outstanding tickets---");
         console.log(yours);
+        showOnPage(yours);
     } else {
         console.log("unable to fetch info from " + account);
     }
+}
+
+function showOnPage(data) {
+    let str = "";
+
+    document.getElementById("spinner").style.display = "none";
+
+    if (data.length == 0) {
+        str = "no tickets found";
+    } else {
+        for (let i = 0; i < data.length; i++) {
+            str += data[i].op[1].memo + " (" + data[i].timestamp + ") <br>";
+        }
+    }
+    document.getElementById("ticketsList").innerHTML = str;
 }
 
 async function getYours(account) {
@@ -52,7 +72,9 @@ async function getYours(account) {
     return yours;
 }
 
-function initInputEnter() {
+function initTicketStatus() {
+    document.getElementById("showTickets").style.display = "none";
+
     inputEnter = document.getElementById("accountName");
     inputEnter.addEventListener("keydown", function(event) {
         if (event.keyCode === 13) {

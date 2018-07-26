@@ -7,6 +7,7 @@
     <title>Your Tickets</title>
 
     <link rel="stylesheet" type="text/css" media="screen" href="minimalInput/mi.css" />
+    <link rel="stylesheet" type="text/css" href="scripts/slottoStatus.css">
 
     <script src="https://cdn.steemjs.com/lib/latest/steem.min.js"></script>
 
@@ -21,12 +22,6 @@
 </head>
 
 <body>
-    <!--
-    <br>Your Steem Account:<br><input id="accountName" type="text">
-    <button onclick="findYourTickets()">Search</button>
-    -->
-
-
     <div class="container">
         <div class="container__item">
             <input id="accountName" type="text" class="form__field" placeholder="Your Steem Account Name" />
@@ -35,9 +30,17 @@
         <div class="container__item container__item--bottom">
         </div>
     </div>
+    <div id="showTickets">
+        <div id="ticketsList" class="ticketStatus">test</div>
+        <div id="spinner">
+            <div class="lds-dual-ring"></div>
+        </div>
+
+    </div>
+
 
     <script>
-        initInputEnter();
+        initTicketStatus();
     </script>
 
 </body>
