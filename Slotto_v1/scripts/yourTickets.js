@@ -1,11 +1,16 @@
 //@ts-check
 
 async function findYourTickets() {
-    console.clear();
-
     document.getElementById("showTickets").style.display = "block";
     document.getElementById("ticketsList").innerHTML = "loading";
     document.getElementById("spinner").style.display = "block";
+    document.getElementById("updateStatus").style.display = "none";
+
+    await procFind();
+}
+
+async function procFind() {
+    console.clear();
 
     // @ts-ignore
     let account = document.getElementById("accountName").value;
@@ -33,6 +38,7 @@ function showOnPage(data) {
     let str = "Your Current Tickets<br><br>";
 
     document.getElementById("spinner").style.display = "none";
+    document.getElementById("updateStatus").style.display = "block";
 
     if (data.length == 0) {
         str = "no tickets found";
@@ -42,6 +48,8 @@ function showOnPage(data) {
         }
     }
     document.getElementById("ticketsList").innerHTML = str;
+
+    setTimeout("procFind()", 20000);
 }
 
 async function getYours(account) {

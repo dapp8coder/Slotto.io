@@ -83,3 +83,12 @@ a:hover {
     font-weight: bold;
     margin: 30px 0 0 0;
 }
+
+.smallLetters {
+    text-align: center;
+    color: #ccc;
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    margin: 30px 0 0 0;
+}
