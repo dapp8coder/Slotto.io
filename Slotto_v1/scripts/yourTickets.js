@@ -27,9 +27,9 @@ async function procFind() {
     } finally {
         if (accountInfo.length > 0) {
             let yours = await getYours(account);
-            console.log("");
-            console.log("---your outstanding tickets---");
-            console.log(yours);
+            //console.log("");
+            //console.log("---your outstanding tickets---");
+            //console.log(yours);
             showOnPage(yours);
         } else {
             console.log("unable to fetch info from " + account);
@@ -38,7 +38,7 @@ async function procFind() {
 }
 
 function showOnPage(data) {
-    let str = "Your Current Tickets<br><br>";
+    let str = "All Your Tickets<br><br>";
 
     document.getElementById("spinner").style.display = "none";
     document.getElementById("updateStatus").style.display = "block";
@@ -47,12 +47,12 @@ function showOnPage(data) {
         str = "no tickets found";
     } else {
         for (let i = 0; i < data.length; i++) {
-            str += data[i].op[1].memo + " (" + data[i].timestamp + ") <br>";
+            str += data[i].op[1].memo + " (" + data[i].timestamp + ") <br><br>";
         }
     }
     document.getElementById("ticketsList").innerHTML = str;
 
-    setTimeout("procFind()", 20000);
+    //setTimeout("procFind()", 20000);
 }
 
 async function getYours(account) {
@@ -72,15 +72,29 @@ async function getYours(account) {
     // @ts-ignore
     let watcher = new Watcher();
     watcher.getWinners(receiveTransfers.result);
-    let outstanding = watcher.outstandingTickets;
-    let yours = new Array();
+
+    //get outstanding tickets
+    /*let outstanding = watcher.outstandingTickets;
+    let currentYours = new Array();
     for (let i = 0; i < outstanding.length; i++) {
         if (outstanding[i].op[1].from == account) {
-            yours.push(outstanding[i]);
+            currentYours.push(outstanding[i]);
+        }
+    }*/
+
+    //get all tickets
+    let allYours = new Array();
+    for (let i = 0; i < receiveTransfers.result.length; i++) {
+        if (receiveTransfers.result[i].op[1].from == account) {
+            allYours.push(receiveTransfers.result[i]);
         }
     }
 
-    return yours;
+    //console.log("");
+    //console.log("---all your tickets---");
+    //console.log(allYours);
+
+    return allYours;
 }
 
 function initTicketStatus() {
