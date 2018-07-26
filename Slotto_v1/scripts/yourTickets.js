@@ -62,7 +62,7 @@ async function getYours(account) {
     // @ts-ignore
     let receivehistory = new SteemHistory(defaultRegister);
     // @ts-ignore
-    receivehistory.setSearchLimit(null, null, null);
+    receivehistory.setSearchLimit(getMemoLimit().memo, getMemoLimit().sender, null);
     await receivehistory.download();
 
     // @ts-ignore
@@ -72,6 +72,10 @@ async function getYours(account) {
     // @ts-ignore
     let watcher = new Watcher();
     watcher.getWinners(receiveTransfers.result);
+
+    console.log("");
+    console.log("---wtf---");
+    console.log(watcher.result);
 
     //get outstanding tickets
     /*let outstanding = watcher.outstandingTickets;
