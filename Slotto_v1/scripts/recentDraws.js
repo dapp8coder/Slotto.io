@@ -3,12 +3,13 @@
 async function getRecentDraws() {
     console.clear();
 
-    // @ts-ignore
-    let history = new SteemHistory("slotto.register");
-    // @ts-ignore
-    history.setSearchLimit(getMemoLimit().memo, getMemoLimit().sender, null);
+    let history = null;
 
     try {
+        // @ts-ignore
+        history = new SteemHistory(getMemoLimit().sender);
+        // @ts-ignore
+        history.setSearchLimit(getMemoLimit().memo, getMemoLimit().sender, null);
         await history.download();
     } catch (err) {
         console.log("");
