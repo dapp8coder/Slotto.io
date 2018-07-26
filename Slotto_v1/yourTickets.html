@@ -5,6 +5,9 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Your Tickets</title>
+
+    <link rel="stylesheet" type="text/css" media="screen" href="minimalInput/mi.css" />
+
     <script src="https://cdn.steemjs.com/lib/latest/steem.min.js"></script>
 
     <script type="text/javascript" src="scripts/steemNode.js"></script>
@@ -18,8 +21,24 @@
 </head>
 
 <body>
+    <!--
     <br>Your Steem Account:<br><input id="accountName" type="text">
     <button onclick="findYourTickets()">Search</button>
+    -->
+
+
+    <div class="container">
+
+        <div class="container__item">
+            <form class="form">
+                <input id="accountName" type="text" class="form__field" placeholder="Your Steem Account Name" />
+                <button onclick="findYourTickets()" type="button" class="btn btn--primary btn--inside uppercase">Search</button>
+            </form>
+        </div>
+
+        <div class="container__item container__item--bottom">
+        </div>
+    </div>
 </body>
 
 </html>
