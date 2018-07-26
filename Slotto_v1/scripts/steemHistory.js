@@ -118,5 +118,12 @@ SteemHistory.prototype.download = async function() {
     console.log("");
     console.log("---downloading account history---");
     this.result = new Array();
-    await getHistory(this.name, -1, 10000, this);
+    try {
+        await getHistory(this.name, -1, 10000, this);
+    } catch (err) {
+        console.log("");
+        console.log(err);
+        console.log("trying again");
+        await getHistory(this.name, -1, 10000, this);
+    }
 }
