@@ -38,18 +38,28 @@ async function procFind() {
 }
 
 function showOnPage(data) {
-    let str = "Your Tickets<br><br>";
+    let str = "Current Tickets<br><br>";
+    let outStanding = data.outStanding;
+    let previous = data.previous;
 
     document.getElementById("spinner").style.display = "none";
     document.getElementById("updateStatus").style.display = "block";
 
-    if (data.length == 0) {
+    if (outStanding.length == 0) {
         str = "no tickets found";
     } else {
-        for (let i = 0; i < data.length; i++) {
-            str += data[i].op[1].memo + " (" + data[i].timestamp + ") <br><br>";
+        for (let i = 0; i < outStanding.length; i++) {
+            str += outStanding[i].op[1].memo + " (" + outStanding[i].timestamp + ") <br><br>";
         }
     }
+
+    if (previous.length > 0) {
+        str += "<br>Previous Tickets<br><br>";
+        for (let i = 0; i < previous.length; i++) {
+            str += previous[i].op[1].memo + " (" + previous[i].timestamp + ") <br><br>";
+        }
+    }
+
     document.getElementById("ticketsList").innerHTML = str;
 
     //setTimeout("procFind()", 20000);
@@ -105,7 +115,9 @@ async function getYours(account) {
     console.log("---your previous tickets---");
     console.log(prevTickets);
 
-    return outStanding;
+    let allTickets = { outStanding: outStanding, previous: prevTickets };
+
+    return allTickets;
 }
 
 function initTicketStatus() {
