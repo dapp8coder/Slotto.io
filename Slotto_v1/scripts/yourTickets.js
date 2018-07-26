@@ -21,16 +21,19 @@ async function procFind() {
         console.log(accountInfo);
     } catch (err) {
         console.log(err);
-    }
-
-    if (accountInfo.length > 0) {
-        let yours = await getYours(account);
         console.log("");
-        console.log("---your outstanding tickets---");
-        console.log(yours);
-        showOnPage(yours);
-    } else {
-        console.log("unable to fetch info from " + account);
+        console.log("trying again");
+        procFind();
+    } finally {
+        if (accountInfo.length > 0) {
+            let yours = await getYours(account);
+            console.log("");
+            console.log("---your outstanding tickets---");
+            console.log(yours);
+            showOnPage(yours);
+        } else {
+            console.log("unable to fetch info from " + account);
+        }
     }
 }
 
