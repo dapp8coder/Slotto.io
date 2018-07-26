@@ -88,12 +88,12 @@ async function getYours(account) {
             }
         }
 
-        if (winnerFound == false) {
-            if (receiveTransfers.result[i].op[1].from == account) {
+        if (receiveTransfers.result[i].op[1].from == account) {
+            if (winnerFound == false) {
                 outStanding.push(receiveTransfers.result[i]);
+            } else {
+                prevTickets.push(receiveTransfers.result[i])
             }
-        } else {
-            prevTickets.push(receiveTransfers.result[i])
         }
     }
 
