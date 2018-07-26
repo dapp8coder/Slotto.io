@@ -17,16 +17,27 @@ async function showWinners() {
     watcher.getWinners(receiveTransfers.result);
     let winners = watcher.result;
 
-    console.log("");
-    console.log("---winners---");
-    console.log(winners);
-
     let str = "";
 
     for (let i = 0; i < winners.length; i++) {
         for (let w = 0; w < winners[i].winnerNames.length; w++) {
-            str += winners[i].winnerNames[w] + "<br>";
+            str += winners[i].winnerNames[w];
+
+            if (winners[i].winnerNames[w].includes("slotto.ninja")) {
+                str += " (testrun)"
+            } else if (winners[i].winnerNames[w].includes("slotto.game")) {
+                str += " (testrun)"
+            } else if (winners[i].winnerNames[w].includes("roundbeargames")) {
+                str += " (testrun)"
+            } else if (winners[i].winnerNames[w].includes("hitmanchoi")) {
+                str += " (testrun)"
+            }
+
+            str += "<br>"
         }
+
+        str += winners[i].sum.STEEM + " STEEM<br>";
+        str += winners[i].winningDraw + "<br><br>";
     }
 
     document.getElementById("winnersList").innerHTML = str;
