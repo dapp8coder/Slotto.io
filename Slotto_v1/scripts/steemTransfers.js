@@ -5,7 +5,12 @@ function SteemTransfers() {
     this.total = null;
 }
 
-
+/**
+ * 
+ * @param {string} sender 
+ * @param {string} receiver 
+ * @param {array} accountHistory 
+ */
 SteemTransfers.prototype.filterTransfers = function(sender, receiver, accountHistory) {
     console.log("");
     console.log("---filtered transfers---");
