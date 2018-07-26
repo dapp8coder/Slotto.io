@@ -38,7 +38,7 @@ async function procFind() {
 }
 
 function showOnPage(data) {
-    let str = "All Your Tickets<br><br>";
+    let str = "Your Tickets<br><br>";
 
     document.getElementById("spinner").style.display = "none";
     document.getElementById("updateStatus").style.display = "block";
