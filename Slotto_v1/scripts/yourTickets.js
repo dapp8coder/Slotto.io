@@ -46,7 +46,7 @@ function showOnPage(data) {
     document.getElementById("updateStatus").style.display = "block";
 
     if (outStanding.length == 0) {
-        str = "no tickets found";
+        str = "No Tickets Found<br><br>";
     } else {
         for (let i = 0; i < outStanding.length; i++) {
             str += outStanding[i].op[1].memo + " (" + outStanding[i].timestamp + ") <br><br>";
@@ -62,7 +62,7 @@ function showOnPage(data) {
 
     document.getElementById("ticketsList").innerHTML = str;
 
-    //setTimeout("procFind()", 20000);
+    setTimeout("procFind()", 20000);
 }
 
 async function getYours(account) {
