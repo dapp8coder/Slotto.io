@@ -30,7 +30,7 @@ async function findYourTickets() {
 }
 
 function showOnPage(data) {
-    let str = "";
+    let str = "Your Current Tickets<br><br>";
 
     document.getElementById("spinner").style.display = "none";
 
