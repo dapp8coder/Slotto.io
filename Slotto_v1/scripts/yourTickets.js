@@ -51,3 +51,14 @@ async function getYours(account) {
 
     return yours;
 }
+
+function initInputEnter() {
+    inputEnter = document.getElementById("accountName");
+    inputEnter.addEventListener("keydown", function(event) {
+        if (event.keyCode === 13) {
+            document.getElementById("findButton").click();
+        }
+    });
+}
+
+var inputEnter = null;

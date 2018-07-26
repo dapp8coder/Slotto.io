@@ -28,17 +28,18 @@
 
 
     <div class="container">
-
         <div class="container__item">
-            <form class="form">
-                <input id="accountName" type="text" class="form__field" placeholder="Your Steem Account Name" />
-                <button onclick="findYourTickets()" type="button" class="btn btn--primary btn--inside uppercase">Search</button>
-            </form>
+            <input id="accountName" type="text" class="form__field" placeholder="Your Steem Account Name" />
+            <button id="findButton" onclick="findYourTickets()" type="button" class="btn btn--primary btn--inside uppercase">Search</button>
         </div>
-
         <div class="container__item container__item--bottom">
         </div>
     </div>
+
+    <script>
+        initInputEnter();
+    </script>
+
 </body>
 
 </html>
