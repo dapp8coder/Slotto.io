@@ -1,4 +1,7 @@
 async function showWinners() {
+    document.getElementById("spinner").style.display = "block";
+    document.getElementById("loader").style.display = "block";
+
     console.clear();
     let sender = "slotto.register"
 
@@ -39,6 +42,9 @@ async function showWinners() {
         str += winners[i].sum.STEEM + " STEEM<br>";
         str += winners[i].winningDraw + "<br><br>";
     }
+
+    document.getElementById("spinner").style.display = "none";
+    document.getElementById("loader").style.display = "none";
 
     document.getElementById("winnersList").innerHTML = str;
 }
