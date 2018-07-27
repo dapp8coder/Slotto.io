@@ -1,6 +1,6 @@
 async function showWinners() {
     document.getElementById("spinner").style.display = "block";
-    document.getElementById("loader").style.display = "block";
+    document.getElementById("loading").style.display = "block";
 
     console.clear();
     let sender = "slotto.register"
@@ -44,7 +44,7 @@ async function showWinners() {
     }
 
     document.getElementById("spinner").style.display = "none";
-    document.getElementById("loader").style.display = "none";
+    document.getElementById("loading").style.display = "none";
 
     document.getElementById("winnersList").innerHTML = str;
 }
