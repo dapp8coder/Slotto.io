@@ -2,7 +2,7 @@
 
 async function findYourTickets() {
     document.getElementById("showTickets").style.display = "block";
-    document.getElementById("ticketsList").innerHTML = "loading";
+    document.getElementById("ticketsList").innerHTML = "Loading";
     document.getElementById("spinner").style.display = "block";
     document.getElementById("updateStatus").style.display = "none";
 

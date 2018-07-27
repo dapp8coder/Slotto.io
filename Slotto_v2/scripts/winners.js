@@ -39,7 +39,7 @@ async function showWinners() {
             str += "<br>"
         }
 
-        str += winners[i].sum.STEEM + " STEEM<br>";
+        str += "<div style='color:rgb(255, 234, 47)'>" + winners[i].sum.STEEM + " STEEM </div>";
         str += winners[i].winningDraw + "<br><br>";
     }
 
