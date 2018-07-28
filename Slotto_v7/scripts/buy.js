@@ -63,6 +63,7 @@ function buy() {
     } else {
         console.log("");
         console.log("ticket is invalid!");
+        alert("Tickets must be integers! (1~49)")
     }
 }
 
