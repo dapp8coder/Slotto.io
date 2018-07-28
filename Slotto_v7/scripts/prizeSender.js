@@ -21,17 +21,17 @@ async function downloadWinners() {
     // @ts-ignore
     let sender = document.getElementById("sender").value;
 
-    // @ts-ignore
+    // @ts-ignore steemHistory.js
     let receivehistory = new SteemHistory(sender);
-    // @ts-ignore
+    // @ts-ignore steemHistory.js
     receivehistory.setSearchLimit(getMemoLimit().memo, getMemoLimit().sender, null);
     await receivehistory.download();
 
-    // @ts-ignore
+    // @ts-ignore steemTransfers.js
     let receiveTransfers = new SteemTransfers();
     receiveTransfers.filterTransfers(null, sender, receivehistory.result);
 
-    // @ts-ignore
+    // @ts-ignore watcher.js
     let watcher = new Watcher();
     watcher.getWinners(receiveTransfers.result);
     let winners = watcher.result;

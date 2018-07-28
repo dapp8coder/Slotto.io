@@ -2,16 +2,30 @@
 
 function initBuy() {
     generateRandomTicket();
+    getPrize();
+}
 
-    window.addEventListener("scroll", function() {
-        var elementTarget = document.getElementById("titleSection");
-        if (window.scrollY > (elementTarget.offsetTop + elementTarget.offsetHeight)) {
-            if (showPrizeAnim == false) {
-                showPrizeAnim = true;
-                console.log("showing prize anim");
-            }
-        }
-    });
+async function getPrize() {
+    // @ts-ignore
+    let receivehistory = new SteemHistory("slotto.register");
+    // @ts-ignore
+    receivehistory.setSearchLimit(getMemoLimit().memo, getMemoLimit().sender, null);
+    await receivehistory.download();
+
+    // @ts-ignore
+    let receiveTransfers = new SteemTransfers();
+    receiveTransfers.filterTransfers(null, "slotto.register", receivehistory.result);
+
+    // @ts-ignore
+    let watcher = new Watcher();
+    watcher.getWinners(receiveTransfers.result);
+    let prize = watcher.sumOutstanding.STEEM + " STEEM";
+
+    console.log("");
+    console.log("---current prize---");
+    console.log(prize);
+
+    document.getElementById("prizeSteem").textContent = prize;
 }
 
 function ticketIsValid(num1, num2, num3) {

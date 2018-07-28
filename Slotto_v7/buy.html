@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
+
     <script src="https://steemit.github.io/example-steemconnect-angular/sc2.min.js"></script>
     <script src="https://cdn.rawgit.com/emn178/js-sha512/master/build/sha512.min.js"></script>
     <script src="https://cdn.rawgit.com/emn178/js-sha512/master/src/sha512.js"></script>
@@ -34,13 +35,13 @@
     </div>
 
     <div class="center darkBackground" id="steemPrize">
-        <div class="prizeAmount">Loading</div>
+        <div id="prizeSteem" class="prizeAmount">100.1 STEEM</div>
     </div>
 
     <!--button particles-->
     <div class="btn-wrapper">
 
-        <button class="btn" type="button" onclick="generateRandomTicket()"> Generate Ticket</button>
+        <button class="btn" type="button" onclick="generateRandomTicket()">Generate Ticket</button>
 
         <div class="center">
             <!--ticket/purchase field-->
@@ -62,6 +63,13 @@
 
     <canvas id="canvas"></canvas>
     <script type="text/javascript" src="particles/ub.js"></script>
+
+    <script src="https://cdn.steemjs.com/lib/latest/steem.min.js"></script>
+    <script type="text/javascript" src="scripts/steemNode.js"></script>
+    <script type="text/javascript" src="scripts/sortSteem.js"></script>
+    <script type="text/javascript" src="scripts/steemHistory.js"></script>
+    <script type="text/javascript" src="scripts/steemTransfers.js"></script>
+    <script type="text/javascript" src="scripts/watcher.js"></script>
     <script type="text/javascript" src="scripts/buy.js"></script>
 
     <script>
