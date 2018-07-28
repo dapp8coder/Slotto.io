@@ -23,10 +23,11 @@
         -webkit-background-clip: text;
         -webkit-text-stroke-width: 0.5px;
         -webkit-text-stroke-color: rgb(255, 234, 47);
-        font-size: 110px;
+        font-size: 40px;
         font-family: 'Open Sans', sans-serif;
         font-weight: bold;
-        margin: 0 0 50px 0;
+        margin: auto;
+        width: 100%;
         text-align: center;
     }
 }
@@ -57,10 +58,11 @@
         -webkit-background-clip: text;
         -webkit-text-stroke-width: 0.5px;
         -webkit-text-stroke-color: rgb(255, 234, 47);
-        font-size: 110px;
+        font-size: 85px;
         font-family: 'Open Sans', sans-serif;
         font-weight: bold;
-        margin: 0 0 50px 0;
+        margin: auto;
+        width: 100%;
         text-align: center;
     }
 }
@@ -94,7 +96,8 @@
         font-size: 110px;
         font-family: 'Open Sans', sans-serif;
         font-weight: bold;
-        margin: 0 0 50px 0;
+        margin: auto;
+        width: 100%;
         text-align: center;
     }
 }
