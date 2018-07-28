@@ -5,7 +5,7 @@ function getTicketPrice() {
 }
 
 function getGenerationMin() {
-    return 1;
+    return 2;
 }
 
 // @ts-ignore slotto.Settings.js

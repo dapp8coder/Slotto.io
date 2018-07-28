@@ -3,6 +3,14 @@
 async function getRecentDraws() {
     console.clear();
 
+    console.log("");
+    console.log("---prev draw---");
+    console.log(prevDraw);
+
+    if (prevDraw == null) {
+        document.getElementById("verifierLoader").style.display = "none";
+    }
+
     let history = null;
 
     try {
@@ -49,10 +57,60 @@ async function getRecentDraws() {
 
         document.getElementById("recentDraws").innerHTML = draws;
 
-        // @ts-ignore
-        //let g = getGenerationMin() * 60 * 1000;
-        setTimeout("getRecentDraws()", 30000);
+        let latest = draws.substring(0, 30);
+
+        if (prevDraw != null) {
+            if (latest != prevDraw) {
+                document.getElementById("verifierLoader").style.display = "none";
+            }
+        }
+
+        prevDraw = latest;
+        setTimeout("getRecentDraws()", 10000);
     }
 }
 
-getRecentDraws();
+//@ts-check
+
+function initCountDown() {
+    const date = new Date();
+    const min = date.getUTCMinutes();
+
+    // @ts-ignore
+    const minsDeadline = getMinsDeadline();
+
+    if (lastGen.includes("None")) {
+        stampCurrentTime();
+        setTimeout("initCountDown()", interval);
+        // @ts-ignore
+    } else if (isGenerationMinute(min, minsDeadline)) {
+        // @ts-ignore
+        if (isGenerated(lastGen) == false) {
+            stampCurrentTime();
+        }
+    }
+
+    // @ts-ignore generateWinner.js
+    let countDown = getNextDrawTime(lastGen)
+
+    if (countDown == "00 : 00") {
+        document.getElementById("verifierLoader").style.display = "block";
+    }
+
+    document.getElementById("timer").textContent = countDown;
+    setTimeout("initCountDown()", interval);
+}
+
+function stampCurrentTime() {
+    const date = new Date();
+    const utc = date.toUTCString()
+    lastGen = utc;
+
+    console.log("");
+    console.log("stamp time: " + utc);
+}
+
+let lastGen = "None";
+let interval = 50 //milliseconds
+let prevDraw = null;
+let halfMin = Math.floor(getGenerationMin() / 2);

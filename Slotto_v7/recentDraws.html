@@ -16,7 +16,6 @@
     <script type="text/javascript" src="scripts/recentDraws.js"></script>
 
     <script type="text/javascript" src="scripts/generateWinner.js"></script>
-    <script type="text/javascript" src="scripts/countDown.js"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 
@@ -34,6 +33,13 @@
     <div class="drawTimer">Next Draw</div>
     <div class="timerStatus" id="timer"></div>
 
+    <div id="verifierLoader">
+        <div class="drawStatus">verifying latest draw</div>
+        <div id="verifier">
+            <div class="lds-dual-ring"></div>
+        </div>
+    </div>
+
     <div class="drawStatus" id="recentDraws">Loading</div>
     <div id="spinner">
         <div class="lds-dual-ring"></div>
@@ -41,6 +47,7 @@
 
     <script>
         initCountDown();
+        getRecentDraws();
     </script>
 </body>
 
