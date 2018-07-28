@@ -2,23 +2,6 @@
     background: #222222;
 }
 
-.button {
-    width: 250px;
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 65px 0 10px 0;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    outline: none;
-    color: #fff;
-    background-color: #7a7a7a;
-    border: none;
-    border-radius: 6px;
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 25px;
-}
-
 .desc {
     width: 100%;
     margin: 20px 0;
