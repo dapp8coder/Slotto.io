@@ -10,10 +10,9 @@
         -webkit-background-clip: text;
         -webkit-text-stroke-width: 0.5px;
         -webkit-text-stroke-color: rgb(255, 234, 47);
-        font-size: 68px;
+        font-size: 50px;
         font-family: 'Open Sans', sans-serif;
         font-weight: bold;
-        padding: 30px 0;
     }
     .winnersTitle {
         color: transparent;
@@ -48,7 +47,6 @@
         font-size: 85px;
         font-family: 'Open Sans', sans-serif;
         font-weight: bold;
-        padding: 20px 0;
     }
     .winnersTitle {
         color: transparent;

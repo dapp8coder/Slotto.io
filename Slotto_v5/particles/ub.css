@@ -7,17 +7,35 @@
     margin: 0;
 }
 
-.btn-wrapper {
-    position: fixed;
-    top: calc(36%);
-    left: 0;
-    width: 100%;
-    text-align: center;
+
+/* Smallest devices (portrait tablets and large phones, 600px and up) */
+
+@media only screen and (min-width: 100px) {
+    .btn-wrapper {
+        position: fixed;
+        top: calc(18%);
+        left: 0;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+
+@media only screen and (min-width: 600px) {
+    .btn-wrapper {
+        position: fixed;
+        top: calc(28%);
+        left: 0;
+        width: 100%;
+        text-align: center;
+    }
 }
 
 .btn {
     height: 70px;
-    width: 240px;
+    width: 230px;
     display: inline-block;
     box-shadow: 2.5px 2.85px #ccc;
     border: 0;
