@@ -2,8 +2,8 @@ var c = document.getElementById('canvas');
 var ctx = c.getContext('2d');
 var btn = document.getElementsByClassName('btn')[0];
 
-c.width = window.innerWidth;
-c.height = window.innerHeight;
+c.width = 1980;
+c.height = 550;
 
 var mouseX = c.width / 2;
 var mouseY = c.width / 2;
