@@ -3,11 +3,12 @@ async function showWinners() {
     document.getElementById("loading").style.display = "block";
 
     console.clear();
-    let sender = "slotto.register"
 
-    // @ts-ignore
+    let sender = "slotto.register";
+
+    // @ts-ignore steemHistory.js
     let receivehistory = new SteemHistory(sender);
-    // @ts-ignore
+    // @ts-ignore steemHistory.js
     receivehistory.setSearchLimit(getMemoLimit().memo, getMemoLimit().sender, null);
     await receivehistory.download();
 
