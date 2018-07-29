@@ -14,6 +14,17 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:800" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 
+    <script type="text/javascript" src="particles/ub.js"></script>
+    <script src="https://cdn.steemjs.com/lib/latest/steem.min.js"></script>
+    <script type="text/javascript" src="scripts/steemConnect2.js"></script>
+    <script type="text/javascript" src="scripts/steemNode.js"></script>
+    <script type="text/javascript" src="scripts/slottoSettings.js"></script>
+    <script type="text/javascript" src="scripts/sortSteem.js"></script>
+    <script type="text/javascript" src="scripts/steemHistory.js"></script>
+    <script type="text/javascript" src="scripts/steemTransfers.js"></script>
+    <script type="text/javascript" src="scripts/watcher.js"></script>
+    <script type="text/javascript" src="scripts/buy.js"></script>
+
     <link rel="stylesheet" type="text/css" href="particles/ub.css">
     <link rel="stylesheet" type="text/css" href="scripts/buy.css">
 
@@ -59,20 +70,11 @@
     </div>
 
     <canvas id="canvas"></canvas>
-    <script type="text/javascript" src="particles/ub.js"></script>
-
-    <script src="https://cdn.steemjs.com/lib/latest/steem.min.js"></script>
-    <script type="text/javascript" src="scripts/steemConnect2.js"></script>
-    <script type="text/javascript" src="scripts/steemNode.js"></script>
-    <script type="text/javascript" src="scripts/slottoSettings.js"></script>
-    <script type="text/javascript" src="scripts/sortSteem.js"></script>
-    <script type="text/javascript" src="scripts/steemHistory.js"></script>
-    <script type="text/javascript" src="scripts/steemTransfers.js"></script>
-    <script type="text/javascript" src="scripts/watcher.js"></script>
-    <script type="text/javascript" src="scripts/buy.js"></script>
 
     <script>
         initBuy();
+        initParticles();
+        draw();
     </script>
 </body>
 

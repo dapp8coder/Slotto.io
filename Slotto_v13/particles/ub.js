@@ -1,23 +1,25 @@
-var c = document.getElementById('canvas');
-var ctx = c.getContext('2d');
-var btn = document.getElementsByClassName('btn')[0];
+function initParticles() {
+    c = document.getElementById('canvas');
+    ctx = c.getContext('2d');
+    btn = document.getElementsByClassName('btn')[0];
 
-c.width = 4000;
-c.height = 550;
+    c.width = 4000;
+    c.height = 550;
 
-var mouseX = c.width / 2;
-var mouseY = c.width / 2;
-var txtPosition = 0;
+    mouseX = c.width / 2;
+    mouseY = c.width / 2;
+    txtPosition = 0;
 
-var particles = [];
+    particles = [];
 
-btn.addEventListener('mouseup', function(e) {
-    mouseX = e.clientX;
-    mouseY = e.clientY / 3.6;
-    createParticles();
-});
+    btn.addEventListener('mouseup', function(e) {
+        mouseX = e.clientX;
+        mouseY = e.clientY / 3.6;
+        createParticles();
+    });
+}
 
-draw();
+
 
 function draw() {
 
@@ -99,3 +101,12 @@ function ranVel() {
 
     return vel;
 }
+
+var c = null;
+var ctx = null;
+var btn = null;
+
+var mouseX = null;
+var mouseY = null;
+var txtPosition = null;
+var particles = null;
