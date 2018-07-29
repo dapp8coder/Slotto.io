@@ -54,7 +54,7 @@ function showOnPage(data) {
     document.getElementById("rfbWrapper").style.display = "block";
 
     if (outStanding.length == 0) {
-        str = "No Tickets Found<br><br>";
+        str = "No Current Tickets<br><br>";
     } else {
         for (let i = 0; i < outStanding.length; i++) {
             str += outStanding[i].op[1].memo + " (" + outStanding[i].timestamp + ") <br><br>";
