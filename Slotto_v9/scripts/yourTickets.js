@@ -1,6 +1,7 @@
 //@ts-check
 
 async function findYourTickets() {
+    document.getElementById("ticketsList").innerHTML = "";
     document.getElementById("showTickets").style.display = "block";
     document.getElementById("loadingIcon").style.display = "block";
     document.getElementById("updateStatus").style.display = "none";
