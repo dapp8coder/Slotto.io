@@ -24,15 +24,16 @@
 <body>
     <div class="container">
         <div class="container__item">
+            <div class="formDesc">Your Steem Account Name</div>
             <input id="accountName" type="text" class="form__field" placeholder="Your Steem Account Name" />
-            <button id="findButton" onclick="findYourTickets()" type="button" class="btn btn--primary btn--inside uppercase">Search</button>
+            <button id="findButton" onclick="findYourTickets()" type="button" class="btn btn--primary btn--inside">Search</button>
         </div>
         <div class="container__item container__item--bottom">
         </div>
     </div>
 
     <div id="showTickets">
-        <div id="updateStatus" class="smallLetters">This page is updated every 20 seconds</div>
+        <div id="updateStatus" class="smallLetters">It may take a minute for your purchase to be verified on the blockchain</div>
         <div id="ticketsList" class="ticketStatus">test</div>
         <div id="spinner">
             <div class="lds-dual-ring"></div>
