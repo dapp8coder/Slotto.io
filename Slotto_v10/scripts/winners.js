@@ -1,5 +1,4 @@
 async function showWinners() {
-    //document.getElementById("spinner").style.display = "block";
     document.getElementById("loading").style.display = "block";
 
     console.clear();
