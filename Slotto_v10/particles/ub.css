@@ -26,7 +26,7 @@
 @media only screen and (min-width: 600px) {
     .btn-wrapper {
         position: fixed;
-        top: calc(28%);
+        top: calc(25%);
         left: 0;
         width: 100%;
         text-align: center;
@@ -39,7 +39,7 @@
 @media only screen and (min-width: 768px) {
     .btn-wrapper {
         position: fixed;
-        top: calc(38%);
+        top: calc(33%);
         left: 0;
         width: 100%;
         text-align: center;
