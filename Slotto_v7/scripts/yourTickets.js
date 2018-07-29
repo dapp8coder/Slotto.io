@@ -62,7 +62,7 @@ function showOnPage(data) {
 
     document.getElementById("ticketsList").innerHTML = str;
 
-    setTimeout("procFind()", 20000);
+    //setTimeout("procFind()", 20000);
 }
 
 async function getYours(account) {
