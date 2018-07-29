@@ -13,7 +13,6 @@ async function findYourTickets() {
         document.getElementById("loadingIcon").style.display = "block";
         //document.getElementById("rfbWrapper").style.display = "none";
         document.getElementById("notFound").style.display = "none";
-
         document.getElementById("loadingText").textContent = "Searching: " + account;
 
         await procFind(account);
