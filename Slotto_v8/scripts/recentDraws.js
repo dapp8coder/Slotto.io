@@ -113,4 +113,5 @@ function stampCurrentTime() {
 let lastGen = "None";
 let interval = 50 //milliseconds
 let prevDraw = null;
+// @ts-ignore slottoSettings.js
 let halfMin = Math.floor(getGenerationMin() / 2);
