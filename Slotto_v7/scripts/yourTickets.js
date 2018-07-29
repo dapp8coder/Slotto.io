@@ -5,6 +5,7 @@ async function findYourTickets() {
     document.getElementById("ticketsList").innerHTML = "Loading";
     document.getElementById("spinner").style.display = "block";
     document.getElementById("updateStatus").style.display = "none";
+    document.getElementById("rfbWrapper").style.display = "none";
 
     await procFind();
 }
@@ -44,6 +45,7 @@ function showOnPage(data) {
 
     document.getElementById("spinner").style.display = "none";
     document.getElementById("updateStatus").style.display = "block";
+    document.getElementById("rfbWrapper").style.display = "block";
 
     if (outStanding.length == 0) {
         str = "No Tickets Found<br><br>";

@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" type="text/css" href="scripts/yourTickets.css" />
     <link rel="stylesheet" type="text/css" href="scripts/loading.css">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <script src="https://cdn.steemjs.com/lib/latest/steem.min.js"></script>
 
     <script type="text/javascript" src="scripts/steemNode.js"></script>
@@ -26,7 +26,7 @@
         <div class="container__item">
             <div class="formDesc">Your Steem Account Name</div>
             <input id="accountName" type="text" class="form__field" placeholder="Your Steem Account Name" />
-            <button id="findButton" onclick="findYourTickets()" type="button" class="btn btn--primary btn--inside">Search</button>
+            <button id="findButton" onclick="findYourTickets();" type="button" class="sbtn sbtn--primary sbtn--inside">Search</button>
         </div>
         <div class="container__item container__item--bottom">
         </div>
@@ -34,6 +34,14 @@
 
     <div id="showTickets">
         <div id="updateStatus" class="smallLetters">It may take a minute for your purchase to be verified on the blockchain</div>
+
+        <div id="rfbWrapper" class="refreshButton">
+            <a href="#" class="btn" onclick="findYourTickets();">
+                <span class="btn-content" onclick="findYourTickets()">Refresh</span>
+                <span class="icon"><i class="fas fa-redo" aria-hidden="true"></i></span>
+            </a>
+        </div>
+
         <div id="ticketsList" class="ticketStatus">test</div>
         <div id="spinner">
             <div class="lds-dual-ring"></div>
