@@ -6,6 +6,7 @@ async function findYourTickets() {
     document.getElementById("loadingIcon").style.display = "block";
     document.getElementById("updateStatus").style.display = "none";
     document.getElementById("rfbWrapper").style.display = "none";
+    document.getElementById("notFound").style.display = "none";
 
     await procFind();
 }
@@ -26,6 +27,7 @@ async function procFind() {
         console.log("trying again");
         procFind();
     } finally {
+        document.getElementById("notFound").style.display = "none";
         if (accountInfo.length > 0) {
             let yours = await getYours(account);
             //console.log("");
@@ -33,6 +35,10 @@ async function procFind() {
             //console.log(yours);
             showOnPage(yours);
         } else {
+            document.getElementById("loadingIcon").style.display = "none";
+            document.getElementById("notFound").style.display = "block";
+            document.getElementById("notFound").innerHTML = "Account not found: " + account + "<br>" +
+                "Make sure your account name is correct (case sensitive)";
             console.log("unable to fetch info from " + account);
         }
     }
@@ -125,6 +131,7 @@ async function getYours(account) {
 function initTicketStatus() {
     document.getElementById("showTickets").style.display = "none";
     document.getElementById("loadingIcon").style.display = "none";
+    document.getElementById("notFound").style.display = "none";
 
     inputEnter = document.getElementById("accountName");
     inputEnter.addEventListener("keydown", function(event) {
