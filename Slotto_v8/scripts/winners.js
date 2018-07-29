@@ -1,5 +1,5 @@
 async function showWinners() {
-    document.getElementById("spinner").style.display = "block";
+    //document.getElementById("spinner").style.display = "block";
     document.getElementById("loading").style.display = "block";
 
     console.clear();
@@ -43,7 +43,7 @@ async function showWinners() {
         str += winners[i].winningDraw + "<br><br>";
     }
 
-    document.getElementById("spinner").style.display = "none";
+    //document.getElementById("spinner").style.display = "none";
     document.getElementById("loading").style.display = "none";
 
     document.getElementById("winnersList").innerHTML = str;

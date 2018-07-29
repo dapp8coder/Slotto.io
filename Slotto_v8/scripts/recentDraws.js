@@ -29,8 +29,6 @@ async function getRecentDraws() {
 
         setTimeout("getRecentDraws()", 5000);
     } finally {
-        document.getElementById("spinner").style.display = "none";
-
         // @ts-ignore
         let transfers = new SteemTransfers();
         transfers.filterTransfers("slotto.gen", "slotto.register", history.result);
