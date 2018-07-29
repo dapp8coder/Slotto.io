@@ -2,8 +2,7 @@
 
 async function findYourTickets() {
     document.getElementById("showTickets").style.display = "block";
-    document.getElementById("ticketsList").innerHTML = "Loading";
-    document.getElementById("spinner").style.display = "block";
+    document.getElementById("loadingIcon").style.display = "block";
     document.getElementById("updateStatus").style.display = "none";
     document.getElementById("rfbWrapper").style.display = "none";
 
@@ -43,7 +42,7 @@ function showOnPage(data) {
     let outStanding = data.outStanding;
     let previous = data.previous;
 
-    document.getElementById("spinner").style.display = "none";
+    document.getElementById("loadingIcon").style.display = "none";
     document.getElementById("updateStatus").style.display = "block";
     document.getElementById("rfbWrapper").style.display = "block";
 
@@ -124,6 +123,7 @@ async function getYours(account) {
 
 function initTicketStatus() {
     document.getElementById("showTickets").style.display = "none";
+    document.getElementById("loadingIcon").style.display = "none";
 
     inputEnter = document.getElementById("accountName");
     inputEnter.addEventListener("keydown", function(event) {
