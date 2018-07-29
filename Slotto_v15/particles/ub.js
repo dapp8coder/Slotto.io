@@ -110,3 +110,6 @@ var mouseX = null;
 var mouseY = null;
 var txtPosition = null;
 var particles = null;
+
+initParticles();
+draw();
