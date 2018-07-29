@@ -1,21 +1,26 @@
 //@ts-check
 
 async function findYourTickets() {
-    document.getElementById("ticketsList").innerHTML = "";
-    document.getElementById("showTickets").style.display = "block";
-    document.getElementById("loadingIcon").style.display = "block";
-    document.getElementById("updateStatus").style.display = "none";
-    document.getElementById("rfbWrapper").style.display = "none";
-    document.getElementById("notFound").style.display = "none";
-
-    await procFind();
-}
-
-async function procFind() {
     console.clear();
 
     // @ts-ignore
     let account = document.getElementById("accountName").value;
+
+    if (account != "") {
+        document.getElementById("buttonWrapper").style.display = "none";
+        document.getElementById("ticketsList").innerHTML = "";
+        document.getElementById("showTickets").style.display = "block";
+        document.getElementById("loadingIcon").style.display = "block";
+        //document.getElementById("rfbWrapper").style.display = "none";
+        document.getElementById("notFound").style.display = "none";
+
+        document.getElementById("loadingText").textContent = "Searching: " + account;
+
+        await procFind(account);
+    }
+}
+
+async function procFind(account) {
     let accountInfo = null;
     try {
         // @ts-ignore
@@ -33,7 +38,7 @@ async function procFind() {
             //console.log("");
             //console.log("---your outstanding tickets---");
             //console.log(yours);
-            showOnPage(yours);
+            showOnPage(yours, account);
         } else {
             document.getElementById("loadingIcon").style.display = "none";
             document.getElementById("notFound").style.display = "block";
@@ -42,20 +47,22 @@ async function procFind() {
             console.log("unable to fetch info from " + account);
         }
     }
+
+    document.getElementById("buttonWrapper").style.display = "block";
 }
 
-function showOnPage(data) {
-    let str = "Current Tickets<br><br>";
+function showOnPage(data, account) {
+    let str = "";
     let outStanding = data.outStanding;
     let previous = data.previous;
 
     document.getElementById("loadingIcon").style.display = "none";
-    document.getElementById("updateStatus").style.display = "block";
-    document.getElementById("rfbWrapper").style.display = "block";
+    //document.getElementById("rfbWrapper").style.display = "block";
 
     if (outStanding.length == 0) {
-        str = "No Current Tickets<br><br>";
+        str += "No Current Tickets<br><br>";
     } else {
+        str += "Current Tickets<br><br>";
         for (let i = 0; i < outStanding.length; i++) {
             str += outStanding[i].op[1].memo + " (" + outStanding[i].timestamp + ") <br><br>";
         }
@@ -140,4 +147,4 @@ function initTicketStatus() {
     });
 }
 
-var inputEnter = null;
+let inputEnter = null;

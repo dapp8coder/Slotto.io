@@ -22,7 +22,9 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="smallLetters">It may take a minute for your purchase to be verified on the blockchain</div>
+
+    <div class="container" id="buttonWrapper">
         <div class="container__item">
             <div class="formDesc">Your Steem Account Name</div>
             <input id="accountName" type="text" class="form__field" placeholder="Your Steem Account Name" />
@@ -33,19 +35,21 @@
     </div>
 
     <div id="showTickets">
-        <div id="updateStatus" class="smallLetters">It may take a minute for your purchase to be verified on the blockchain</div>
 
-        <div id="rfbWrapper" class="refreshButton">
+        <!--        
+            <div id="rfbWrapper" class="refreshButton">
             <a href="#" class="btn" onclick="findYourTickets();">
                 <span class="btn-content" onclick="findYourTickets()">Refresh</span>
                 <span class="icon"><i class="fas fa-redo" aria-hidden="true"></i></span>
             </a>
         </div>
+        -->
 
         <div id="ticketsList" class="ticketStatus"></div>
     </div>
 
-    <div id="loadingIcon" class="ticketStatus">Loading
+    <div id="loadingIcon" class="ticketStatus">
+        <div id="loadingText">Loading</div>
         <div>
             <div class="lds-dual-ring"></div>
         </div>
