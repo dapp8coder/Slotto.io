@@ -19,7 +19,7 @@ async function getPrize() {
     // @ts-ignore
     let watcher = new Watcher();
     watcher.getWinners(receiveTransfers.result);
-    prize = watcher.sumOutstanding.STEEM + " STEEM";
+    let prize = watcher.sumOutstanding.STEEM + " STEEM";
     //showScramble(prize);
     console.log("");
     console.log("---current prize---");
@@ -175,29 +175,3 @@ class TextScramble {
         return this.chars[Math.floor(Math.random() * this.chars.length)]
     }
 }
-
-// ——————————————————————————————————————————————————
-// Example
-// ——————————————————————————————————————————————————
-
-const phrases = [
-    'Neo,',
-    'sooner or later',
-    'you\'re going to realize',
-    'just as I did',
-    'that there\'s a difference',
-    'between knowing the path',
-    'and walking the path'
-]
-
-function showScramble(phrase) {
-    fx.setText(phrase);
-}
-
-let prize = "";
-let el = document.getElementById('loadingText')
-let fx = new TextScramble(el)
-
-let showPrizeAnim = false;
-
-showScramble("loading");
