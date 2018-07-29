@@ -16,6 +16,6 @@
 	}
 	?>
 	<a href="<?php echo esc_url( __( 'https://steemit.com/@roundbeargames', 'twentyseventeen' ) ); ?>" target = '_blank' class="imprint">
-		<?php printf( __( 'Built by ROUNDBEARGAMES', 'twentyseventeen' ), 'WordPress' ); ?>
+		<?php printf( __( 'ROUNDBEARGAMES', 'twentyseventeen' ), 'WordPress' ); ?>
 	</a>
 </div><!-- .site-info -->
