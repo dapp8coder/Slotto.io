@@ -86,7 +86,7 @@ function buy() {
 function purchaseTicket(memo) {
     // @ts-ignore slotto.Settings.js
     let amount = getTicketPrice();
-    console.log(amount);
+
     // @ts-ignore slotto.Settings.js
     let receiver = getDefaultRegisterAccount();
     // @ts-ignore steemConnect2.js
