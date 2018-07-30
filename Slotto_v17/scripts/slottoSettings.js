@@ -1,7 +1,11 @@
 //@ts-check
 
 function getTicketPrice() {
-    return "0.001 STEEM";
+    let price = 0.001;
+    let fixed = price.toFixed(3);
+    let amount = fixed + " STEEM"
+
+    return amount;
 }
 
 function getGenerationMin() {
