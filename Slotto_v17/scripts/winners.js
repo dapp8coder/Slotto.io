@@ -22,7 +22,7 @@ async function showWinners() {
 
     let str = "";
 
-    for (let i = 0; i < winners.length; i++) {
+    for (let i = winners.length - 1; i >= 0; i--) {
         for (let w = 0; w < winners[i].winnerNames.length; w++) {
             str += winners[i].winnerNames[w];
 
