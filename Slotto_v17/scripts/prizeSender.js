@@ -145,7 +145,8 @@ async function sendPrize(name, STEEM, SBD, message, errCount) {
         try {
             console.log(name + " " + STEEM + " STEEM" + " and " + SBD + " SBD");
 
-            STEEM = STEEM.toString();
+            let fixed = STEEM.toFixed(3);
+            /*STEEM = STEEM.toString();
             if (STEEM.includes(".")) {
                 let decimals = STEEM.split(".")[1].length;
                 if (decimals == 1) {
@@ -155,9 +156,9 @@ async function sendPrize(name, STEEM, SBD, message, errCount) {
                 }
             } else {
                 STEEM += ".000";
-            }
+            }*/
+            let amount = fixed + " STEEM";
 
-            let amount = STEEM + " STEEM";
             // @ts-ignore
             let result = await steem.broadcast.transferAsync(senderKey, sender, name, amount, message);
             console.log(result);
