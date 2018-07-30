@@ -1,7 +1,7 @@
 //@ts-check
 
 function getTicketPrice() {
-    let price = 0.001;
+    let price = 0.1;
     let fixed = price.toFixed(3);
     let amount = fixed + " STEEM"
 
@@ -18,7 +18,7 @@ function getDefaultRegisterAccount() {
 }
 
 function getMemoLimit() {
-    return { memo: "40,44,46 2018-07-21T05:50:09", sender: "slotto.register" };
+    return { memo: "15,04,04 2018-07-30T16:59:18", sender: "slotto.register" };
 }
 
 function getTestSendMilliSeconds() {
