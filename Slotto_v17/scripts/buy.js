@@ -94,7 +94,7 @@ function purchaseTicket(memo) {
         to: receiver,
         amount: amount,
         memo: memo,
-    }, "http://localhost:8000/demo/");
+    }, "https://slotto.io");
 
     console.log("transfer link: ", link)
     window.open(link);
