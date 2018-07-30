@@ -134,6 +134,8 @@ async function checkAndSend(outGoingTransfers) {
 }
 
 async function sendPrize(name, STEEM, SBD, message, errCount) {
+
+
     // @ts-ignore
     let sender = document.getElementById("sender").value;
 
@@ -144,19 +146,10 @@ async function sendPrize(name, STEEM, SBD, message, errCount) {
     if (senderKey != "") {
         try {
             console.log(name + " " + STEEM + " STEEM" + " and " + SBD + " SBD");
-
+            if (STEEM <= 0) {
+                STEEM = 0.001;
+            }
             let fixed = STEEM.toFixed(3);
-            /*STEEM = STEEM.toString();
-            if (STEEM.includes(".")) {
-                let decimals = STEEM.split(".")[1].length;
-                if (decimals == 1) {
-                    STEEM += "00"
-                } else if (decimals == 2) {
-                    STEEM += "0"
-                }
-            } else {
-                STEEM += ".000";
-            }*/
             let amount = fixed + " STEEM";
 
             // @ts-ignore
