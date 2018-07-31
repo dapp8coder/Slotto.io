@@ -25,3 +25,7 @@ function getTestSendMilliSeconds() {
     let seconds = 10;
     return seconds * 1000;
 }
+
+function getHistoryInterval() {
+    return 5000;
+}
