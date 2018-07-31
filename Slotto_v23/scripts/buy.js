@@ -6,6 +6,7 @@ function initBuy() {
 }
 
 async function getPrize() {
+    console.clear();
     // @ts-ignore
     let receivehistory = new SteemHistory("slotto.register");
     // @ts-ignore
@@ -27,11 +28,9 @@ async function getPrize() {
     console.log("---current prize---");
     console.log(prize);
 
-    if (prize == "0.0") {
-        prize = "Starting New Round";
-    }
-
     document.getElementById("prizeSteem").textContent = prize;
+
+    setTimeout("getPrize();", 20 * 1000);
 }
 
 function ticketIsValid(num1, num2, num3) {
