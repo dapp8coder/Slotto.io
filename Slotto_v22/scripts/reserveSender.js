@@ -1,6 +1,7 @@
 //@ts-check
 
 async function sendReserve() {
+    console.clear();
     console.log("");
     console.log("checking slotto.register..");
     let result = null;
@@ -36,6 +37,7 @@ async function procSend() {
 
     let name = "slotto.register";
     let memo = "51,51,51";
+    let amount = "100.000 STEEM";
 
     console.log("");
     console.log("---sending reserve---");
