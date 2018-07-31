@@ -97,8 +97,6 @@ async function downloadWinners() {
 
     await checkAndSend(sentPrizes);
 
-    await sendReserve();
-
     // @ts-ignore
     if (document.getElementById("repeat").checked == true) {
         console.log("");
@@ -110,7 +108,7 @@ async function downloadWinners() {
     }
 }
 
-async function sendReserve() {
+/*async function sendReserve() {
     let result = null;
 
     try {
@@ -134,7 +132,7 @@ async function sendReserve() {
             console.log("slotto.register already has over 100 STEEM (skipping)");
         }
     }
-}
+}*/
 
 async function procSendReserve() {
     console.log("");
@@ -167,6 +165,8 @@ async function procSendReserve() {
  * @param {array} outGoingTransfers 
  */
 async function checkAndSend(outGoingTransfers) {
+    let unsentList = new Array();
+
     for (let i = 0; i < sendList.length; i++) {
         let alreadySent = false;
         let receiver = null;
@@ -184,12 +184,46 @@ async function checkAndSend(outGoingTransfers) {
 
         if (alreadySent == false) {
             console.log("");
-            console.log("---sending prize---");
-            await sendPrize(sendList[i].name, sendList[i].STEEM, sendList[i].SBD, sendList[i].winningDraw, 0);
+            console.log("---unsent prize---");
+            unsentList.push(sendList[i]);
+            console.log(sendList[i]);
+            //await sendPrize(sendList[i].name, sendList[i].STEEM, sendList[i].SBD, sendList[i].winningDraw, 0);
         } else {
             console.log("");
             console.log("already sent: " + sendList[i].winningDraw + " " + receiver + " " + sendList[i].STEEM + " STEEM");
         }
+    }
+
+    let unsentSteem = 0;
+
+    for (let i = 0; i < unsentList.length; i++) {
+        unsentSteem += unsentList[i].STEEM;
+    }
+
+    console.log("");
+    console.log("---total unsent prize---");
+    console.log(unsentSteem);
+
+    await getRegisterBalance();
+
+    console.log("");
+    console.log("---register balance---");
+    console.log(steemBalance);
+}
+
+async function getRegisterBalance() {
+    steemBalance = 0;
+    let bResult = null;
+    try {
+        // @ts-ignore
+        bResult = await steem.api.getAccountsAsync(["slotto.register"]);
+    } catch (err) {
+        console.log("");
+        console.log(err);
+        console.log("trying again - getting slotto.register balance");
+        setTimeout("getRegisterBalance();", 1000);
+    } finally {
+        steemBalance = bResult[0].balance.replace(" STEEM", "");
     }
 }
 
@@ -282,3 +316,4 @@ function cancelSend() {
 
 let sendList = new Array();
 let winnerString = "";
+let steemBalance = null;
