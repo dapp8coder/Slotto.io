@@ -187,13 +187,16 @@ async function checkAndSend(outGoingTransfers) {
             console.log("---unsent prize---");
             unsentList.push(sendList[i]);
             console.log(sendList[i]);
-            //await sendPrize(sendList[i].name, sendList[i].STEEM, sendList[i].SBD, sendList[i].winningDraw, 0);
         } else {
             console.log("");
             console.log("already sent: " + sendList[i].winningDraw + " " + receiver + " " + sendList[i].STEEM + " STEEM");
         }
     }
 
+    await procUnsentList(unsentList);
+}
+
+async function procUnsentList(unsentList) {
     let unsentSteem = 0;
 
     for (let i = 0; i < unsentList.length; i++) {
@@ -209,6 +212,24 @@ async function checkAndSend(outGoingTransfers) {
     console.log("");
     console.log("---register balance---");
     console.log(steemBalance);
+
+    if (steemBalance <= unsentSteem) {
+        console.log("");
+        console.log("---adjusting prize pool---");
+        let newAmount = Math.trunc((steemBalance * 0.99 * 1000 / unsentList.length)) / 1000;
+        console.log(newAmount + " each");
+        console.log(newAmount * unsentList.length + " total");
+
+        for (let i = 0; i < unsentList.length; i++) {
+            unsentList[i].STEEM = newAmount;
+        }
+
+        console.log(unsentList);
+    }
+
+    for (let i = 0; i < unsentList.length; i++) {
+        await sendPrize(unsentList[i].name, unsentList[i].STEEM, unsentList[i].SBD, unsentList[i].winningDraw, 0);
+    }
 }
 
 async function getRegisterBalance() {
