@@ -27,5 +27,5 @@ function getTestSendMilliSeconds() {
 }
 
 function getHistoryInterval() {
-    return 5000;
+    return 1000;
 }
