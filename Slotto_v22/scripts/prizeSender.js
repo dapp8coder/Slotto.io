@@ -188,7 +188,6 @@ async function checkAndSend(outGoingTransfers) {
             unsentList.push(sendList[i]);
             console.log(sendList[i]);
         } else {
-            console.log("");
             console.log("already sent: " + sendList[i].winningDraw + " " + receiver + " " + sendList[i].STEEM + " STEEM");
         }
     }
