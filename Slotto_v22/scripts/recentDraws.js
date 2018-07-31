@@ -46,7 +46,6 @@ async function getRecentDraws() {
         }
     }
 
-    //draws += "entire history can be viewed at <a class='drawStatus' href='https://steemd.com/@slotto.gen' target='_blank'> https://steemd.com/@slotto.gen</a>";
     console.log("");
     console.log("---recent draws---");
     console.log(gen);
