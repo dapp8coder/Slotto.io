@@ -142,9 +142,11 @@ async function sendReserve() {
             let memo = "51,51,51";
 
             if (rKey != "") {
-                // @ts-ignore
-                let t = await steem.broadcast.transferAsync(rKey, rAccount, name, amount, memo);
-                console.log(t);
+                try {
+                    // @ts-ignore
+                    let t = await steem.broadcast.transferAsync(rKey, rAccount, name, amount, memo);
+                    console.log(t);
+                }
             } else {
                 console.log("active key missing (skipping)");
             }
