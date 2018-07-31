@@ -149,8 +149,7 @@ async function sendReserve() {
                 console.log("active key missing (skipping)");
             }
         } else {
-            console.log("");
-            console.log("slotto.register already has over 100 STEEM");
+            console.log("slotto.register already has over 100 STEEM (skipping)");
         }
     }
 }
