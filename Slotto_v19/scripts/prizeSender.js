@@ -8,9 +8,15 @@ function initAutoSend() {
     // @ts-ignore
     document.getElementById("operationalFee").checked = true;
     document.getElementById("checkTimeLabel").style.display = "none";
+
+    document.getElementById("inputSection").style.display = "block";
+    document.getElementById("cancelSend").style.display = "none";
 }
 
 async function downloadWinners() {
+    document.getElementById("inputSection").style.display = "none";
+    document.getElementById("cancelSend").style.display = "block";
+
     let date = new Date();
     let utc = date.toUTCString();
     document.getElementById("checkTimeLabel").style.display = "block";
@@ -134,8 +140,6 @@ async function checkAndSend(outGoingTransfers) {
 }
 
 async function sendPrize(name, STEEM, SBD, message, errCount) {
-
-
     // @ts-ignore
     let sender = document.getElementById("sender").value;
 
@@ -214,6 +218,12 @@ function getUTC() {
     document.getElementById("currentTime").textContent = utc;
 
     setTimeout("getUTC()", 1000);
+}
+
+function cancelSend() {
+    location.reload();
+    document.getElementById("inputSection").style.display = "none";
+    document.getElementById("cancelSend").style.display = "block";
 }
 
 let sendList = new Array();

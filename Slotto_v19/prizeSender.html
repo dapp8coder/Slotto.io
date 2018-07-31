@@ -24,18 +24,21 @@
         <h3>
             <div id="currentTime">CURRENT TIME</div>
         </h3>
-        <br>
-        <br> Sender Account:<br><input id="sender" value="slotto.register" type="text" value="">
-        <br>
-        <br> Active Key:<br><input id="senderKey" type="password" value="">
-        <br>
-        <br><button class="buttonGreen button1" onclick="downloadWinners()">Start Sending</button>
-        <br>
-        <br> Auto update (3 mins) <input type="checkbox" id="repeat" class="largerCheckbox">
-        <br> Show outstanding tickets <input type="checkbox" id="showOutstanding" class="largerCheckbox">
-        <br> 1% operational fee <input type="checkbox" id="operationalFee" class="largerCheckbox">
-        <br>
-        <br>
+
+        <div id=inputSection>
+            <br> Sender Account:<br><input id="sender" value="slotto.register" type="text" value="">
+            <br>
+            <br> Active Key:<br><input id="senderKey" type="password" value="">
+            <br>
+            <br><button class="buttonGreen button1" onclick="downloadWinners()">Start Sending</button>
+            <br>
+            <br> Auto update (3 mins) <input type="checkbox" id="repeat" class="largerCheckbox">
+            <br> Show outstanding tickets <input type="checkbox" id="showOutstanding" class="largerCheckbox">
+            <br> 1% operational fee <input type="checkbox" id="operationalFee" class="largerCheckbox">
+        </div>
+
+        <br><button id="cancelSend" class="buttonGreen button1" onclick="cancelSend()">Cancel</button>
+
         <div id="winners"></div>
         <br>
         <br>
@@ -43,7 +46,6 @@
             <h3>Check Time</h3>
             <div id="checkTime">none</div>
         </div>
-
     </div>
     <script>
         initAutoSend();
