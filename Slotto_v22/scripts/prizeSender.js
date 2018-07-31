@@ -108,32 +108,6 @@ async function downloadWinners() {
     }
 }
 
-/*async function sendReserve() {
-    let result = null;
-
-    try {
-        // @ts-ignore
-        result = await steem.api.getAccountsAsync(["slotto.register"]);
-    } catch (err) {
-        console.log("");
-        console.log(err);
-        console.log("trying again - getting slotto.register balance");
-        setTimeout("sendReserve();", 1000);
-    } finally {
-        let steemBalance = result[0].balance.replace(" STEEM", "");
-
-        console.log("");
-        console.log("---slotto.register balance---");
-        console.log(steemBalance);
-
-        if (steemBalance < 100) {
-            await procSendReserve();
-        } else {
-            console.log("slotto.register already has over 100 STEEM (skipping)");
-        }
-    }
-}*/
-
 async function procSendReserve() {
     console.log("");
     console.log("---sending reserve---");
