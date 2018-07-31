@@ -129,32 +129,36 @@ async function sendReserve() {
         console.log(steemBalance);
 
         if (steemBalance < 100) {
-            console.log("");
-            console.log("---sending reserve---");
-
-            // @ts-ignore
-            let rAccount = document.getElementById("reserve").value;
-            // @ts-ignore
-            let rKey = document.getElementById("reserveKey").value;
-
-            let name = "slotto.register";
-            let amount = "100.000 STEEM";
-            let memo = "51,51,51";
-
-            if (rKey != "") {
-                try {
-                    // @ts-ignore
-                    let t = await steem.broadcast.transferAsync(rKey, rAccount, name, amount, memo);
-                    console.log(t);
-                } catch (err) {
-                    console.log(err);
-                }
-            } else {
-                console.log("active key missing (skipping)");
-            }
+            await procSendReserve();
         } else {
             console.log("slotto.register already has over 100 STEEM (skipping)");
         }
+    }
+}
+
+async function procSendReserve() {
+    console.log("");
+    console.log("---sending reserve---");
+
+    // @ts-ignore
+    let rAccount = document.getElementById("reserve").value;
+    // @ts-ignore
+    let rKey = document.getElementById("reserveKey").value;
+
+    let name = "slotto.register";
+    let amount = "100.000 STEEM";
+    let memo = "51,51,51";
+
+    if (rKey != "") {
+        try {
+            // @ts-ignore
+            let t = await steem.broadcast.transferAsync(rKey, rAccount, name, amount, memo);
+            console.log(t);
+        } catch (err) {
+            console.log(err);
+        }
+    } else {
+        console.log("active key missing (skipping)");
     }
 }
 
