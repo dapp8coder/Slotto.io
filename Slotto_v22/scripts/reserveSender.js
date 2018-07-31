@@ -1,9 +1,17 @@
 //@ts-check
 
+function cancelReserve() {
+    location.reload();
+}
+
 async function sendReserve() {
     console.clear();
     console.log("");
     console.log("checking slotto.register..");
+
+    document.getElementById("inputField").style.display = "none";
+    document.getElementById("cancelButton").style.display = "block";
+
     let result = null;
 
     try {
@@ -21,11 +29,22 @@ async function sendReserve() {
         console.log("---balance---");
         console.log(steemBalance);
 
+        document.getElementById("registerBalance").textContent = "slotto.register balance: " + steemBalance + " STEEM";
+
         if (steemBalance < 100) {
             await procSend();
         } else {
             console.log("slotto.register already has over 100 STEEM (skipping)");
         }
+
+        console.log("");
+        console.log("updating again in 3 mins");
+        setTimeout("sendReserve()", rInterval);
+
+        let date = new Date();
+        let utc = date.toUTCString();
+        console.log("check time: " + utc);
+        document.getElementById("checkTime").textContent = "check time: " + utc;
     }
 }
 
@@ -49,15 +68,23 @@ async function procSend() {
             console.log(result);
         } catch (err) {
             console.log(err);
-            console.log("trying again in 3 mins");
-            setTimeout("sendReserve()", rInterval);
-        } finally {
-            console.log("updating again in 3 mins");
-            setTimeout("sendReserve()", rInterval);
         }
     } else {
         console.log("no active key!");
     }
+}
+
+function initReserve() {
+    document.getElementById("cancelButton").style.display = "none";
+    getUTC();
+}
+
+function getUTC() {
+    let date = new Date();
+    let utc = date.toUTCString();
+    document.getElementById("currentTime").textContent = utc;
+
+    setTimeout("getUTC()", 1000);
 }
 
 let rInterval = 3 * 60 * 1000;

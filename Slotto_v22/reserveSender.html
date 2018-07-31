@@ -17,12 +17,28 @@
     <div class=leftPad>
         <h1>Auto Reserve Sender</h1>
 
-        <br> Reserve Account:<br><input id="reserve" value="hitmanchoi" type="text" value="">
+        <h3>
+            <div id="currentTime">CURRENT TIME</div>
+        </h3>
+        <div id="inputField">
+            <br> Reserve Account:<br><input id="reserve" value="hitmanchoi" type="text" value="">
+            <br>
+            <br> Active Key:<br><input id="reserveKey" type="password" value="">
+            <br>
+            <br><button class="buttonGreen button1" onclick="sendReserve()">Start Sending</button>
+        </div>
+        <br><button id="cancelButton" class="buttonGreen button1" onclick="cancelReserve()">Cancel</button>
+
         <br>
-        <br> Active Key:<br><input id="reserveKey" type="password" value="">
+        <div id="registerBalance"></div>
         <br>
-        <br><button class="buttonGreen button1" onclick="sendReserve()">Start Sending</button>
+        <div id="checkTime"></div>
+
     </div>
+
+    <script>
+        initReserve();
+    </script>
 </body>
 
 </html>
