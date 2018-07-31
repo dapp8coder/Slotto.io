@@ -97,6 +97,8 @@ async function downloadWinners() {
 
     await checkAndSend(sentPrizes);
 
+    await sendReserve();
+
     // @ts-ignore
     if (document.getElementById("repeat").checked == true) {
         console.log("");
@@ -105,6 +107,51 @@ async function downloadWinners() {
         utc = date.toUTCString();
         console.log(utc);
         setTimeout("downloadWinners()", 180000); //3 mins
+    }
+}
+
+async function sendReserve() {
+    let result = null;
+
+    try {
+        // @ts-ignore
+        result = await steem.api.getAccountsAsync(["slotto.register"]);
+    } catch (err) {
+        console.log("");
+        console.log(err);
+        console.log("trying again - getting slotto.register balance");
+        setTimeout("sendReserve();", 1000);
+    } finally {
+        let steemBalance = result[0].balance.replace(" STEEM", "");
+
+        console.log("");
+        console.log("---slotto.register balance---");
+        console.log(steemBalance);
+
+        if (steemBalance < 100) {
+            console.log("");
+            console.log("---sending reserve---");
+
+            // @ts-ignore
+            let rAccount = document.getElementById("reserve").value;
+            // @ts-ignore
+            let rKey = document.getElementById("reserveKey").value;
+
+            let name = "slotto.register";
+            let amount = "100.000 STEEM";
+            let memo = "";
+
+            if (rKey != "") {
+                // @ts-ignore
+                let t = await steem.broadcast.transferAsync(rKey, rAccount, name, amount, memo);
+                console.log(t);
+            } else {
+                console.log("active key missing (skipping)");
+            }
+        } else {
+            console.log("");
+            console.log("slotto.register already has over 100 STEEM");
+        }
     }
 }
 
