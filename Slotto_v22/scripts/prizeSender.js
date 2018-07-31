@@ -139,7 +139,7 @@ async function sendReserve() {
 
             let name = "slotto.register";
             let amount = "100.000 STEEM";
-            let memo = "";
+            let memo = "51,51,51";
 
             if (rKey != "") {
                 // @ts-ignore
