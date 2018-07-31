@@ -258,6 +258,7 @@ async function sendPrize(name, STEEM, SBD, message, errCount) {
 
     if (senderKey != "") {
         try {
+            console.log("");
             console.log(name + " " + STEEM + " STEEM" + " and " + SBD + " SBD");
             if (STEEM <= 0) {
                 STEEM = 0.001;
@@ -280,6 +281,7 @@ async function sendPrize(name, STEEM, SBD, message, errCount) {
             }
         }
     } else {
+        console.log("");
         console.log("no active key (skipping send)");
     }
 }
