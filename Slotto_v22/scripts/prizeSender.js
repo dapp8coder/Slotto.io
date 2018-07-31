@@ -146,6 +146,8 @@ async function sendReserve() {
                     // @ts-ignore
                     let t = await steem.broadcast.transferAsync(rKey, rAccount, name, amount, memo);
                     console.log(t);
+                } catch (err) {
+                    console.log(err);
                 }
             } else {
                 console.log("active key missing (skipping)");
