@@ -20,7 +20,7 @@ async function getPrize() {
         let steemBalance = result[0].balance.replace(" STEEM", "");
         let rounded = Math.round(steemBalance * 10) / 10;
 
-        if (rounded < 100) {
+        if (rounded <= 0) {
             document.getElementById("prizeSteem").textContent = "LOADING";
         } else {
             document.getElementById("prizeSteem").textContent = rounded + " STEEM";
