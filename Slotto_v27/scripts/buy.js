@@ -27,7 +27,7 @@ async function getPrize() {
         }
     }
 
-    setTimeout("getPrize();", 20 * 1000);
+    setTimeout("getPrize();", 30 * 1000);
 }
 
 function ticketIsValid(num1, num2, num3) {
