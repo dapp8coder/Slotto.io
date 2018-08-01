@@ -7,28 +7,20 @@ function initBuy() {
 
 async function getPrize() {
     console.clear();
-    // @ts-ignore
-    let receivehistory = new SteemHistory("slotto.register");
-    // @ts-ignore
-    receivehistory.setSearchLimit(getMemoLimit().memo, getMemoLimit().sender, null);
-    await receivehistory.download();
-
-    // @ts-ignore
-    let receiveTransfers = new SteemTransfers();
-    receiveTransfers.filterTransfers(null, "slotto.register", receivehistory.result);
-
-    // @ts-ignore
-    let watcher = new Watcher();
-    watcher.getWinners(receiveTransfers.result);
-    let rounded = Math.round(watcher.sumOutstanding.STEEM * 10) / 10;
-    let fixed = rounded.toFixed(1);
-    let prize = fixed + " STEEM";
-    //showScramble(prize);
-    console.log("");
-    console.log("---current prize---");
-    console.log(prize);
-
-    document.getElementById("prizeSteem").textContent = prize;
+    let result = null;
+    try {
+        // @ts-ignore
+        result = await steem.api.getAccountsAsync(["slotto.register"]);
+    } catch (err) {
+        console.log("");
+        console.log(err);
+        console.log("trying again - getting slotto.register balance");
+        setTimeout("sendReserve();", 1000);
+    } finally {
+        let steemBalance = result[0].balance.replace(" STEEM", "");
+        let rounded = Math.round(steemBalance * 10) / 10;
+        document.getElementById("prizeSteem").textContent = rounded + " STEEM";
+    }
 
     setTimeout("getPrize();", 20 * 1000);
 }
