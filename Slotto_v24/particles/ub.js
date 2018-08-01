@@ -14,7 +14,7 @@ function initParticles() {
 
     btn.addEventListener('mouseup', function(e) {
         mouseX = e.clientX;
-        mouseY = e.clientY / 3.6;
+        mouseY = e.clientY / 3;
         createParticles();
     });
 }

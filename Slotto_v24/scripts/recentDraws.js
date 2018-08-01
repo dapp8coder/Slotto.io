@@ -13,23 +13,13 @@ async function getRecentDraws() {
 
     let history = null;
 
-    /*try {*/
     // @ts-ignore
     history = new SteemHistory(getMemoLimit().sender);
     // @ts-ignore
     history.setSearchLimit(getMemoLimit().memo, getMemoLimit().sender, null);
     await history.download();
-    /*} catch (err) {
-        console.log("");
-        console.log("---error downloading history---");
-        console.log(err);
 
-        console.log("");
-        console.log("trying again..");
-
-        setTimeout("getRecentDraws()", 1000);
-    } finally {*/
-    // @ts-ignore
+    // @ts-ignore steemTransfers.js
     let transfers = new SteemTransfers();
     transfers.filterTransfers("slotto.gen", "slotto.register", history.result);
 
@@ -62,7 +52,6 @@ async function getRecentDraws() {
 
     prevDraw = latest;
     setTimeout("getRecentDraws()", 10000);
-    /*}*/
 }
 
 //@ts-check
