@@ -10,11 +10,11 @@
 async function getHistory(name, from, limit, node) {
     console.log("from: " + from + " limit: " + limit);
 
-    // @ts-ignore
-    let r = await steem.api.getAccountHistoryAsync(name, from, limit);
-    let halt = false;
-
     try {
+        // @ts-ignore
+        let r = await steem.api.getAccountHistoryAsync(name, from, limit);
+        let halt = false;
+
         for (let i = r.length - 1; i >= 0; i--) {
             node.result.push(r[i]);
 
