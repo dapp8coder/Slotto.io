@@ -15,7 +15,7 @@ async function getPrize() {
         console.log("");
         console.log(err);
         console.log("trying again - getting slotto.register balance");
-        setTimeout("sendReserve();", 1000);
+        setTimeout("getPrize();", 1000);
     } finally {
         let steemBalance = result[0].balance.replace(" STEEM", "");
         let rounded = Math.round(steemBalance * 10) / 10;
@@ -26,8 +26,6 @@ async function getPrize() {
             document.getElementById("prizeSteem").textContent = rounded + " STEEM";
         }
     }
-
-    setTimeout("getPrize();", 30 * 1000);
 }
 
 function ticketIsValid(num1, num2, num3) {
