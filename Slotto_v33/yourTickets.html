@@ -19,6 +19,7 @@
     <script type="text/javascript" src="scripts/slottoSettings.js"></script>
     <script type="text/javascript" src="scripts/prizeSender.js"></script>
     <script type="text/javascript" src="scripts/yourTickets.js"></script>
+    <script type="text/javascript" src="scripts/slowLoad.js"></script>
 </head>
 
 <body>
@@ -35,16 +36,6 @@
     </div>
 
     <div id="showTickets">
-
-        <!--        
-            <div id="rfbWrapper" class="refreshButton">
-            <a href="#" class="btn" onclick="findYourTickets();">
-                <span class="btn-content" onclick="findYourTickets()">Refresh</span>
-                <span class="icon"><i class="fas fa-redo" aria-hidden="true"></i></span>
-            </a>
-        </div>
-        -->
-
         <div id="ticketsList" class="ticketStatus"></div>
     </div>
 
@@ -54,6 +45,8 @@
             <div class="lds-dual-ring"></div>
         </div>
     </div>
+
+    <div id="canBeSlow" class="smallLetters">Blockchain response can be slow during peak hours</div>
 
     <div class="ticketStatus" id="notFound">Account not found: </div>
 

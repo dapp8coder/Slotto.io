@@ -3,6 +3,9 @@
 async function findYourTickets() {
     console.clear();
 
+    // @ts-ignore slowLoad.js
+    setSlowLoad();
+
     // @ts-ignore
     let account = document.getElementById("accountName").value;
 
@@ -11,16 +14,19 @@ async function findYourTickets() {
         document.getElementById("ticketsList").innerHTML = "";
         document.getElementById("showTickets").style.display = "block";
         document.getElementById("loadingIcon").style.display = "block";
-        //document.getElementById("rfbWrapper").style.display = "none";
         document.getElementById("notFound").style.display = "none";
         document.getElementById("loadingText").textContent = "Searching: " + account;
 
         await procFind(account);
     }
+
+    // @ts-ignore slowLoad.js
+    hideSlowLoad();
 }
 
 async function procFind(account) {
     let accountInfo = null;
+
     try {
         // @ts-ignore
         accountInfo = await steem.api.getAccountsAsync([account]);
@@ -144,6 +150,9 @@ function initTicketStatus() {
             document.getElementById("findButton").click();
         }
     });
+
+    // @ts-ignore slowLoad.js
+    hideSlowLoad();
 }
 
 let inputEnter = null;
