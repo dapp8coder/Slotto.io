@@ -119,5 +119,6 @@ SteemHistory.prototype.download = async function() {
     console.log("---downloading account history---");
     this.result = new Array();
 
+    // @ts-ignore slottoSettings.js
     await getHistory(this.name, -1, getHistoryInterval(), this);
 }
