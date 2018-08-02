@@ -1,4 +1,6 @@
 async function showWinners() {
+    setSlowLoad();
+
     document.getElementById("loading").style.display = "block";
 
     console.clear();
@@ -47,4 +49,6 @@ async function showWinners() {
     document.getElementById("loading").style.display = "none";
 
     document.getElementById("winnersList").innerHTML = str;
+
+    hideSlowLoad();
 }

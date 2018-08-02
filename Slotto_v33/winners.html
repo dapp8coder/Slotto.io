@@ -14,6 +14,7 @@
     <script type="text/javascript" src="scripts/watcher.js"></script>
     <script type="text/javascript" src="scripts/slottoSettings.js"></script>
     <script type="text/javascript" src="scripts/winners.js"></script>
+    <script type="text/javascript" src="scripts/slowLoad.js"></script>
 
     <style type="text/css">
         body {
@@ -26,6 +27,7 @@
     <link rel="stylesheet" type="text/css" href="scripts/buy.css">
     <link rel="stylesheet" type="text/css" href="scripts/winners.css">
     <link rel="stylesheet" type="text/css" href="scripts/loading.css">
+    <link rel="stylesheet" type="text/css" href="scripts/yourTickets.css">
 </head>
 
 <body>
@@ -41,7 +43,10 @@
 
     <div class="winnersList" id="winnersList"></div>
 
+    <div id="canBeSlow" class="smallLetters">Blockchain response can be slow during peak hours</div>
+
     <script>
+        hideSlowLoad();
         showWinners();
     </script>
 </body>
