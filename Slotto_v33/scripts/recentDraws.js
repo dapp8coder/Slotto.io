@@ -3,6 +3,9 @@
 async function getRecentDraws() {
     console.clear();
 
+    // @ts-ignore slowLoad.js
+    setSlowLoad();
+
     console.log("");
     console.log("---prev draw---");
     console.log(prevDraw);
@@ -51,6 +54,10 @@ async function getRecentDraws() {
     }
 
     prevDraw = latest;
+
+    // @ts-ignore slowLoad.js
+    hideSlowLoad();
+
     setTimeout("getRecentDraws()", 10000);
 }
 
