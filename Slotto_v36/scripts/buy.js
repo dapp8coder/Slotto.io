@@ -15,7 +15,7 @@ async function getPrize() {
         console.log("");
         console.log(err);
         console.log("trying again - getting slotto.register balance");
-        getPrize();
+        await getPrize();
     } finally {
         let steemBalance = result[0].balance.replace(" STEEM", "");
         let rounded = Math.round(steemBalance * 10) / 10;
