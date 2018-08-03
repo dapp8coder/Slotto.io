@@ -21,7 +21,7 @@ async function sendReserve() {
         console.log("");
         console.log(err);
         console.log("trying again - getting slotto.register balance");
-        setTimeout("sendReserve();", 1000);
+        await sendReserve();
     } finally {
         let steemBalance = result[0].balance.replace(" STEEM", "");
 
