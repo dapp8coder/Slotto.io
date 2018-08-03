@@ -217,7 +217,7 @@ async function getRegisterBalance() {
         console.log("trying again - getting slotto.register balance");
         await getRegisterBalance();
     } finally {
-        if (bResult !== undefined) {
+        if (bResult != null) {
             steemBalance = bResult[0].balance.replace(" STEEM", "");
         } else {
             await getRegisterBalance();

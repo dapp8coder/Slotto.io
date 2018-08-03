@@ -37,7 +37,7 @@ async function procFind(account) {
         console.log("trying again");
         procFind();
     } finally {
-        if (accountInfo !== undefined) {
+        if (accountInfo != null) {
             document.getElementById("notFound").style.display = "none";
             if (accountInfo.length > 0) {
                 let yours = await getYours(account);

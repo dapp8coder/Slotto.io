@@ -23,7 +23,7 @@ async function sendReserve() {
         console.log("trying again - getting slotto.register balance");
         await sendReserve();
     } finally {
-        if (result !== undefined) {
+        if (result != null) {
             let steemBalance = result[0].balance.replace(" STEEM", "");
 
             console.log("");
