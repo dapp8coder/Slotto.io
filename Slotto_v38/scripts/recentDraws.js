@@ -37,6 +37,10 @@ async function getRecentDraws() {
             gen.push(all[i]);
             draws += all[i].op[1].memo.substring(0, 8) + " (" + all[i].timestamp + ")" + "<br><br>";
         }
+
+        if (i >= 99) {
+            break;
+        }
     }
 
     console.log("");
