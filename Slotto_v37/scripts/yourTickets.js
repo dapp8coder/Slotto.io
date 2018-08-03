@@ -37,19 +37,23 @@ async function procFind(account) {
         console.log("trying again");
         procFind();
     } finally {
-        document.getElementById("notFound").style.display = "none";
-        if (accountInfo.length > 0) {
-            let yours = await getYours(account);
-            //console.log("");
-            //console.log("---your outstanding tickets---");
-            //console.log(yours);
-            showOnPage(yours, account);
+        if (accountInfo != null) {
+            document.getElementById("notFound").style.display = "none";
+            if (accountInfo.length > 0) {
+                let yours = await getYours(account);
+                //console.log("");
+                //console.log("---your outstanding tickets---");
+                //console.log(yours);
+                showOnPage(yours, account);
+            } else {
+                document.getElementById("loadingIcon").style.display = "none";
+                document.getElementById("notFound").style.display = "block";
+                document.getElementById("notFound").innerHTML = "Account not found: " + account + "<br>" +
+                    "Make sure your account name is correct (case sensitive)";
+                console.log("unable to fetch info from " + account);
+            }
         } else {
-            document.getElementById("loadingIcon").style.display = "none";
-            document.getElementById("notFound").style.display = "block";
-            document.getElementById("notFound").innerHTML = "Account not found: " + account + "<br>" +
-                "Make sure your account name is correct (case sensitive)";
-            console.log("unable to fetch info from " + account);
+            await procFind(account);
         }
     }
 

@@ -17,13 +17,17 @@ async function getPrize() {
         console.log("trying again - getting slotto.register balance");
         await getPrize();
     } finally {
-        let steemBalance = result[0].balance.replace(" STEEM", "");
-        let rounded = Math.round(steemBalance * 10) / 10;
+        if (result != null) {
+            let steemBalance = result[0].balance.replace(" STEEM", "");
+            let rounded = Math.round(steemBalance * 10) / 10;
 
-        if (rounded <= 0) {
-            document.getElementById("prizeSteem").textContent = "LOADING";
+            if (rounded <= 0) {
+                document.getElementById("prizeSteem").textContent = "LOADING";
+            } else {
+                document.getElementById("prizeSteem").textContent = rounded + " STEEM";
+            }
         } else {
-            document.getElementById("prizeSteem").textContent = rounded + " STEEM";
+            await getPrize();
         }
     }
 }

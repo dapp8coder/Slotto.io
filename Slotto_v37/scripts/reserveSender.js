@@ -23,28 +23,32 @@ async function sendReserve() {
         console.log("trying again - getting slotto.register balance");
         await sendReserve();
     } finally {
-        let steemBalance = result[0].balance.replace(" STEEM", "");
+        if (result != null) {
+            let steemBalance = result[0].balance.replace(" STEEM", "");
 
-        console.log("");
-        console.log("---balance---");
-        console.log(steemBalance);
+            console.log("");
+            console.log("---balance---");
+            console.log(steemBalance);
 
-        document.getElementById("registerBalance").textContent = "slotto.register balance: " + steemBalance + " STEEM";
+            document.getElementById("registerBalance").textContent = "slotto.register balance: " + steemBalance + " STEEM";
 
-        if (steemBalance < 100) {
-            await procSend();
+            if (steemBalance < 100) {
+                await procSend();
+            } else {
+                console.log("slotto.register already has over 100 STEEM (skipping)");
+            }
+
+            console.log("");
+            console.log("updating again in 3 mins");
+            setTimeout("sendReserve()", rInterval);
+
+            let date = new Date();
+            let utc = date.toUTCString();
+            console.log("check time: " + utc);
+            document.getElementById("checkTime").textContent = "check time: " + utc;
         } else {
-            console.log("slotto.register already has over 100 STEEM (skipping)");
+            await sendReserve();
         }
-
-        console.log("");
-        console.log("updating again in 3 mins");
-        setTimeout("sendReserve()", rInterval);
-
-        let date = new Date();
-        let utc = date.toUTCString();
-        console.log("check time: " + utc);
-        document.getElementById("checkTime").textContent = "check time: " + utc;
     }
 }
 
