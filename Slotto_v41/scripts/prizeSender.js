@@ -246,7 +246,6 @@ async function sendPrize(name, STEEM, SBD, message, errCount) {
                 let result = await steem.broadcast.transferAsync(senderKey, sender, name, amount, message);
                 console.log(result);
             }
-
         } catch (err) {
             console.log("");
             console.log("---error sending prize---");
