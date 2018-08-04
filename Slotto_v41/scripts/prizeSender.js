@@ -44,8 +44,23 @@ async function downloadWinners() {
 
     sendList = new Array();
     winnerString = "";
+    winnerString = "<br><h3>Winners</h3>";
+
     for (let i = 0; i < winners.length; i++) {
         calcPrize(winners[i]);
+
+        console.log("")
+        console.log("---wtf---");
+        console.log(winners[i]);
+
+        // winner names
+        for (let w = 0; w < winners[i].winnerNames.length; w++) {
+            winnerString += winners[i].winnerNames[w] + "<br>";
+        }
+
+        winnerString += winners[i].winningDraw + "<br>";
+
+        winnerString += "<br>";
     }
 
     // @ts-ignore
