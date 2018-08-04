@@ -110,11 +110,11 @@ async function downloadWinners() {
     // @ts-ignore
     if (document.getElementById("repeat").checked == true) {
         console.log("");
-        console.log("updating again in 3 mins..");
+        console.log("updating again in 5 mins..");
         date = new Date();
         utc = date.toUTCString();
         console.log(utc);
-        setTimeout("downloadWinners()", 180000); //3 mins
+        setTimeout("downloadWinners()", 5 * 60 * 1000); //5 mins
     }
 }
 
