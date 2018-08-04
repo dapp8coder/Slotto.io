@@ -44,16 +44,9 @@ async function downloadWinners() {
 
     sendList = new Array();
     winnerString = "";
-    winnerString = "<br><h3>Winners</h3>";
     for (let i = 0; i < winners.length; i++) {
         calcPrize(winners[i]);
-
-        if (i != winners.length - 1) {
-            winnerString += "<br>";
-        }
     }
-
-    winnerString += "<br>";
 
     // @ts-ignore
     if (document.getElementById("showOutstanding").checked) {
@@ -279,13 +272,9 @@ function calcPrize(data) {
 
     let winningDraw = data.winningDraw;
 
-    winnerString += winningDraw + "<br>";
-
     for (let i = 0; i < namesArray.length; i++) {
         let packet = new PrizeReceiver();
         packet.name = namesArray[i];
-
-        winnerString += namesArray[i] + " " + steem + " STEEM<br>";
         packet.STEEM = steem;
         packet.SBD = sbd;
         packet.winningDraw = winningDraw;

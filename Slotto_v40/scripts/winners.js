@@ -20,10 +20,9 @@ async function showWinners() {
     // @ts-ignore
     let watcher = new Watcher();
     watcher.getWinners(receiveTransfers.result);
+
     let winners = watcher.result;
-
     let str = "";
-
     for (let i = winners.length - 1; i >= 0; i--) {
         let isFailedAccount = false;
         for (let w = 0; w < winners[i].winnerNames.length; w++) {
