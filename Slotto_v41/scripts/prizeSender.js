@@ -59,6 +59,7 @@ async function downloadWinners() {
         }
 
         winnerString += winners[i].winningDraw + "<br>";
+        winnerString += winners[i].sum.STEEM + "<br>";
 
         winnerString += "<br>";
     }
