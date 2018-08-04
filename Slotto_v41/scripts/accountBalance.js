@@ -12,7 +12,6 @@ async function getSteemBalance(accountName) {
     try {
         // @ts-ignore
         result = await steem.api.getAccountsAsync([accountName]);
-
     } catch (err) {
         console.log("");
         console.log(err);

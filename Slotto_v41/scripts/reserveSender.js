@@ -10,7 +10,12 @@ async function sendReserve() {
     document.getElementById("inputField").style.display = "none";
     document.getElementById("cancelButton").style.display = "block";
 
+    // @ts-ignore accountBalance.js
     let result = await getSteemBalance("slotto.register");
+    // @ts-ignore
+    let reserve = await getSteemBalance(document.getElementById("reserve").value);
+
+    let reg = Number(result.replace(" STEEM", ""));
 
     /*let result = null;
 
