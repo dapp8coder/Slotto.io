@@ -72,7 +72,7 @@ async function downloadWinners() {
     if (document.getElementById("showOutstanding").checked) {
         let outstanding = watcher.outstandingTickets;
 
-        winnerString += "<br><h3>outstanding Tickets</h3>";
+        winnerString += "<br><h3>Outstanding Tickets</h3>";
         for (let i = 0; i < outstanding.length; i++) {
             winnerString += outstanding[i].op[1].from + " " + outstanding[i].op[1].memo + "<br>";
         }
