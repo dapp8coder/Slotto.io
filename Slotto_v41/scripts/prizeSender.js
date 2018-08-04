@@ -7,6 +7,9 @@ function initAutoSend() {
     document.getElementById("showOutstanding").checked = true;
     // @ts-ignore
     document.getElementById("operationalFee").checked = true;
+    // @ts-ignore
+    document.getElementById("limitTestPrize").checked = true;
+
     document.getElementById("checkTimeLabel").style.display = "none";
 
     document.getElementById("inputSection").style.display = "block";
@@ -229,15 +232,17 @@ async function sendPrize(name, STEEM, SBD, message, errCount) {
             let fixed = STEEM.toFixed(3);
             let amount = fixed + " STEEM";
 
-            //do not send prize to my own account
-            if (name == "roundbeargames" ||
-                name == "hitmanchoi" ||
-                name == "slotto.register" ||
-                name == "slotto.gen" ||
-                name == "slotto.game" ||
-                name == "slotto.ninja" ||
-                name == "imaginalex") {
-                amount = "0.100 STEEM";
+            // @ts-ignore
+            if (document.getElementById("limitTestPrize").checked) {
+                if (name == "roundbeargames" ||
+                    name == "hitmanchoi" ||
+                    name == "slotto.register" ||
+                    name == "slotto.gen" ||
+                    name == "slotto.game" ||
+                    name == "slotto.ninja" ||
+                    name == "imaginalex") {
+                    amount = "0.100 STEEM";
+                }
             }
 
             // @ts-ignore
