@@ -289,9 +289,11 @@ function createBlocks(allTickets) {
             //place outstanding tickets into a block
             for (let t = i + 1; t < allTickets.length; t++) {
                 if (allTickets[t].op[1].from != "slotto.gen") {
-                    b.tickets.push(allTickets[t]);
-                    b.sum.sortCurrency(allTickets[t].op[1].amount, "STEEM");
-                    b.sum.sortCurrency(allTickets[t].op[1].amount, "SBD");
+                    if (allTickets[t].op[1].from != "slotto.game") {
+                        b.tickets.push(allTickets[t]);
+                        b.sum.sortCurrency(allTickets[t].op[1].amount, "STEEM");
+                        b.sum.sortCurrency(allTickets[t].op[1].amount, "SBD");
+                    }
                 } else {
                     break;
                 }
