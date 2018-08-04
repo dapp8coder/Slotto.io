@@ -31,5 +31,5 @@ function getHistoryInterval() {
 }
 
 function getReserveAmount() {
-    return 10;
+    return 100;
 }
