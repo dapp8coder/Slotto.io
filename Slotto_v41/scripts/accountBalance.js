@@ -19,6 +19,7 @@ async function getAccountInfo(accountName) {
     try {
         // @ts-ignore
         accountInfo = await steem.api.getAccountsAsync([accountName]);
+        console.log(accountInfo);
     } catch (err) {
         console.log("failed to download info. trying again..");
         await getAccountInfo(accountName);
