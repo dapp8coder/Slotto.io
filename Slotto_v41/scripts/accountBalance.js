@@ -11,6 +11,8 @@ async function getSteemBalance(accountName) {
     await getAccountInfo(accountName);
     await getSteem(accountName);
 
+    console.log(accountSteem);
+
     return accountSteem;
 }
 
