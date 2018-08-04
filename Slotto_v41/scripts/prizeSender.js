@@ -4,7 +4,7 @@ function initAutoSend() {
     // @ts-ignore
     document.getElementById("repeat").checked = true;
     // @ts-ignore
-    document.getElementById("showOutstanding").checked = false;
+    document.getElementById("showOutstanding").checked = true;
     // @ts-ignore
     document.getElementById("operationalFee").checked = true;
     document.getElementById("checkTimeLabel").style.display = "none";
