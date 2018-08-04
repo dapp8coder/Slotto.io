@@ -243,7 +243,7 @@ function isSlottoFormat(data) {
         const num2 = memo.substr(3, 2);
         const num3 = memo.substr(6, 2);
 
-        if (data.op[1].from == "hitmanchoi") {
+        if (data.op[1].from == "hitmanchoi" || data.op[1].from == "slotto.ninja") {
             return false;
         }
 
