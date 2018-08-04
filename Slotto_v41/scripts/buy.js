@@ -6,11 +6,13 @@ function initBuy() {
 }
 
 async function getPrize() {
+    // @ts-ignore accountBalance.js
     let result = await getSteemBalance("slotto.register");
     let steemBalance = Number(result.replace(" STEEM", ""));
     let rounded = Math.round(steemBalance * 10) / 10;
 
-    if (rounded < 0.1) {
+    // @ts-ignore slottoSettings.js
+    if (rounded < getReserveAmount()) {
         document.getElementById("prizeSteem").textContent = "LOADING";
     } else {
         document.getElementById("prizeSteem").textContent = rounded + " STEEM";
