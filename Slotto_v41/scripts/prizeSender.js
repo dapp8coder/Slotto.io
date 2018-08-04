@@ -161,6 +161,7 @@ async function checkAndSend(outGoingTransfers) {
                 if (outGoingTransfers[k].op[1].to == sendList[i].name) {
                     alreadySent = true;
                     receiver = outGoingTransfers[k].op[1].to;
+                    console.log("already sent: " + sendList[i].winningDraw + " | " + receiver + " | nominal: " + sendList[i].STEEM + " STEEM" + " | actual: " + outGoingTransfers[k].op[1].amount);
                     break;
                 }
             }
@@ -171,8 +172,6 @@ async function checkAndSend(outGoingTransfers) {
             console.log("---unsent prize---");
             unsentList.push(sendList[i]);
             console.log(sendList[i]);
-        } else {
-            console.log("already sent: " + sendList[i].winningDraw + " " + receiver + " " + sendList[i].STEEM + " STEEM");
         }
     }
 
