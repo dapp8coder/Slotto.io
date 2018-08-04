@@ -16,64 +16,34 @@ async function sendReserve() {
 
     // @ts-ignore accountBalance.js
     let resultReg = await getSteemBalance("slotto.register");
+    let registerAmount = Number(resultReg.replace(" STEEM", ""));
+    // @ts-ignore slottoSettings.js
+    let reserveAmount = getReserveAmount();
 
-    if (resultReg !== undefined) {
-        let register = Number(resultReg.replace(" STEEM", ""));
-        // @ts-ignore slottoSettings.js
-        let reserveAmount = getReserveAmount();
+    if (registerAmount < reserveAmount) {
+        console.log("register has less than " + reserveAmount + " STEEM");
 
-        if (register < reserveAmount) {
-            console.log("register has less than " + reserveAmount + " STEEM");
+        // @ts-ignore
+        let resultReserve = await getSteemBalance(document.getElementById("reserve").value);
+        let reserve = Number(resultReserve.replace(" STEEM", ""));
 
-            // @ts-ignore
-            let resultReserve = await getSteemBalance(document.getElementById("reserve").value);
-            let reserve = Number(resultReserve.replace(" STEEM", ""));
-
-            if (reserve >= reserveAmount) {
-                console.log("reserve has " + reserveAmount + " STEEM");
-            }
+        if (reserve >= reserveAmount) {
+            console.log("reserve has " + reserveAmount + " STEEM");
+            //send reserve
+            await procSend();
+        } else {
+            console.log("reserve has less than " + reserveAmount + " (skipping)");
         }
+    } else {
+        console.log("register has more than " + reserveAmount + " (skipping)");
     }
 
+    let date = new Date();
+    let utc = date.toUTCString();
+    console.log("");
+    console.log("check time: " + utc);
+    document.getElementById("checkTime").textContent = "check time: " + utc;
 
-    /*let result = null;
-
-    try {
-        // @ts-ignore
-        result = await steem.api.getAccountsAsync(["slotto.register"]);
-    } catch (err) {
-        console.log("");
-        console.log(err);
-        console.log("trying again - getting slotto.register balance");
-        await sendReserve();
-    } finally {
-        if (result != null) {
-            let steemBalance = result[0].balance.replace(" STEEM", "");
-
-            console.log("");
-            console.log("---balance---");
-            console.log(steemBalance);
-
-            document.getElementById("registerBalance").textContent = "slotto.register balance: " + steemBalance + " STEEM";
-
-            if (steemBalance < 100) {
-                await procSend();
-            } else {
-                console.log("slotto.register already has over 100 STEEM (skipping)");
-            }
-
-            let date = new Date();
-            let utc = date.toUTCString();
-            console.log("check time: " + utc);
-            document.getElementById("checkTime").textContent = "check time: " + utc;
-
-            console.log("");
-            console.log("updating again in 3 mins");
-            setTimeout("sendReserve()", rInterval);
-        } else {
-            await sendReserve();
-        }
-    }*/
     setTimeout("sendReserve();", 1000);
 }
 
@@ -85,10 +55,11 @@ async function procSend() {
 
     let name = "slotto.register";
     let memo = "51,51,51";
-    let amount = "100.000 STEEM";
+    let amount = getReserveAmount().toFixed(3) + " STEEM";
 
     console.log("");
     console.log("---sending reserve---");
+    console.log(amount);
 
     if (rKey != "") {
         try {

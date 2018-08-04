@@ -13,19 +13,20 @@ async function getSteemBalance(accountName) {
     try {
         // @ts-ignore
         result = await steem.api.getAccountsAsync([accountName]);
+        console.log(result);
     } catch (err) {
         console.log("");
         console.log(err);
         console.log("trying again..");
         await getSteemBalance(accountName);
-    }
-
-    try {
-        return result[0].balance;
-    } catch (err) {
-        console.log("");
-        console.log(err);
-        console.log("trying again..");
-        getSteemBalance(accountName);
+    } finally {
+        try {
+            return result[0].balance;
+        } catch (err) {
+            console.log("");
+            console.log(err);
+            console.log("trying again..");
+            getSteemBalance(accountName);
+        }
     }
 }
