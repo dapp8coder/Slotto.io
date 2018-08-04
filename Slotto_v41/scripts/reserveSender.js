@@ -12,7 +12,12 @@ async function sendReserve() {
     document.getElementById("inputField").style.display = "none";
     document.getElementById("cancelButton").style.display = "block";
 
-    let result = null;
+    let result = await getSteemBalance("slotto.register");
+
+    console.log("account balance:");
+    console.log(result);
+
+    /*let result = null;
 
     try {
         // @ts-ignore
@@ -49,7 +54,7 @@ async function sendReserve() {
         } else {
             await sendReserve();
         }
-    }
+    }*/
 }
 
 async function procSend() {

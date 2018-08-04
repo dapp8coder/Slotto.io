@@ -190,7 +190,8 @@ async function procUnsentList(unsentList) {
     console.log("---total unsent prize---");
     console.log(unsentSteem);
 
-    await getRegisterBalance();
+    // @ts-ignore accountBalance.js
+    steemBalance = await getSteemBalance("slotto.register");
 
     console.log("");
     console.log("---register balance---");
@@ -212,26 +213,6 @@ async function procUnsentList(unsentList) {
 
     for (let i = 0; i < unsentList.length; i++) {
         await sendPrize(unsentList[i].name, unsentList[i].STEEM, unsentList[i].SBD, unsentList[i].winningDraw, 0);
-    }
-}
-
-async function getRegisterBalance() {
-    steemBalance = 0;
-    let bResult = null;
-    try {
-        // @ts-ignore
-        bResult = await steem.api.getAccountsAsync(["slotto.register"]);
-    } catch (err) {
-        console.log("");
-        console.log(err);
-        console.log("trying again - getting slotto.register balance");
-        await getRegisterBalance();
-    } finally {
-        if (bResult != null) {
-            steemBalance = bResult[0].balance.replace(" STEEM", "");
-        } else {
-            await getRegisterBalance();
-        }
     }
 }
 

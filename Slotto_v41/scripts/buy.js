@@ -6,29 +6,14 @@ function initBuy() {
 }
 
 async function getPrize() {
-    console.clear();
-    let result = null;
-    try {
-        // @ts-ignore
-        result = await steem.api.getAccountsAsync(["slotto.register"]);
-    } catch (err) {
-        console.log("");
-        console.log(err);
-        console.log("trying again - getting slotto.register balance");
-        await getPrize();
-    } finally {
-        if (result != null) {
-            let steemBalance = result[0].balance.replace(" STEEM", "");
-            let rounded = Math.round(steemBalance * 10) / 10;
+    let result = await getSteemBalance("slotto.register");
+    steemBalance = Number(result.replace(" STEEM", ""));
+    let rounded = Math.round(steemBalance * 10) / 10;
 
-            if (rounded < 100) {
-                document.getElementById("prizeSteem").textContent = "LOADING";
-            } else {
-                document.getElementById("prizeSteem").textContent = rounded + " STEEM";
-            }
-        } else {
-            await getPrize();
-        }
+    if (rounded < 100) {
+        document.getElementById("prizeSteem").textContent = "LOADING";
+    } else {
+        document.getElementById("prizeSteem").textContent = rounded + " STEEM";
     }
 }
 
