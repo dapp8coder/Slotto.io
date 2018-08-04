@@ -18,15 +18,8 @@ async function getSteemBalance(accountName) {
         console.log("");
         console.log(err);
         console.log("trying again..");
-        await getSteemBalance(accountName);
+        return await getSteemBalance(accountName);
     } finally {
-        try {
-            return result[0].balance;
-        } catch (err) {
-            console.log("");
-            console.log(err);
-            console.log("trying again..");
-            getSteemBalance(accountName);
-        }
+        return result[0].balance;
     }
 }

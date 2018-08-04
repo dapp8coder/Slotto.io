@@ -9,7 +9,7 @@ async function checkReserveAccount() {
 }
 
 async function sendReserve() {
-    console.clear();
+    //console.clear();
 
     document.getElementById("inputField").style.display = "none";
     document.getElementById("cancelButton").style.display = "block";
