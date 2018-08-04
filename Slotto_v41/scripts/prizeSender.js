@@ -193,10 +193,6 @@ async function procUnsentList(unsentList) {
     // @ts-ignore accountBalance.js
     steemBalance = await getSteemBalance("slotto.register");
 
-    console.log("");
-    console.log("---register balance---");
-    console.log(steemBalance);
-
     if (steemBalance <= unsentSteem) {
         console.log("");
         console.log("---adjusting prize pool---");

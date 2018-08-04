@@ -6,16 +6,11 @@ function cancelReserve() {
 
 async function sendReserve() {
     console.clear();
-    console.log("");
-    console.log("checking slotto.register..");
 
     document.getElementById("inputField").style.display = "none";
     document.getElementById("cancelButton").style.display = "block";
 
     let result = await getSteemBalance("slotto.register");
-
-    console.log("account balance:");
-    console.log(result);
 
     /*let result = null;
 
