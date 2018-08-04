@@ -224,7 +224,6 @@ async function sendPrize(name, STEEM, SBD, message, errCount) {
 
     // @ts-ignore
     let senderKey = document.getElementById("senderKey").value;
-    let count = errCount;
 
     if (senderKey != "") {
         try {
@@ -236,19 +235,22 @@ async function sendPrize(name, STEEM, SBD, message, errCount) {
             let fixed = STEEM.toFixed(3);
             let amount = fixed + " STEEM";
 
-            // @ts-ignore
-            let result = await steem.broadcast.transferAsync(senderKey, sender, name, amount, message);
-            console.log(result);
-        } catch (err) {
-            if (count <= 3) {
-                console.log(err);
-                console.log("");
-                console.log("trying again..");
-                count++
-                await sendPrize(name, STEEM, SBD, message, count);
-            } else {
-                console.log("too many errors, check active key (skipping)");
+            //do not send prize to my own account
+            if (name != "roundbeargames" &&
+                name != "hitmanchoi" &&
+                name != "slotto.register" &&
+                name != "slotto.gen" &&
+                name != "slotto.game" &&
+                name != "slotto.ninja") {
+                // @ts-ignore
+                let result = await steem.broadcast.transferAsync(senderKey, sender, name, amount, message);
+                console.log(result);
             }
+
+        } catch (err) {
+            console.log("");
+            console.log("---error sending prize---");
+            console.log(err);
         }
     } else {
         console.log("");

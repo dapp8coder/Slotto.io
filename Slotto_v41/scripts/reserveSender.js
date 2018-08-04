@@ -38,14 +38,14 @@ async function sendReserve() {
                 console.log("slotto.register already has over 100 STEEM (skipping)");
             }
 
-            console.log("");
-            console.log("updating again in 3 mins");
-            setTimeout("sendReserve()", rInterval);
-
             let date = new Date();
             let utc = date.toUTCString();
             console.log("check time: " + utc);
             document.getElementById("checkTime").textContent = "check time: " + utc;
+
+            console.log("");
+            console.log("updating again in 3 mins");
+            setTimeout("sendReserve()", rInterval);
         } else {
             await sendReserve();
         }
