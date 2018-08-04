@@ -24,32 +24,22 @@ async function showWinners() {
     let winners = watcher.result;
     let str = "";
     for (let i = winners.length - 1; i >= 0; i--) {
-        let isFailedAccount = false;
         for (let w = 0; w < winners[i].winnerNames.length; w++) {
-            if (winners[i].winnerNames[w] != "hitmanchoi" &&
-                winners[i].winnerNames[w] != "slotto.game") {
-                str += winners[i].winnerNames[w];
-                if (winners[i].winnerNames[w].includes("slotto.ninja")) {
-                    str += " (testrun)"
-                } else if (winners[i].winnerNames[w].includes("roundbeargames")) {
-                    str += " (testrun)"
-                }
-                str += "<br>"
-            } else {
-                isFailedAccount = true;
+            str += winners[i].winnerNames[w];
+            if (winners[i].winnerNames[w].includes("slotto.ninja")) {
+                str += " (testrun)"
+            } else if (winners[i].winnerNames[w].includes("slotto.game")) {
+                str += " (testrun)"
+            } else if (winners[i].winnerNames[w].includes("hitmanchoi")) {
+                str += " (testrun)"
+            } else if (winners[i].winnerNames[w].includes("roundbeargames")) {
+                str += " (testrun)"
             }
+            str += "<br>"
         }
 
-        // reserve account error fix
-        if (!isFailedAccount) {
-            let prize = Number(winners[i].sum.STEEM);
-            console.log(prize);
-            if (prize < 100) {
-                prize += 100;
-            }
-            str += "<div style='color:rgb(255, 234, 47)'>" + prize + " STEEM </div>";
-            str += winners[i].winningDraw + "<br><br>";
-        }
+        str += "<div style='color:rgb(255, 234, 47)'>" + winners[i].sum.STEEM + " STEEM </div>";
+        str += winners[i].winningDraw + "<br><br>";
     }
 
     document.getElementById("loading").style.display = "none";
