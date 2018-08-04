@@ -8,18 +8,33 @@ async function getSteemBalance(accountName) {
     console.log("");
     console.log("---getting account balance: " + accountName + "---");
 
-    let result = null;
+    await getAccountInfo(accountName);
+    await getSteem(accountName);
 
+    return accountSteem;
+}
+
+async function getAccountInfo(accountName) {
+    accountInfo = null;
     try {
         // @ts-ignore
-        result = await steem.api.getAccountsAsync([accountName]);
-        console.log(result);
+        accountInfo = await steem.api.getAccountsAsync([accountName]);
     } catch (err) {
-        console.log("");
-        console.log(err);
-        console.log("trying again..");
-        return await getSteemBalance(accountName);
-    } finally {
-        return result[0].balance;
+        console.log("failed to download info. trying again..");
+        await getAccountInfo(accountName);
     }
 }
+
+async function getSteem(accountName) {
+    accountSteem = null;
+    try {
+        accountSteem = accountInfo[0].balance;
+    } catch (err) {
+        console.log("result is undefined. trying again..");
+        await getAccountInfo(accountName);
+        await getSteem(accountName);
+    }
+}
+
+let accountInfo = null;
+let accountSteem = null;

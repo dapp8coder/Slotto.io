@@ -9,7 +9,7 @@ async function checkReserveAccount() {
 }
 
 async function sendReserve() {
-    //console.clear();
+    console.clear();
 
     document.getElementById("inputField").style.display = "none";
     document.getElementById("cancelButton").style.display = "block";
@@ -43,8 +43,9 @@ async function sendReserve() {
     console.log("");
     console.log("check time: " + utc);
     document.getElementById("checkTime").textContent = "check time: " + utc;
+    console.log("updating in 3 mins..");
 
-    setTimeout("sendReserve();", 1000);
+    setTimeout("sendReserve();", 3 * 60 * 1000);
 }
 
 async function procSend() {
