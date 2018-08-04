@@ -237,7 +237,7 @@ async function sendPrize(name, STEEM, SBD, message, errCount) {
                 name == "slotto.game" ||
                 name == "slotto.ninja" ||
                 name == "imaginalex") {
-                amount = "0.1 STEEM";
+                amount = "0.100 STEEM";
             }
 
             // @ts-ignore
