@@ -231,16 +231,19 @@ async function sendPrize(name, STEEM, SBD, message, errCount) {
             let amount = fixed + " STEEM";
 
             //do not send prize to my own account
-            if (name != "roundbeargames" &&
-                name != "hitmanchoi" &&
-                name != "slotto.register" &&
-                name != "slotto.gen" &&
-                name != "slotto.game" &&
-                name != "slotto.ninja") {
-                // @ts-ignore
-                let result = await steem.broadcast.transferAsync(senderKey, sender, name, amount, message);
-                console.log(result);
+            if (name == "roundbeargames" ||
+                name == "hitmanchoi" ||
+                name == "slotto.register" ||
+                name == "slotto.gen" ||
+                name == "slotto.game" ||
+                name == "slotto.ninja" ||
+                name == "imaginalex") {
+                amount = "0.1 STEEM";
             }
+
+            // @ts-ignore
+            let result = await steem.broadcast.transferAsync(senderKey, sender, name, amount, message);
+            console.log(result);
         } catch (err) {
             console.log("");
             console.log("---error sending prize---");
