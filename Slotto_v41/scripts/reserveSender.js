@@ -56,6 +56,7 @@ async function procSend() {
 
     let name = "slotto.register";
     let memo = "51,51,51";
+    // @ts-ignore slottoSettings.js
     let amount = getReserveAmount().toFixed(3) + " STEEM";
 
     console.log("");
