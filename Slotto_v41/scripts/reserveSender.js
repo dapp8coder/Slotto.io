@@ -11,12 +11,22 @@ async function sendReserve() {
     document.getElementById("cancelButton").style.display = "block";
 
     // @ts-ignore accountBalance.js
-    let result = await getSteemBalance("slotto.register");
-    // @ts-ignore
-    let reserve = await getSteemBalance(document.getElementById("reserve").value);
+    let resultReg = await getSteemBalance("slotto.register");
+    let register = Number(resultReg.replace(" STEEM", ""));
+    // @ts-ignore slottoSettings.js
+    let reserveAmount = getReserveAmount();
 
-    let reg = Number(result.replace(" STEEM", ""));
+    if (register < reserveAmount) {
+        console.log("register has less than " + reserveAmount + " STEEM");
 
+        // @ts-ignore
+        let resultReserve = await getSteemBalance(document.getElementById("reserve").value);
+        let reserve = Number(resultReserve.replace(" STEEM", ""));
+
+        if (reserve >= reserveAmount) {
+            console.log("reserve has " + reserveAmount + " STEEM");
+        }
+    }
     /*let result = null;
 
     try {
@@ -55,6 +65,7 @@ async function sendReserve() {
             await sendReserve();
         }
     }*/
+    setTimeout("sendReserve();", 1000);
 }
 
 async function procSend() {
@@ -96,4 +107,4 @@ function getUTC() {
     setTimeout("getUTC()", 1000);
 }
 
-let rInterval = 3 * 60 * 1000;
+let rInterval = 1 * 1000;

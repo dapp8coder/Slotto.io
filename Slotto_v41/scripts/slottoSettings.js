@@ -29,3 +29,7 @@ function getTestSendMilliSeconds() {
 function getHistoryInterval() {
     return 5000;
 }
+
+function getReserveAmount() {
+    return 10;
+}
