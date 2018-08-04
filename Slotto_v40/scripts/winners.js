@@ -41,6 +41,7 @@ async function showWinners() {
             }
         }
 
+        // reserve account error fix
         if (!isFailedAccount) {
             let prize = Number(winners[i].sum.STEEM);
             console.log(prize);
