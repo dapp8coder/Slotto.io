@@ -25,24 +25,29 @@ async function showWinners() {
     let str = "";
 
     for (let i = winners.length - 1; i >= 0; i--) {
+        console.log(winners);
+        let isTestAccount = false;
         for (let w = 0; w < winners[i].winnerNames.length; w++) {
-            str += winners[i].winnerNames[w];
-
-            if (winners[i].winnerNames[w].includes("slotto.ninja")) {
-                str += " (testrun)"
-            } else if (winners[i].winnerNames[w].includes("slotto.game")) {
-                str += " (testrun)"
-            } else if (winners[i].winnerNames[w].includes("roundbeargames")) {
-                str += " (testrun)"
-            } else if (winners[i].winnerNames[w].includes("hitmanchoi")) {
-                str += " (testrun)"
+            //exclude test accounts
+            if (winners[i].winnerNames[w] != "hitmanchoi" &&
+                winners[i].winnerNames[w] != "slotto.game") {
+                str += winners[i].winnerNames[w];
+                if (winners[i].winnerNames[w].includes("slotto.ninja")) {
+                    str += " (testrun)"
+                } else if (winners[i].winnerNames[w].includes("roundbeargames")) {
+                    str += " (testrun)"
+                }
+                str += "<br>"
+            } else {
+                isTestAccount = true;
             }
-
-            str += "<br>"
         }
 
-        str += "<div style='color:rgb(255, 234, 47)'>" + winners[i].sum.STEEM + " STEEM </div>";
-        str += winners[i].winningDraw + "<br><br>";
+        //exclude test accounts
+        if (!isTestAccount) {
+            str += "<div style='color:rgb(255, 234, 47)'>" + winners[i].sum.STEEM + " STEEM </div>";
+            str += winners[i].winningDraw + "<br><br>";
+        }
     }
 
     document.getElementById("loading").style.display = "none";
