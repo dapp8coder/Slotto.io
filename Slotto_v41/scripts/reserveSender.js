@@ -4,6 +4,10 @@ function cancelReserve() {
     location.reload();
 }
 
+async function checkReserveAccount() {
+
+}
+
 async function sendReserve() {
     console.clear();
 
@@ -12,21 +16,26 @@ async function sendReserve() {
 
     // @ts-ignore accountBalance.js
     let resultReg = await getSteemBalance("slotto.register");
-    let register = Number(resultReg.replace(" STEEM", ""));
-    // @ts-ignore slottoSettings.js
-    let reserveAmount = getReserveAmount();
 
-    if (register < reserveAmount) {
-        console.log("register has less than " + reserveAmount + " STEEM");
+    if (resultReg !== undefined) {
+        let register = Number(resultReg.replace(" STEEM", ""));
+        // @ts-ignore slottoSettings.js
+        let reserveAmount = getReserveAmount();
 
-        // @ts-ignore
-        let resultReserve = await getSteemBalance(document.getElementById("reserve").value);
-        let reserve = Number(resultReserve.replace(" STEEM", ""));
+        if (register < reserveAmount) {
+            console.log("register has less than " + reserveAmount + " STEEM");
 
-        if (reserve >= reserveAmount) {
-            console.log("reserve has " + reserveAmount + " STEEM");
+            // @ts-ignore
+            let resultReserve = await getSteemBalance(document.getElementById("reserve").value);
+            let reserve = Number(resultReserve.replace(" STEEM", ""));
+
+            if (reserve >= reserveAmount) {
+                console.log("reserve has " + reserveAmount + " STEEM");
+            }
         }
     }
+
+
     /*let result = null;
 
     try {

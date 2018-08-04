@@ -7,7 +7,7 @@ function initBuy() {
 
 async function getPrize() {
     let result = await getSteemBalance("slotto.register");
-    steemBalance = Number(result.replace(" STEEM", ""));
+    let steemBalance = Number(result.replace(" STEEM", ""));
     let rounded = Math.round(steemBalance * 10) / 10;
 
     if (rounded < 100) {
