@@ -45,9 +45,7 @@ async function showWinners() {
         str += winners[i].winningDraw + "<br><br>";
     }
 
-    //document.getElementById("spinner").style.display = "none";
     document.getElementById("loading").style.display = "none";
-
     document.getElementById("winnersList").innerHTML = str;
 
     hideSlowLoad();
