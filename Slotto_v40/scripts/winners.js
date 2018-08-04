@@ -25,10 +25,8 @@ async function showWinners() {
     let str = "";
 
     for (let i = winners.length - 1; i >= 0; i--) {
-        console.log(winners);
-        let isTestAccount = false;
+        let isFailedAccount = false;
         for (let w = 0; w < winners[i].winnerNames.length; w++) {
-            //exclude test accounts
             if (winners[i].winnerNames[w] != "hitmanchoi" &&
                 winners[i].winnerNames[w] != "slotto.game") {
                 str += winners[i].winnerNames[w];
@@ -39,13 +37,17 @@ async function showWinners() {
                 }
                 str += "<br>"
             } else {
-                isTestAccount = true;
+                isFailedAccount = true;
             }
         }
 
-        //exclude test accounts
-        if (!isTestAccount) {
-            str += "<div style='color:rgb(255, 234, 47)'>" + winners[i].sum.STEEM + " STEEM </div>";
+        if (!isFailedAccount) {
+            let prize = Number(winners[i].sum.STEEM);
+            console.log(prize);
+            if (prize < 100) {
+                prize += 100;
+            }
+            str += "<div style='color:rgb(255, 234, 47)'>" + prize + " STEEM </div>";
             str += winners[i].winningDraw + "<br><br>";
         }
     }
