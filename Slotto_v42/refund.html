@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Refund</title>
+
+    <script src="https://cdn.steemjs.com/lib/latest/steem.min.js"></script>
+    <script type="text/javascript" src="scripts/slottoSettings.js"></script>
+    <script type="text/javascript" src="scripts/steemNode.js"></script>
+    <script type="text/javascript" src="scripts/sortSteem.js"></script>
+    <script type="text/javascript" src="scripts/steemHistory.js"></script>
+    <script type="text/javascript" src="scripts/steemTransfers.js"></script>
+    <script type="text/javascript" src="scripts/watcher.js"></script>
+    <script type="text/javascript" src="scripts/refund.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="scripts/basicFormat.css">
+</head>
+
+<body>
+    <div class="leftPad">
+        <h1>Refund</h1>
+
+
+        <br>Account:<br><input id="register" value="slotto.register" type="text">
+        <br>Active Key:<br><input id="registerKey" type="password" value="">
+        <br>
+        <br>
+        <br>
+        <br><button class="buttonGreen button1" onclick="getTickets()">Search Tickets</button>
+        <br>
+        <br>
+        <div id="refundable"></div>
+        <br>
+        <br>
+        <br><button class="buttonGreen button1" onclick="sendRefund()">Send Refund</button>
+
+    </div>
+</body>
+
+</html>
