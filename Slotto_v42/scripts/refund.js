@@ -61,6 +61,7 @@ async function sendRefund() {
         if (key != "") {
             // @ts-ignore
             let result = await steem.broadcast.transferAsync(key, sender, receiver, amount, message)
+            console.log(result);
         } else {
             console.log("active key missing (skipping)");
         }
