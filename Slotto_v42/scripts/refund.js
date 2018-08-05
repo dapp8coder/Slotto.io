@@ -43,11 +43,27 @@ async function getTickets() {
 async function sendRefund() {
     console.log("");
     console.log("---sending refund---");
+    // @ts-ignore
+    let key = document.getElementById("registerKey").value;
+    // @ts-ignore
+    let sender = document.getElementById("register").value;
+    let message = "this is a refund. round 3 is resetting.";
+
+    //console.log(sender);
+    //console.log(key);
 
     for (let i = 0; i < refundList.length; i++) {
-        let name = refundList[i].op[1].from;
+        let receiver = refundList[i].op[1].from;
         let amount = "0.100 STEEM";
-        console.log(name + " " + amount);
+        console.log("");
+        console.log(receiver + " " + amount);
+
+        if (key != "") {
+            // @ts-ignore
+            let result = await steem.broadcast.transferAsync(key, sender, receiver, amount, message)
+        } else {
+            console.log("active key missing (skipping)");
+        }
     }
 }
 
