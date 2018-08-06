@@ -75,7 +75,7 @@ function showOnPage(data) {
         document.getElementById("congrats").style.display = "block";
         for (let i = 0; i < wins.length; i++) {
             winningTickets += wins[i].winningDraw + "<br>";
-            winningTickets += "<div style='color:rgb(255, 234, 47)'>" + wins[i].sum.STEEM + " STEEM<br></div>";
+            winningTickets += "<div style='color:rgb(255, 234, 47)'>" + wins[i].sum.STEEM + " STEEM<br><br></div>";
         }
     }
 
