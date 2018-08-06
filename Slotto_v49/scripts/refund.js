@@ -1,6 +1,9 @@
 //@ts-check
 
 async function getTickets() {
+    document.getElementById("refundable").innerHTML = "";
+    console.clear();
+
     let sender = "slotto.register";
 
     // @ts-ignore steemHistory.js
@@ -21,14 +24,17 @@ async function getTickets() {
     console.log("---Refundable Tickets (outstanding)---")
     console.log(watcher.outstandingTickets);
 
+    printRefundables(watcher.outstandingTickets);
+}
+
+function printRefundables(tickets) {
     let str = "";
     refundList = new Array();
 
-    for (let i = 0; i < watcher.outstandingTickets.length; i++) {
-
-        if (watcher.outstandingTickets[i].op[1].amount == "0.100 STEEM") {
-            refundList.push(watcher.outstandingTickets[i]);
-            str += watcher.outstandingTickets[i].op[1].from + " " + watcher.outstandingTickets[i].op[1].memo + " " + watcher.outstandingTickets[i].op[1].amount + "<br>";
+    for (let i = 0; i < tickets.length; i++) {
+        if (tickets[i].op[1].amount == "0.100 STEEM") {
+            refundList.push(tickets[i]);
+            str += tickets[i].op[1].from + " " + tickets[i].op[1].memo + " " + tickets[i].op[1].amount + "<br>";
         }
     }
 
@@ -38,6 +44,46 @@ async function getTickets() {
     str += totalRefund;
 
     document.getElementById("refundable").innerHTML = str;
+}
+
+async function searchTickets() {
+    document.getElementById("refundable").innerHTML = "";
+    console.clear();
+
+    let sender = "slotto.register";
+
+    // @ts-ignore steemHistory.js
+    let receivehistory = new SteemHistory(sender);
+    // @ts-ignore steemHistory.js
+    receivehistory.setSearchLimit(getMemoLimit().memo, getMemoLimit().sender, null);
+    await receivehistory.download();
+
+    // @ts-ignore steemTransfers.js
+    let receiveTransfers = new SteemTransfers();
+    receiveTransfers.filterTransfers(null, sender, receivehistory.result);
+
+    // @ts-ignore watcher.js
+    let watcher = new Watcher();
+    watcher.getWinners(receiveTransfers.result);
+
+    refundList = new Array();
+
+    // @ts-ignore
+    let searchDraw = document.getElementById("winningDraw").value;
+    if (searchDraw != "") {
+        for (let i = 0; i < watcher.result.length; i++) {
+            if (watcher.result[i].winningDraw == searchDraw) {
+                console.log("");
+                console.log("---searching refundable tickets---");
+                console.log(watcher.result[i].tickets);
+                for (let t = 0; t < watcher.result[i].tickets.length; t++) {
+                    refundList.push(watcher.result[i].tickets[t]);
+                }
+            }
+        }
+
+        printRefundables(refundList);
+    }
 }
 
 async function sendRefund() {

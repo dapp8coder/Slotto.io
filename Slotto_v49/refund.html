@@ -23,13 +23,16 @@
     <div class="leftPad">
         <h1>Refund</h1>
 
-
         <br>Account:<br><input id="register" value="slotto.register" type="text">
         <br>Active Key:<br><input id="registerKey" type="password" value="">
         <br>
         <br>
         <br>
-        <br><button class="buttonGreen button1" onclick="getTickets()">Search Tickets</button>
+        <br><button class="buttonGreen button1" onclick="getTickets()"> Get Outstanding Tickets</button>
+        <br>
+        <br>
+        <br>Winning Draw:<br><input id="winningDraw" type="text" value="">
+        <br><button class="buttonGreen button1" onclick="searchTickets()"> Search Tickets</button>
         <br>
         <br>
         <div id="refundable"></div>
