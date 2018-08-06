@@ -67,13 +67,15 @@ function showOnPage(data) {
     let previous = data.previous;
 
     document.getElementById("loadingIcon").style.display = "none";
+    document.getElementById("congrats").style.display = "none";
 
     if (wins.length == 0) {
-        winningTickets += "None<br><br>";
+        winningTickets += "You haven't won a prize yet<br><br>";
     } else {
+        document.getElementById("congrats").style.display = "block";
         for (let i = 0; i < wins.length; i++) {
             winningTickets += wins[i].winningDraw + "<br>";
-            winningTickets += wins[i].sum.STEEM + " STEEM<br>";
+            winningTickets += "<div style='color:rgb(255, 234, 47)'>" + wins[i].sum.STEEM + " STEEM<br></div>";
         }
     }
 

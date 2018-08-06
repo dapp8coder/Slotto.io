@@ -44,7 +44,7 @@ a:hover {
         color: #ccc;
         font-size: 16px;
         font-family: 'Ubuntu', sans-serif;
-        margin: 30px 0 0 0;
+        margin: 15px 0 22px 0;
     }
     .ticketType {
         text-align: center;
@@ -52,6 +52,14 @@ a:hover {
         font-size: 18px;
         font-family: 'Open Sans', sans-serif;
         margin: 30px 0 0 0;
+    }
+    .celebration {
+        text-align: center;
+        color: #ccc;
+        font-size: 35px;
+        font-family: 'Caveat', cursive;
+        margin: 20px;
+        font-weight: bold;
     }
     .sbtn {
         display: inline-block;
@@ -106,7 +114,22 @@ a:hover {
         color: #ccc;
         font-size: 18px;
         font-family: 'Ubuntu', sans-serif;
+        margin: 15px 0 22px 0;
+    }
+    .ticketType {
+        text-align: center;
+        color: #ccc;
+        font-size: 20px;
+        font-family: 'Open Sans', sans-serif;
         margin: 30px 0 0 0;
+    }
+    .celebration {
+        text-align: center;
+        color: #ccc;
+        font-size: 40px;
+        font-family: 'Caveat', cursive;
+        margin: 20px;
+        font-weight: bold;
     }
     .sbtn {
         display: inline-block;
