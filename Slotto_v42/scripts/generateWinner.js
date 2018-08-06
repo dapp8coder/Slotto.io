@@ -11,8 +11,8 @@ function getMinsDeadline() {
 
     if (minsDeadline <= 0) {
         minsDeadline = 1;
-    } else if (minsDeadline >= 59) {
-        minsDeadline = 59
+    } else if (minsDeadline >= 60) {
+        minsDeadline = 60
     }
 
     return minsDeadline;
@@ -111,7 +111,7 @@ function nextDraw() {
  * @param {string} message 
  */
 function saveOnBlockchain(message) {
-    console.clear();
+    //console.clear();
 
     // @ts-ignore
     const senderAccount = document.getElementById("senderAccount").value;

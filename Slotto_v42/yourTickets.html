@@ -5,6 +5,7 @@
     <title>Your Tickets</title>
 
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:800" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="scripts/yourTickets.css" />
     <link rel="stylesheet" type="text/css" href="scripts/loading.css">
@@ -35,15 +36,23 @@
         </div>
     </div>
 
-    <div id="showTickets">
-        <div id="ticketsList" class="ticketStatus"></div>
-    </div>
-
     <div id="loadingIcon" class="ticketStatus">
         <div id="loadingText">Loading</div>
         <div>
             <div class="lds-dual-ring"></div>
         </div>
+    </div>
+
+    <!--list of all your tickets-->
+    <div id="ticketsData">
+        <div class="ticketType">Wins</div>
+        <div id="wins" class="ticketStatus"></div>
+
+        <div class="ticketType">Current Tickets</div>
+        <div id="currentTickets" class="ticketStatus"></div>
+
+        <div class="ticketType">Previous Tickets</div>
+        <div id="previousTickets" class="ticketStatus"></div>
     </div>
 
     <div id="canBeSlow" class="smallLetters">Blockchain response can be slow during peak hours</div>

@@ -1,7 +1,7 @@
 //@ts-check
 
 async function findYourTickets() {
-    console.clear();
+    //console.clear();
 
     // @ts-ignore slowLoad.js
     setSlowLoad();
@@ -11,8 +11,7 @@ async function findYourTickets() {
 
     if (account != "") {
         document.getElementById("buttonWrapper").style.display = "none";
-        document.getElementById("ticketsList").innerHTML = "";
-        document.getElementById("showTickets").style.display = "block";
+        document.getElementById("ticketsData").style.display = "none";
         document.getElementById("loadingIcon").style.display = "block";
         document.getElementById("notFound").style.display = "none";
         document.getElementById("loadingText").textContent = "Searching: " + account;
@@ -41,8 +40,10 @@ async function procFind(account) {
             document.getElementById("notFound").style.display = "none";
             if (accountInfo.length > 0) {
                 let yours = await getYours(account);
-                showOnPage(yours, account);
+                document.getElementById("ticketsData").style.display = "block";
+                showOnPage(yours);
             } else {
+                document.getElementById("ticketsData").style.display = "none";
                 document.getElementById("loadingIcon").style.display = "none";
                 document.getElementById("notFound").style.display = "block";
                 document.getElementById("notFound").innerHTML = "Account not found: " + account + "<br>" +
@@ -57,32 +58,44 @@ async function procFind(account) {
     document.getElementById("buttonWrapper").style.display = "block";
 }
 
-function showOnPage(data, account) {
-    let str = "";
+function showOnPage(data) {
+    let currentTickets = "";
+    let previousTickets = "";
+    let winningTickets = "";
+    let wins = data.wins;
     let outStanding = data.outStanding;
     let previous = data.previous;
 
     document.getElementById("loadingIcon").style.display = "none";
-    //document.getElementById("rfbWrapper").style.display = "block";
+
+    if (wins.length == 0) {
+        winningTickets += "None<br><br>";
+    } else {
+        for (let i = 0; i < wins.length; i++) {
+            winningTickets += wins[i].winningDraw + "<br>";
+            winningTickets += wins[i].sum.STEEM + " STEEM<br>";
+        }
+    }
 
     if (outStanding.length == 0) {
-        str += "No Current Tickets<br><br>";
+        currentTickets += "None<br><br>";
     } else {
-        str += "Current Tickets<br><br>";
         for (let i = 0; i < outStanding.length; i++) {
-            str += outStanding[i].op[1].memo + " (" + outStanding[i].timestamp + ") <br><br>";
+            currentTickets += outStanding[i].op[1].memo + " (" + outStanding[i].timestamp + ") <br><br>";
         }
     }
 
-    if (previous.length > 0) {
-        str += "<br>Previous Tickets<br><br>";
+    if (previous.length == 0) {
+        previousTickets += "None<br><br>";
+    } else {
         for (let i = 0; i < previous.length; i++) {
-            str += previous[i].op[1].memo + " (" + previous[i].timestamp + ") <br><br>";
+            previousTickets += previous[i].op[1].memo + " (" + previous[i].timestamp + ") <br><br>";
         }
     }
 
-    document.getElementById("ticketsList").innerHTML = str;
-
+    document.getElementById("wins").innerHTML = winningTickets;
+    document.getElementById("currentTickets").innerHTML = currentTickets;
+    document.getElementById("previousTickets").innerHTML = previousTickets;
 }
 
 async function getYours(account) {
@@ -103,12 +116,24 @@ async function getYours(account) {
     let watcher = new Watcher();
     watcher.getWinners(receiveTransfers.result);
 
+    let wins = new Array();
+
+    for (let i = 0; i < watcher.result.length; i++) {
+        console.log("");
+        console.log(watcher.result[i].winningDraw);
+        for (let w = 0; w < watcher.result[i].winnerNames.length; w++) {
+            console.log(watcher.result[i].winnerNames[w]);
+            if (watcher.result[i].winnerNames[w] == account) {
+                wins.push(watcher.result[i]);
+            }
+        }
+    }
+
     //get all tickets
     let outStanding = new Array();
     let prevTickets = new Array();
     let winnerFound = false;
     for (let i = 0; i < receiveTransfers.result.length; i++) {
-
 
         if (receiveTransfers.result[i].op[1].from == "slotto.gen") {
             for (let w = 0; w < watcher.prevWinningDraws.length; w++) {
@@ -128,6 +153,10 @@ async function getYours(account) {
     }
 
     console.log("");
+    console.log("---your winning tickets---");
+    console.log(wins);
+
+    console.log("");
     console.log("---your outStanding tickets---");
     console.log(outStanding);
 
@@ -135,13 +164,13 @@ async function getYours(account) {
     console.log("---your previous tickets---");
     console.log(prevTickets);
 
-    let allTickets = { outStanding: outStanding, previous: prevTickets };
+    let allTickets = { outStanding: outStanding, previous: prevTickets, wins: wins };
 
     return allTickets;
 }
 
 function initTicketStatus() {
-    document.getElementById("showTickets").style.display = "none";
+    document.getElementById("ticketsData").style.display = "none";
     document.getElementById("loadingIcon").style.display = "none";
     document.getElementById("notFound").style.display = "none";
 
