@@ -38,7 +38,9 @@ function printRefundables(tickets) {
         }
     }
 
-    totalRefund = (refundList.length * 0.1).toFixed(1);
+    // @ts-ignore
+    let refundAmount = Number(document.getElementById("refundAmount").value);
+    totalRefund = (refundList.length * refundAmount).toFixed(1);
 
     str += "<br>" + refundList.length + " total refundable tickets<br>";
     str += totalRefund;
@@ -95,12 +97,12 @@ async function sendRefund() {
     let sender = document.getElementById("register").value;
     let message = "this is a refund. round 3 is resetting.";
 
-    //console.log(sender);
-    //console.log(key);
+    // @ts-ignore
+    let refund = Number(document.getElementById("refundAmount").value);
 
     for (let i = 0; i < refundList.length; i++) {
         let receiver = refundList[i].op[1].from;
-        let amount = "0.100 STEEM";
+        let amount = refund.toFixed(3) + " STEEM";
         console.log("");
         console.log(receiver + " " + amount);
 
