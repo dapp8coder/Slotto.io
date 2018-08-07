@@ -5,6 +5,7 @@ async function getRecentDraws() {
 
     // @ts-ignore slowLoad.js
     setSlowLoad();
+    setDrawDescription();
 
     console.log("");
     console.log("---prev draw---");
@@ -62,7 +63,7 @@ async function getRecentDraws() {
     // @ts-ignore slowLoad.js
     hideSlowLoad();
 
-    setTimeout("getRecentDraws()", 10000);
+    setTimeout("getRecentDraws()", 10 * 1000);
 }
 
 //@ts-check
@@ -103,6 +104,12 @@ function stampCurrentTime() {
 
     console.log("");
     console.log("stamp time: " + utc);
+}
+
+function setDrawDescription() {
+    let mins = getGenerationMin();
+    let str = "Random numbers are generated every " + mins + " minutes until winner is found";
+    document.getElementById("drawDescription").textContent = str;
 }
 
 let lastGen = "None";
