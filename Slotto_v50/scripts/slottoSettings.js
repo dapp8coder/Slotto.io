@@ -33,3 +33,11 @@ function getHistoryInterval() {
 function getReserveAmount() {
     return 100;
 }
+
+async function getSlottoInterval() {
+    console.log("");
+    console.log("---updating slotto interval---");
+    setTimeout("getSlottoInterval();", 5 * 60 * 1000);
+}
+
+getSlottoInterval();
