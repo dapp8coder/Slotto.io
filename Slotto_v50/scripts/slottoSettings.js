@@ -9,7 +9,7 @@ function getTicketPrice() {
 }
 
 function getGenerationMin() {
-    return 5;
+    return generationMins;
 }
 
 // @ts-ignore slotto.Settings.js
@@ -37,7 +37,41 @@ function getReserveAmount() {
 async function getSlottoInterval() {
     console.log("");
     console.log("---updating slotto interval---");
-    setTimeout("getSlottoInterval();", 5 * 60 * 1000);
+    console.log("");
+
+    await downloadInterval();
+
+    console.log("");
+    console.log("---updating slotto interval in 5 mins---");
+    console.log("");
+    setTimeout("getSlottoInterval();", 1000);
+}
+
+async function downloadInterval() {
+    try {
+        let query = {
+            tag: "slotto.interval",
+            limit: 1
+        };
+
+        // @ts-ignore
+        let result = await steem.api.getDiscussionsByBlogAsync(query);
+
+        console.log("");
+        console.log("---fetching slotto interval---");
+        let body = result[0].body
+        body = body.replace("Slotto Interval - ", "");
+        body = body.replace(" mins", "");
+        generationMins = Number(body);
+        console.log(generationMins);
+        console.log("");
+    } catch (err) {
+        console.log("");
+        console.log(err);
+        console.log("trying again..");
+        await downloadInterval();
+    }
 }
 
 getSlottoInterval();
+let generationMins = 5;
