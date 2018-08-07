@@ -5,7 +5,6 @@ async function getRecentDraws() {
 
     // @ts-ignore slowLoad.js
     setSlowLoad();
-    setDrawDescription();
 
     console.log("");
     console.log("---prev draw---");
@@ -109,7 +108,19 @@ function stampCurrentTime() {
 function setDrawDescription() {
     let mins = getGenerationMin();
     let str = "Random numbers are generated every " + mins + " minutes until winner is found";
-    document.getElementById("drawDescription").innerHTML = str;
+
+    if (generationMinsIsFound()) {
+        document.getElementById("drawDescription").innerHTML = str;
+    }
+
+    if (minCheckCount < 10) {
+        minCheckCount++;
+        //console.log(minCheckCount);
+        setTimeout("setDrawDescription();", 1 * 1000);
+    } else if (generationMinsIsFound() == false) {
+        //console.log("checking generation mins again..");
+        setTimeout("setDrawDescription();", 1 * 1000);
+    }
 }
 
 let lastGen = "None";
@@ -117,3 +128,4 @@ let interval = 50 //milliseconds
 let prevDraw = null;
 // @ts-ignore slottoSettings.js
 let halfMin = Math.floor(getGenerationMin() / 2);
+let minCheckCount = 0;

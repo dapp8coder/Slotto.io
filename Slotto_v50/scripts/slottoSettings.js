@@ -42,9 +42,9 @@ async function getSlottoInterval() {
     await downloadInterval();
 
     console.log("");
-    console.log("---updating slotto interval in 5 mins---");
+    console.log("---updating slotto interval in 1 min---");
     console.log("");
-    setTimeout("getSlottoInterval();", 1000);
+    setTimeout("getSlottoInterval();", 1 * 60 * 1000);
 }
 
 async function downloadInterval() {
@@ -65,6 +65,7 @@ async function downloadInterval() {
         generationMins = Number(body);
         console.log(generationMins);
         console.log("");
+        generationMinFound = true;
     } catch (err) {
         console.log("");
         console.log(err);
@@ -73,5 +74,10 @@ async function downloadInterval() {
     }
 }
 
+function generationMinsIsFound() {
+    return generationMinFound;
+}
+
 getSlottoInterval();
 let generationMins = 5;
+let generationMinFound = false;
