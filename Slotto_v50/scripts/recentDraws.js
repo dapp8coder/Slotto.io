@@ -109,7 +109,7 @@ function stampCurrentTime() {
 function setDrawDescription() {
     let mins = getGenerationMin();
     let str = "Random numbers are generated every " + mins + " minutes until winner is found";
-    document.getElementById("drawDescription").textContent = str;
+    document.getElementById("drawDescription").innerHTML = str;
 }
 
 let lastGen = "None";
