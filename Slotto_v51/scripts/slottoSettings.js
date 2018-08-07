@@ -35,15 +35,9 @@ function getReserveAmount() {
 }
 
 async function getSlottoInterval() {
-    console.log("");
-    console.log("---updating slotto interval---");
-    console.log("");
-
     await downloadInterval();
 
-    console.log("");
     console.log("---updating slotto interval in 1 min---");
-    console.log("");
     setTimeout("getSlottoInterval();", 1 * 60 * 1000);
 }
 
@@ -57,17 +51,14 @@ async function downloadInterval() {
         // @ts-ignore
         let result = await steem.api.getDiscussionsByBlogAsync(query);
 
-        console.log("");
         console.log("---fetching slotto interval---");
         let body = result[0].body
         body = body.replace("Slotto Interval - ", "");
         body = body.replace(" mins", "");
         generationMins = Number(body);
-        console.log(generationMins);
-        console.log("");
+        console.log("---generation min: " + generationMins + "---");
         generationMinFound = true;
     } catch (err) {
-        console.log("");
         console.log(err);
         console.log("trying again..");
         await downloadInterval();
