@@ -70,5 +70,5 @@ function generationMinsIsFound() {
 }
 
 getSlottoInterval();
-let generationMins = 5;
+let generationMins = 60;
 let generationMinFound = false;
