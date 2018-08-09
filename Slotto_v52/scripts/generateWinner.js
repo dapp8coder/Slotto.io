@@ -41,9 +41,10 @@ function updateDraw() {
 
     const minsDeadline = getMinsDeadline();
 
-    if (lastGen.includes("None")) {
+    /*if (lastGen.includes("None")) {
         saveOnBlockchain(drawWinner());
-    } else if (isGenerationMinute(min, minsDeadline)) {
+    } else */
+    if (isGenerationMinute(min, minsDeadline)) {
         if (isGenerated(document.getElementById("lastGen").textContent) == false) {
             saveOnBlockchain(drawWinner());
         } else {
