@@ -24,22 +24,28 @@ async function showWinners() {
     let winners = watcher.result;
     let str = "";
     for (let i = winners.length - 1; i >= 0; i--) {
+        let skip = false;
         for (let w = 0; w < winners[i].winnerNames.length; w++) {
-            str += winners[i].winnerNames[w];
-            if (winners[i].winnerNames[w].includes("slotto.ninja")) {
-                str += " (testrun)"
-            } else if (winners[i].winnerNames[w].includes("slotto.game")) {
-                str += " (testrun)"
-            } else if (winners[i].winnerNames[w].includes("hitmanchoi")) {
-                str += " (testrun)"
-            } else if (winners[i].winnerNames[w].includes("roundbeargames")) {
-                str += " (testrun)"
+            if (showTestWinners == false) {
+                if (winners[i].winnerNames[w].includes("slotto.ninja") ||
+                    winners[i].winnerNames[w].includes("slotto.game") ||
+                    winners[i].winnerNames[w].includes("hitmanchoi") ||
+                    winners[i].winnerNames[w].includes("roundbeargames")) {
+                    //str += " (testrun)"
+                    skip = true;
+                    break;
+                }
             }
+
+            str += winners[i].winnerNames[w];
             str += "<br>"
         }
 
-        str += "<div style='color:rgb(255, 234, 47)'>" + winners[i].sum.STEEM + " STEEM </div>";
-        str += winners[i].winningDraw + "<br><br>";
+        if (skip == false) {
+            str += "<div style='color:rgb(255, 234, 47)'>" + winners[i].sum.STEEM + " STEEM </div>";
+            str += winners[i].winningDraw + "<br><br>";
+        }
+
     }
 
     document.getElementById("loading").style.display = "none";
@@ -47,3 +53,5 @@ async function showWinners() {
 
     hideSlowLoad();
 }
+
+let showTestWinners = true;
