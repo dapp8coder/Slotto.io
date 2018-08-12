@@ -26,7 +26,7 @@ function draw() {
     delta = now - then;
 
     if (delta > interval) {
-        console.log("drawing!");
+        //console.log("drawing!");
         then = now - (delta % interval);
         drawBg();
         incParticles();
