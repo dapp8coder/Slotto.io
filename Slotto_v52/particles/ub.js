@@ -19,16 +19,19 @@ function initParticles() {
     });
 }
 
-
-
 function draw() {
-
-    drawBg();
-    incParticles();
-    drawParticles();
-
     window.requestAnimationFrame(draw);
 
+    now = Date.now();
+    delta = now - then;
+
+    if (delta > interval) {
+        console.log("drawing!");
+        then = now - (delta % interval);
+        drawBg();
+        incParticles();
+        drawParticles();
+    }
 }
 
 function drawBg() {
@@ -110,6 +113,12 @@ var mouseX = null;
 var mouseY = null;
 var txtPosition = null;
 var particles = null;
+
+var fps = 40;
+var now;
+var then = Date.now();
+var interval = 1000 / fps;
+var delta;
 
 initParticles();
 draw();
