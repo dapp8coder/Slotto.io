@@ -39,21 +39,21 @@ Date.prototype.getThisMonday = function() {
     date.setUTCMinutes(0);
     date.setUTCSeconds(0);
     date.setUTCMilliseconds(0);
-    var diff = date.getDate() - date.getDay() + 1;
-    if (date.getDay() == 0) {
+    var diff = date.getUTCDate() - date.getUTCDay() + 1;
+    if (date.getUTCDay() == 0) {
         diff -= 7;
     }
-    return new Date(date.setDate(diff));
+    return new Date(date.setUTCDate(diff));
 };
 
 Date.prototype.getThisDayofWeek = function(dayOfWeek) {
     var d = this.getThisMonday();
-    return new Date(d.setDate(d.getDate() + dayOfWeek - 1));
+    return new Date(d.setUTCDate(d.getUTCDate() + dayOfWeek - 1));
 };
 
 Date.prototype.getNextDayofWeek = function(dayOfWeek) {
     var d = this.getThisMonday();
-    return new Date(d.setDate(d.getDate() + dayOfWeek - 1 + 7));
+    return new Date(d.setUTCDate(d.getUTCDate() + dayOfWeek - 1 + 7));
 };
 
 function whatDayIsToday() {
