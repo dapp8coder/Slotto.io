@@ -120,8 +120,27 @@ async function procBonus() {
 
         if (alreadySent == false) {
             console.log("eligible bonus: " + outstandingDataArray[i].buyer + " " + outstandingDataArray[i].ticket + " " + outstandingDataArray[i].timestamp);
+            let bonusAmount = getBonusAmount();
+            console.log("random bonus: " + bonusAmount);
         }
     }
+}
+
+function getBonusAmount() {
+    // @ts-ignore fortunaGenerator.js
+    let b = getFortunaRand(1, 101, 0);
+
+    if (b <= 40 && b >= 1) {
+        return 0;
+    } else if (b <= 70 && b >= 41) {
+        return 0.01;
+    } else if (b <= 90 && b >= 71) {
+        0.02;
+    } else if (b <= 100 && b >= 91) {
+        return 0.03;
+    }
+
+    return 0;
 }
 
 let outstandingDataArray = null;
