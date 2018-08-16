@@ -141,7 +141,11 @@ async function getBonusData(sender) {
     bonusStr += "<br>";
     bonusStr += "total bonuses sent: " + totalBonuses.toFixed(3) + " STEEM" + "<br>";
 
-    document.getElementById("bonusesSent").innerHTML = bonusStr;
+    let e = document.getElementById("bonusesSent");
+
+    if (e != null) {
+        e.innerHTML = bonusStr;
+    }
 }
 
 function OutstandingData() {
