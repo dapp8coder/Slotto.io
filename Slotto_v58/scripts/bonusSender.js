@@ -8,6 +8,7 @@ async function updateBonuses() {
     document.getElementById("bonusButton").style.display = "none";
     document.getElementById("results").style.display = "block";
     document.getElementById("outstandingTickets").innerHTML = "loading..";
+    document.getElementById("bonusesSent").innerHTML = "loading..";
     console.clear();
 
     // @ts-ignore
