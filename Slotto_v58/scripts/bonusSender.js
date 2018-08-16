@@ -29,14 +29,24 @@ async function updateBonuses() {
     watcher.getWinners(receiveTransfers.result);
 
     showOutstandingTickets(watcher.outstandingTickets);
-    await sendBonuses(sender);
+
+    await getBonusData(sender);
+    await procBonus(sender);
+
+    console.log("");
+    console.log("---sent jackpot---");
+    console.log(jackpotArray);
+
+    console.log("");
+    console.log("---bonus blocks---");
+    console.log(bonusBlockArray);
 
     let d = new Date();
     console.log("");
     console.log("check time: " + d);
     console.log("updating again in 3 mins");
 
-    //setTimeout("updateBonuses();", 3 * 60 * 1000);
+    setTimeout("updateBonuses();", 3 * 60 * 1000);
 }
 
 function showOutstandingTickets(outstanding) {
@@ -56,7 +66,7 @@ function showOutstandingTickets(outstanding) {
     document.getElementById("outstandingTickets").innerHTML = outstandingStr;
 }
 
-async function sendBonuses(sender) {
+async function getBonusData(sender) {
     let bonusStr = "";
     bonusDataArray = new Array();
 
@@ -130,17 +140,7 @@ async function sendBonuses(sender) {
 
     bonusStr += "total bonuses sent: " + totalBonuses.toFixed(3) + " STEEM" + "<br>";
 
-    await procBonus(sender);
-
     document.getElementById("bonusesSent").innerHTML = bonusStr;
-
-    console.log("");
-    console.log("---sent jackpot---");
-    console.log(jackpotArray);
-
-    console.log("");
-    console.log("---bonus blocks---");
-    console.log(bonusBlockArray);
 }
 
 function OutstandingData() {
@@ -158,7 +158,7 @@ function BonusData() {
 
 async function procBonus(sender) {
     console.log("");
-    console.log("---procing bonus---");
+    console.log("---processing bonus---");
 
     for (let i = outstandingDataArray.length - 1; i >= 0; i--) {
         let alreadySent = false;
@@ -224,6 +224,10 @@ function getBonusAmount() {
 function BonusBlock() {
     this.winningDraw = null;
     this.bonusDataArray = new Array();
+}
+
+function getBonusBlocks() {
+
 }
 
 let jackpotArray = null;
