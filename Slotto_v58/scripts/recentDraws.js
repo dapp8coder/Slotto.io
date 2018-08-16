@@ -109,7 +109,7 @@ function setDrawDescription() {
     let mins = getGenerationMin();
     let str = "Random numbers are generated every " + mins + " minutes until winner is found";
 
-    if (generationMinsIsFound()) {
+    /*if (generationMinsIsFound()) {
         document.getElementById("drawDescription").innerHTML = str;
     }
 
@@ -120,7 +120,7 @@ function setDrawDescription() {
     } else if (generationMinsIsFound() == false) {
         //console.log("checking generation mins again..");
         setTimeout("setDrawDescription();", 1 * 1000);
-    }
+    }*/
 }
 
 let lastGen = "None";
