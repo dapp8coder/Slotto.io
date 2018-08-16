@@ -35,7 +35,8 @@ async function updateBonuses() {
     console.log("");
     console.log("check time: " + d);
     console.log("updating again in 3 mins");
-    setTimeout("updateBonuses();", 3 * 60 * 1000);
+
+    //setTimeout("updateBonuses();", 3 * 60 * 1000);
 }
 
 function showOutstandingTickets(outstanding) {
@@ -66,31 +67,55 @@ async function sendBonuses(sender) {
     await sendHistory.download();
 
     // @ts-ignore
-    let sendTransfers = new SteemTransfers();
-    sendTransfers.filterTransfers(null, null, sendHistory.result);
+    let tr = new SteemTransfers();
+    tr.filterTransfers(null, null, sendHistory.result);
 
     let totalBonuses = 0;
+    let tempBag = new Array();
+    jackpotArray = new Array();
+    bonusBlockArray = new Array();
 
-    for (let i = sendTransfers.result.length - 1; i >= 0; i--) {
-        if (sendTransfers.result[i].op[1].to != "slotto.gen") {
-            if (sendTransfers.result[i].op[1].memo.includes("bonus")) {
-                let bd = new BonusData();
-                bd.account = sendTransfers.result[i].op[1].to;
-                bd.amount = sendTransfers.result[i].op[1].amount;
-                bd.ticket = sendTransfers.result[i].op[1].memo;
+    for (let i = tr.result.length - 1; i >= 0; i--) {
+        if (tr.result[i].op[1].from == "slotto.register") {
+            if (tr.result[i].op[1].to != "slotto.gen") {
+                if (tr.result[i].op[1].memo.includes("bonus")) {
+                    let bd = new BonusData();
+                    bd.account = tr.result[i].op[1].to;
+                    bd.amount = tr.result[i].op[1].amount;
+                    bd.ticket = tr.result[i].op[1].memo;
 
-                totalBonuses += Number(bd.amount.replace(" STEEM", ""));
+                    totalBonuses += Number(bd.amount.replace(" STEEM", ""));
 
-                // extract transfer time from memo
-                let t = bd.ticket.substr(bd.ticket.length - 19, 19);
-                bd.matchingTime = t;
+                    // extract transfer time from memo
+                    let t = bd.ticket.substr(bd.ticket.length - 19, 19);
+                    bd.matchingTime = t;
 
-                // extract ticket number from memo
-                bd.ticket = bd.ticket.replace("bonus ", "");
-                bd.ticket = bd.ticket.substr(0, bd.ticket.length - 20);
+                    // extract ticket number from memo
+                    bd.ticket = bd.ticket.replace("bonus ", "");
+                    bd.ticket = bd.ticket.substr(0, bd.ticket.length - 20);
 
-                bonusStr += bd.account + " " + bd.amount + " " + bd.ticket + " " + bd.matchingTime + "<br>";
-                bonusDataArray.push(bd);
+                    bonusStr += bd.account + " " + bd.amount + " " + bd.ticket + " " + bd.matchingTime + "<br>";
+                    bonusDataArray.push(bd);
+                    tempBag.push(bd);
+                }
+                // outgoing transfer that doesn't include "bonus" is a jackpot
+                else {
+                    jackpotArray.push(tr.result[i]);
+                    let bonusBlock = new BonusBlock();
+
+                    // add sent bonuses into a block
+                    for (let t = 0; t < tempBag.length; t++) {
+                        bonusBlock.bonusDataArray.push(tempBag[t]);
+                    }
+
+                    // name the block with the winning draw
+                    bonusBlock.winningDraw = tr.result[i].op[1].memo;
+
+                    bonusBlockArray.push(bonusBlock);
+
+                    // clear bag
+                    tempBag = new Array();
+                }
             }
         }
     }
@@ -100,6 +125,14 @@ async function sendBonuses(sender) {
     await procBonus(sender);
 
     document.getElementById("bonusesSent").innerHTML = bonusStr;
+
+    console.log("");
+    console.log("---sent jackpot---");
+    console.log(jackpotArray);
+
+    console.log("");
+    console.log("---bonus blocks---");
+    console.log(bonusBlockArray);
 }
 
 function OutstandingData() {
@@ -180,5 +213,12 @@ function getBonusAmount() {
     return 0.001;
 }
 
+function BonusBlock() {
+    this.winningDraw = null;
+    this.bonusDataArray = new Array();
+}
+
+let jackpotArray = null;
 let outstandingDataArray = null;
 let bonusDataArray = null;
+let bonusBlockArray = null;
