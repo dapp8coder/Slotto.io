@@ -71,6 +71,7 @@ async function sendBonuses(sender) {
     tr.filterTransfers(null, null, sendHistory.result);
 
     let totalBonuses = 0;
+    let subTotal = 0;
     let tempBag = new Array();
     jackpotArray = new Array();
     bonusBlockArray = new Array();
@@ -85,6 +86,7 @@ async function sendBonuses(sender) {
                     bd.ticket = tr.result[i].op[1].memo;
 
                     totalBonuses += Number(bd.amount.replace(" STEEM", ""));
+                    subTotal += Number(bd.amount.replace(" STEEM", ""));
 
                     // extract transfer time from memo
                     let t = bd.ticket.substr(bd.ticket.length - 19, 19);
@@ -114,11 +116,13 @@ async function sendBonuses(sender) {
                     if (tempBag.length > 0) {
                         bonusBlockArray.push(bonusBlock);
                         bonusStr += "↑ winning draw: " + bonusBlock.winningDraw + "<br>";
+                        bonusStr += "subtotal: " + subTotal.toFixed(3) + " STEEM" + "<br>";
                         bonusStr += "<br>";
                     }
 
                     // clear bag
                     tempBag = new Array();
+                    subTotal = 0;
                 }
             }
         }
