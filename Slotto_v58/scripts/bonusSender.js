@@ -138,6 +138,7 @@ async function getBonusData(sender) {
         }
     }
 
+    bonusStr += "<br>";
     bonusStr += "total bonuses sent: " + totalBonuses.toFixed(3) + " STEEM" + "<br>";
 
     document.getElementById("bonusesSent").innerHTML = bonusStr;
