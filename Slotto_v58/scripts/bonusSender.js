@@ -69,6 +69,8 @@ async function sendBonuses(sender) {
     let sendTransfers = new SteemTransfers();
     sendTransfers.filterTransfers(sender, null, sendHistory.result);
 
+    let totalBonuses = 0;
+
     for (let i = 0; i < sendTransfers.result.length; i++) {
         if (sendTransfers.result[i].op[1].to != "slotto.gen") {
             if (sendTransfers.result[i].op[1].memo.includes("bonus")) {
@@ -76,6 +78,8 @@ async function sendBonuses(sender) {
                 bd.account = sendTransfers.result[i].op[1].to;
                 bd.amount = sendTransfers.result[i].op[1].amount;
                 bd.ticket = sendTransfers.result[i].op[1].memo;
+
+                totalBonuses += Number(bd.amount.replace(" STEEM", ""));
 
                 // extract transfer time from memo
                 let t = bd.ticket.substr(bd.ticket.length - 19, 19);
@@ -90,6 +94,8 @@ async function sendBonuses(sender) {
             }
         }
     }
+
+    bonusStr += "total: " + totalBonuses.toFixed(3) + " STEEM" + "<br>";
 
     await procBonus(sender);
 
