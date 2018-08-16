@@ -128,8 +128,7 @@ async function sendBonuses(sender) {
         }
     }
 
-    bonusStr += "<br>";
-    bonusStr += "total: " + totalBonuses.toFixed(3) + " STEEM" + "<br>";
+    bonusStr += "total bonuses sent: " + totalBonuses.toFixed(3) + " STEEM" + "<br>";
 
     await procBonus(sender);
 
