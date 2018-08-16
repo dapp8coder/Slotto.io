@@ -72,18 +72,26 @@ async function sendBonuses(sender) {
     for (let i = 0; i < sendTransfers.result.length; i++) {
         if (sendTransfers.result[i].op[1].to != "slotto.gen") {
             if (sendTransfers.result[i].op[1].memo.includes("bonus")) {
-                console.log();
                 let bd = new BonusData();
                 bd.account = sendTransfers.result[i].op[1].to;
                 bd.amount = sendTransfers.result[i].op[1].amount;
                 bd.ticket = sendTransfers.result[i].op[1].memo;
-                //bd.matchingTime = 
-                bonusStr += bd.account + " " + bd.amount + " " + bd.ticket + "<br>";
+
+                // extract transfer time from memo
+                let t = bd.ticket.substr(bd.ticket.length - 19, 19);
+                bd.matchingTime = t;
+
+                // extract ticket number from memo
+                bd.ticket = bd.ticket.replace("bonus ", "");
+                bd.ticket = bd.ticket.substr(0, bd.ticket.length - 20);
+
+                bonusStr += bd.account + " " + bd.amount + " " + bd.ticket + " " + bd.matchingTime + "<br>";
+                bonusDataArray.push(bd);
             }
         }
     }
 
-    procBonus();
+    await procBonus(sender);
 
     document.getElementById("bonusesSent").innerHTML = bonusStr;
 }
@@ -101,7 +109,7 @@ function BonusData() {
     this.matchingTime = null;
 }
 
-async function procBonus() {
+async function procBonus(sender) {
     console.log("");
     console.log("---procing bonus---");
 
@@ -119,9 +127,32 @@ async function procBonus() {
         }
 
         if (alreadySent == false) {
+            console.log("");
             console.log("eligible bonus: " + outstandingDataArray[i].buyer + " " + outstandingDataArray[i].ticket + " " + outstandingDataArray[i].timestamp);
             let bonusAmount = getBonusAmount();
             console.log("random bonus: " + bonusAmount);
+
+            // @ts-ignore
+            let key = document.getElementById("senderKey").value;
+            let receiver = outstandingDataArray[i].buyer;
+            let message = "bonus " + outstandingDataArray[i].ticket + " " + outstandingDataArray[i].timestamp;
+            let fixed = bonusAmount.toFixed(3) + " STEEM";
+
+            //console.log(sender);
+            //console.log(key);
+            //console.log(message);
+            let result = null;
+            try {
+                // @ts-ignore
+                result = await steem.broadcast.transferAsync(key, sender, receiver, fixed, message);
+            } catch (err) {
+                console.log(err);
+            } finally {
+                console.log(result);
+            }
+        } else {
+            console.log("");
+            console.log("already sent bonus: " + outstandingDataArray[i].buyer + " " + outstandingDataArray[i].ticket + " " + outstandingDataArray[i].timestamp);
         }
     }
 }
@@ -131,7 +162,7 @@ function getBonusAmount() {
     let b = getFortunaRand(1, 101, 0);
 
     if (b <= 40 && b >= 1) {
-        return 0;
+        return 0.003;
     } else if (b <= 70 && b >= 41) {
         return 0.01;
     } else if (b <= 90 && b >= 71) {
@@ -140,7 +171,7 @@ function getBonusAmount() {
         return 0.03;
     }
 
-    return 0;
+    return 0.001;
 }
 
 let outstandingDataArray = null;
