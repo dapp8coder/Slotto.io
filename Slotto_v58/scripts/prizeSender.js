@@ -59,7 +59,7 @@ async function downloadWinners() {
     for (let i = 0; i < winners.length; i++) {
         calcPrize(winners[i]);
 
-        // add bonus data (for later prize calculation)
+        // add bonus data (for prize calculation)
         for (let b = 0; b < bonusBlocks.length; b++) {
             if (bonusBlocks[b].winningDraw == winners[i].winningDraw) {
                 winners[i].bonusesSent = bonusBlocks[b];

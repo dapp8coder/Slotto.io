@@ -21,11 +21,25 @@ async function showWinners() {
     let watcher = new Watcher();
     watcher.getWinners(receiveTransfers.result);
 
+    //get bonus data (to subtract from total prize amount)
+    await getBonusData(sender);
+    console.log("");
+    console.log("---bonus data---");
+    let bonusBlocks = getBonusBlocks();
+    console.log(bonusBlocks);
+
     let winners = watcher.result;
     let str = "";
     for (let i = winners.length - 1; i >= 0; i--) {
         let skip = false;
         for (let w = 0; w < winners[i].winnerNames.length; w++) {
+            // add bonus data (for prize calculation)
+            for (let b = 0; b < bonusBlocks.length; b++) {
+                if (bonusBlocks[b].winningDraw == winners[i].winningDraw) {
+                    winners[i].bonusesSent = bonusBlocks[b];
+                }
+            }
+
             if (showTestWinners == false) {
                 if (winners[i].winnerNames[w].includes("slotto.ninja") ||
                     winners[i].winnerNames[w].includes("slotto.game") ||
@@ -41,11 +55,15 @@ async function showWinners() {
             str += "<br>"
         }
 
-        if (skip == false) {
-            str += "<div style='color:rgb(255, 234, 47)'>" + winners[i].sum.STEEM + " STEEM </div>";
-            str += winners[i].winningDraw + "<br><br>";
+        let sentBonus = 0;
+        if (winners[i].bonusesSent != null) {
+            sentBonus = winners[i].bonusesSent.subTotal;
         }
 
+        if (skip == false) {
+            str += "<div style='color:rgb(255, 234, 47)'>" + (winners[i].sum.STEEM - sentBonus) + " STEEM </div>";
+            str += winners[i].winningDraw + "<br><br>";
+        }
     }
 
     document.getElementById("loading").style.display = "none";
