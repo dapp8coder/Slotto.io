@@ -58,12 +58,12 @@ Date.prototype.getNextDayofWeek = function(dayOfWeek) {
 
 function whatDayIsToday() {
     console.log("");
-    console.log("today is " + getNameDayOfWeek());
+    console.log("today is " + getNameDayOfWeek() + " (utc)");
 }
 
 function getNameDayOfWeek() {
     var today = new Date();
-    switch (today.getDay()) {
+    switch (today.getUTCDay()) {
         case 0:
             return "Sunday";
         case 1:
@@ -83,5 +83,5 @@ function getNameDayOfWeek() {
 
 function getDayOfWeek() {
     var today = new Date();
-    return today.getDay();
+    return today.getUTCDay();
 }
