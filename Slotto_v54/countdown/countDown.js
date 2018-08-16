@@ -198,6 +198,10 @@ function Countdown(opt) {
 
         lastTick = endDateData;
 
+        console.log("");
+        console.log("end: " + new Date(endDate.getTime()));
+        console.log("now: " + new Date(Date.now()));
+
         if (endDate.getTime() <= Date.now()) {
             if (typeof options.endCallback === 'function') {
                 options.endCallback();

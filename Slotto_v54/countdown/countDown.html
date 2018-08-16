@@ -8,26 +8,16 @@
     <title>Draw Countdown</title>
     <link href="https://www.cssscript.com/wp-includes/css/sticky.css" rel="stylesheet" type="text/css">
     <script src="countDown.js"></script>
+    <script src="startCountdown.js"></script>
     <link href="style.css" media="all" rel="stylesheet" />
 </head>
 
 <body>
     <h1 style="margin:10px; color:#fff; text-align: center;">Draw Countdown</h1>
     <div class="container "></div>
+
     <script>
-        var cd = new Countdown({
-            cont: document.querySelector('.container'),
-            endDate: 1553468400000,
-            outputTranslation: {
-                day: 'Days',
-                hour: 'Hours',
-                minute: 'Minutes',
-                second: 'Seconds',
-            },
-            endCallback: null,
-            outputFormat: 'day|hour|minute|second',
-        });
-        cd.start();
+        startCountdown();
     </script>
 </body>
 
