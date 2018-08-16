@@ -33,16 +33,17 @@ function startCountdown() {
 }
 
 Date.prototype.getThisMonday = function() {
-    var d = new Date(this.getTime());
-    d.setHours(15);
-    d.setMinutes(0);
-    d.setSeconds(0);
-    d.setMilliseconds(0);
-    var diff = d.getDate() - d.getDay() + 1;
-    if (d.getDay() == 0) {
+    var date = new Date();
+
+    date.setUTCHours(7);
+    date.setUTCMinutes(0);
+    date.setUTCSeconds(0);
+    date.setUTCMilliseconds(0);
+    var diff = date.getDate() - date.getDay() + 1;
+    if (date.getDay() == 0) {
         diff -= 7;
     }
-    return new Date(d.setDate(diff));
+    return new Date(date.setDate(diff));
 };
 
 Date.prototype.getThisDayofWeek = function(dayOfWeek) {
