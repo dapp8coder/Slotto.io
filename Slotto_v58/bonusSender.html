@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Bonus Sender</title>
+
+    <script src="https://cdn.steemjs.com/lib/latest/steem.min.js"></script>
+    <script type="text/javascript" src="scripts/steemNode.js"></script>
+    <script type="text/javascript" src="scripts/sortSteem.js"></script>
+    <script type="text/javascript" src="scripts/steemHistory.js"></script>
+    <script type="text/javascript" src="scripts/steemTransfers.js"></script>
+    <script type="text/javascript" src="scripts/watcher.js"></script>
+    <script type="text/javascript" src="scripts/slottoSettings.js"></script>
+    <script type="text/javascript" src="scripts/accountBalance.js"></script>
+    <script type="text/javascript" src="scripts/bonusSender.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="scripts/basicFormat.css">
+</head>
+
+<body>
+    <div class=leftPad>
+        <h1>Bonus Sender</h1>
+        <div id="bonusButton">
+            <br> Sender Account:<br><input id="sender" value="slotto.register" type="text" value="">
+            <br>
+            <br> Active Key:<br><input id="senderKey" type="password" value="">
+            <br>
+            <br><button class="buttonGreen button1" onclick="updateBonuses();">Start Sending</button>
+        </div>
+    </div>
+
+    <script>
+        initBonusSend();
+    </script>
+</body>
+
+</html>
