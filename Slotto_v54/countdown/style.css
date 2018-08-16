@@ -5,6 +5,8 @@
     display: -ms-flexbox;
     display: flex;
     color: #333;
+    align-items: center;
+    justify-content: center;
 }
 
 .countDown_interval_cont {
@@ -34,8 +36,9 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    margin-left: .3em;
-    margin-top: 0.3em;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5em;
     font-size: 1.2em;
     font-weight: bold;
     color: white;

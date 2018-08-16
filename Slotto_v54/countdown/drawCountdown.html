@@ -12,22 +12,20 @@
 </head>
 
 <body>
-    <h1 style="margin:20px auto 20px auto; color:#fff;">Draw Countdown</h1>
-    <div class="container"></div>
+    <h1 style="margin:10px; color:#fff; text-align: center;">Draw Countdown</h1>
+    <div class="container "></div>
     <script>
         var cd = new Countdown({
             cont: document.querySelector('.container'),
             endDate: 1553468400000,
             outputTranslation: {
-                year: 'Years',
-                week: 'Weeks',
                 day: 'Days',
                 hour: 'Hours',
                 minute: 'Minutes',
                 second: 'Seconds',
             },
             endCallback: null,
-            outputFormat: 'week|day|hour|minute|second',
+            outputFormat: 'day|hour|minute|second',
         });
         cd.start();
     </script>

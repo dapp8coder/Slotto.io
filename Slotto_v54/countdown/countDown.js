@@ -9,18 +9,14 @@ function Countdown(opt) {
     var options = {
             cont: null,
             endDate: {
-                year: 0,
-                month: 0,
                 day: 0,
                 hour: 0,
                 minute: 0,
                 second: 0
             },
             endCallback: null,
-            outputFormat: 'year|week|day|hour|minute|second',
+            outputFormat: 'day|hour|minute|second',
             outputTranslation: {
-                year: 'Roky',
-                week: 'Týdny',
                 day: 'Dny',
                 hour: 'Hodin',
                 minute: 'Minut',
@@ -28,13 +24,11 @@ function Countdown(opt) {
             }
         },
         lastTick = null,
-        intervalsBySize = ['year', 'week', 'day', 'hour', 'minute', 'second'],
+        intervalsBySize = ['day', 'hour', 'minute', 'second'],
         TIMESTAMP_SECOND = 1000,
         TIMESTAMP_MINUTE = 60 * TIMESTAMP_SECOND,
         TIMESTAMP_HOUR = 60 * TIMESTAMP_MINUTE,
         TIMESTAMP_DAY = 24 * TIMESTAMP_HOUR,
-        TIMESTAMP_WEEK = 7 * TIMESTAMP_DAY,
-        TIMESTAMP_YEAR = 365 * TIMESTAMP_DAY,
         elementClassPrefix = 'countDown_',
         interval = null,
         digitConts = {};
@@ -47,26 +41,7 @@ function Countdown(opt) {
      */
     function getDate(date) {
         if ((typeof date === 'undefined' ? 'undefined' : _typeof(date)) === 'object') {
-            if (date instanceof Date) {
-                return date;
-            } else {
-                var expectedValues = {
-                    day: 0,
-                    month: 0,
-                    year: 0,
-                    hour: 0,
-                    minute: 0,
-                    second: 0
-                };
-
-                for (var i in expectedValues) {
-                    if (expectedValues.hasOwnProperty(i) && date.hasOwnProperty(i)) {
-                        expectedValues[i] = date[i];
-                    }
-                }
-
-                return new Date(expectedValues.year, expectedValues.month > 0 ? expectedValues.month - 1 : expectedValues.month, expectedValues.day, expectedValues.hour, expectedValues.minute, expectedValues.second);
-            }
+            return date;
         } else if (typeof date === 'number' || typeof date === 'string') {
             return new Date(date);
         } else {
@@ -93,14 +68,6 @@ function Countdown(opt) {
             var value = undefined;
             if (timeDiff > 0) {
                 switch (item) {
-                    case 'year':
-                        value = Math.trunc(timeDiff / TIMESTAMP_YEAR);
-                        timeDiff -= value * TIMESTAMP_YEAR;
-                        break;
-                    case 'week':
-                        value = Math.trunc(timeDiff / TIMESTAMP_WEEK);
-                        timeDiff -= value * TIMESTAMP_WEEK;
-                        break;
                     case 'day':
                         value = Math.trunc(timeDiff / TIMESTAMP_DAY);
                         timeDiff -= value * TIMESTAMP_DAY;
