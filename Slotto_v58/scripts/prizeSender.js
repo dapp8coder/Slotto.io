@@ -6,8 +6,6 @@ function initAutoSend() {
     // @ts-ignore
     document.getElementById("showOutstanding").checked = true;
     // @ts-ignore
-    document.getElementById("operationalFee").checked = true;
-    // @ts-ignore
     document.getElementById("limitTestPrize").checked = true;
 
     document.getElementById("checkTimeLabel").style.display = "none";
@@ -289,14 +287,8 @@ function calcPrize(data) {
     //console.log("---calculating prize---");
     //console.log(data);
 
-    // @ts-ignore
-    if (document.getElementById("operationalFee").checked) {
-        steem = Math.trunc((data.sum.STEEM * 0.99 * 1000 / namesArray.length)) / 1000;
-        sbd = Math.trunc((data.sum.SBD * 0.99 * 1000 / namesArray.length)) / 1000;
-    } else {
-        steem = Number(data.sum.STEEM);
-        sbd = Number(data.sum.SBD);
-    }
+    steem = Number(data.sum.STEEM);
+    sbd = Number(data.sum.SBD);
 
     if (data.bonusesSent != null) {
         steem -= data.bonusesSent.subTotal.toFixed(3);

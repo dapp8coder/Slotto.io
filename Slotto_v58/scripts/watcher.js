@@ -12,6 +12,16 @@ Watcher.prototype.getWinners = function(transfers) {
     console.log("");
     console.log("---winners---");
     console.log(this.result);
+
+    /*for (let i = 0; i < this.result.length; i++) {
+        let r = this.result[i];
+
+        for (let k = 0; k < r.tickets.length; k++) {
+            let t = r.tickets[k];
+            console.log(t.op[1].from + " " + t.op[1].amount + " " + t.op[1].memo);
+        }
+        console.log("");
+    }*/
 }
 
 /**
