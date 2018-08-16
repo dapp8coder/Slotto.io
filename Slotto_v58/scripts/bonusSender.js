@@ -34,8 +34,6 @@ async function updateBonuses() {
     let d = new Date();
     console.log("");
     console.log("check time: " + d);
-
-    console.log("");
     console.log("updating again in 3 mins");
     setTimeout("updateBonuses();", 3 * 60 * 1000);
 }
@@ -59,6 +57,7 @@ function showOutstandingTickets(outstanding) {
 
 async function sendBonuses(sender) {
     let bonusStr = "";
+    bonusDataArray = new Array();
 
     // @ts-ignore
     let sendHistory = new SteemHistory(sender);
@@ -74,10 +73,17 @@ async function sendBonuses(sender) {
         if (sendTransfers.result[i].op[1].to != "slotto.gen") {
             if (sendTransfers.result[i].op[1].memo.includes("bonus")) {
                 console.log();
-                bonusStr += sendTransfers.result[i].op[1].to + " " + sendTransfers.result[i].op[1].amount + " " + sendTransfers.result[i].op[1].memo + "<br>";
+                let bd = new BonusData();
+                bd.account = sendTransfers.result[i].op[1].to;
+                bd.amount = sendTransfers.result[i].op[1].amount;
+                bd.ticket = sendTransfers.result[i].op[1].memo;
+                //bd.matchingTime = 
+                bonusStr += bd.account + " " + bd.amount + " " + bd.ticket + "<br>";
             }
         }
     }
+
+    procBonus();
 
     document.getElementById("bonusesSent").innerHTML = bonusStr;
 }
@@ -89,9 +95,33 @@ function OutstandingData() {
 }
 
 function BonusData() {
+    this.account = null;
     this.amount = null;
     this.ticket = null;
-    this.timestamp = null;
+    this.matchingTime = null;
+}
+
+async function procBonus() {
+    console.log("");
+    console.log("---procing bonus---");
+
+    for (let i = 0; i < outstandingDataArray.length; i++) {
+        let alreadySent = false;
+
+        for (let k = 0; k < bonusDataArray.length; k++) {
+            if (outstandingDataArray[i].buyer == bonusDataArray[k].account) {
+                if (outstandingDataArray[i].ticket == bonusDataArray[k].ticket) {
+                    if (outstandingDataArray[i].timestamp == bonusDataArray[k].matchingTime) {
+                        alreadySent = true;
+                    }
+                }
+            }
+        }
+
+        if (alreadySent == false) {
+            console.log("eligible bonus: " + outstandingDataArray[i].buyer + " " + outstandingDataArray[i].ticket + " " + outstandingDataArray[i].timestamp);
+        }
+    }
 }
 
 let outstandingDataArray = null;
