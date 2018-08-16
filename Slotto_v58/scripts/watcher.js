@@ -219,6 +219,7 @@ function Prize() {
     this.winnerNames = new Array();
     this.winningDraw = null;
     this.tickets = new Array();
+    this.bonusesSent = null;
 }
 
 function isSlottoFormat(data) {

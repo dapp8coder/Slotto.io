@@ -124,6 +124,7 @@ async function getBonusData(sender) {
                     bonusBlock.winningDraw = tr.result[i].op[1].memo;
 
                     if (tempBag.length > 0) {
+                        bonusBlock.subTotal = Number(subTotal.toFixed(3));
                         bonusBlockArray.push(bonusBlock);
                         bonusStr += "↑ winning draw: " + bonusBlock.winningDraw + "<br>";
                         bonusStr += "subtotal: " + subTotal.toFixed(3) + " STEEM" + "<br>";
@@ -229,10 +230,11 @@ function getBonusAmount() {
 function BonusBlock() {
     this.winningDraw = null;
     this.bonusDataArray = new Array();
+    this.subTotal = 0;
 }
 
 function getBonusBlocks() {
-
+    return bonusBlockArray;
 }
 
 let jackpotArray = null;

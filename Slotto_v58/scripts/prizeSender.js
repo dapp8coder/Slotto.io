@@ -45,12 +45,26 @@ async function downloadWinners() {
     watcher.getWinners(receiveTransfers.result);
     let winners = watcher.result;
 
+    //get bonus data (to subtract from total prize amount)
+    await getBonusData(sender);
+    console.log("");
+    console.log("---bonus data---");
+    let bonusBlocks = getBonusBlocks();
+    console.log(bonusBlocks);
+
     sendList = new Array();
     winnerString = "";
     winnerString = "<br><h3>Winners</h3>";
 
     for (let i = 0; i < winners.length; i++) {
         calcPrize(winners[i]);
+
+        // add bonus data (for later prize calculation)
+        for (let b = 0; b < bonusBlocks.length; b++) {
+            if (bonusBlocks[b].winningDraw == winners[i].winningDraw) {
+                winners[i].bonusesSent = bonusBlocks[b];
+            }
+        }
 
         // winner names
         for (let w = 0; w < winners[i].winnerNames.length; w++) {
@@ -59,6 +73,13 @@ async function downloadWinners() {
 
         winnerString += "winning draw: " + winners[i].winningDraw + "<br>";
         winnerString += "prize: " + winners[i].sum.STEEM + " STEEM" + "<br>";
+
+        if (winners[i].bonusesSent != null) {
+            winnerString += "bonuses sent: " + winners[i].bonusesSent.subTotal + " STEEM" + "<br>";
+        } else {
+            winnerString += "bonuses sent: none" + "<br>";
+        }
+
         winnerString += "↓<br>";
 
         for (let t = 0; t < winners[i].tickets.length; t++) {
