@@ -111,7 +111,9 @@ async function sendBonuses(sender) {
                     // name the block with the winning draw
                     bonusBlock.winningDraw = tr.result[i].op[1].memo;
 
-                    bonusBlockArray.push(bonusBlock);
+                    if (tempBag.length > 0) {
+                        bonusBlockArray.push(bonusBlock);
+                    }
 
                     // clear bag
                     tempBag = new Array();

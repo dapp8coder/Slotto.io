@@ -54,4 +54,4 @@ async function showWinners() {
     hideSlowLoad();
 }
 
-let showTestWinners = false;
+let showTestWinners = true;
