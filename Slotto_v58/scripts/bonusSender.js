@@ -67,11 +67,11 @@ async function sendBonuses(sender) {
 
     // @ts-ignore
     let sendTransfers = new SteemTransfers();
-    sendTransfers.filterTransfers(sender, null, sendHistory.result);
+    sendTransfers.filterTransfers(null, null, sendHistory.result);
 
     let totalBonuses = 0;
 
-    for (let i = 0; i < sendTransfers.result.length; i++) {
+    for (let i = sendTransfers.result.length - 1; i >= 0; i--) {
         if (sendTransfers.result[i].op[1].to != "slotto.gen") {
             if (sendTransfers.result[i].op[1].memo.includes("bonus")) {
                 let bd = new BonusData();
@@ -119,7 +119,7 @@ async function procBonus(sender) {
     console.log("");
     console.log("---procing bonus---");
 
-    for (let i = 0; i < outstandingDataArray.length; i++) {
+    for (let i = outstandingDataArray.length - 1; i >= 0; i--) {
         let alreadySent = false;
 
         for (let k = 0; k < bonusDataArray.length; k++) {
