@@ -44,9 +44,12 @@ async function downloadWinners() {
     let winners = watcher.result;
 
     //get bonus data (to subtract from total prize amount)
+
+    // @ts-ignore bonusSender.js
     await getBonusData(sender);
     console.log("");
     console.log("---bonus data---");
+    // @ts-ignore bonusSender.js
     let bonusBlocks = getBonusBlocks();
     console.log(bonusBlocks);
 
@@ -66,7 +69,7 @@ async function downloadWinners() {
 
         // winner names
         for (let w = 0; w < winners[i].winnerNames.length; w++) {
-            winnerString += winners[i].winnerNames[w] + "<br>";
+            winnerString += "winner: " + winners[i].winnerNames[w] + "<br>";
         }
 
         winnerString += "winning draw: " + winners[i].winningDraw + "<br>";
