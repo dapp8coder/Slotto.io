@@ -113,6 +113,8 @@ async function sendBonuses(sender) {
 
                     if (tempBag.length > 0) {
                         bonusBlockArray.push(bonusBlock);
+                        bonusStr += "↑ winning draw: " + bonusBlock.winningDraw + "<br>";
+                        bonusStr += "<br>";
                     }
 
                     // clear bag
@@ -122,6 +124,7 @@ async function sendBonuses(sender) {
         }
     }
 
+    bonusStr += "<br>";
     bonusStr += "total: " + totalBonuses.toFixed(3) + " STEEM" + "<br>";
 
     await procBonus(sender);
