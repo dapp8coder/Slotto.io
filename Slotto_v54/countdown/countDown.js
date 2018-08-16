@@ -5,7 +5,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 function Countdown(opt) {
 
     "use strict";
-
     var options = {
             cont: null,
             endDate: {
@@ -191,11 +190,8 @@ function Countdown(opt) {
         fixCompatibility();
 
         endDate = getDate(options.endDate);
-
         endDateData = prepareTimeByOutputFormat(endDate);
-
         writeData(endDateData);
-
         lastTick = endDateData;
 
         console.log("");
@@ -208,6 +204,9 @@ function Countdown(opt) {
             }
         } else {
             interval = setInterval(function() {
+                //console.log("");
+                //console.log("output format");
+                //console.log(prepareTimeByOutputFormat(endDate))
                 updateView(prepareTimeByOutputFormat(endDate));
             }, TIMESTAMP_SECOND);
         }

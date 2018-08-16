@@ -1,9 +1,17 @@
 function startCountdown() {
     var date = new Date();
-    var friday = date.getThisFriday();
 
-    var timeStamp = friday.getTime();
+    const deadLineDayOfWeek = 5;
+    var deadline = null;
+    var dayOfWeek = getDayOfWeek();
 
+    if (dayOfWeek <= deadLineDayOfWeek) {
+        deadline = date.getThisDayofWeek(deadLineDayOfWeek);
+    } else {
+        deadline = date.getNextDayofWeek(deadLineDayOfWeek);
+    }
+
+    var timeStamp = deadline.getTime();
     console.log("");
     console.log("deadline: ");
     console.log(new Date(timeStamp));
@@ -20,6 +28,7 @@ function startCountdown() {
         endCallback: null,
         outputFormat: 'day|hour|minute|second',
     });
+
     cd.start();
 }
 
@@ -36,17 +45,22 @@ Date.prototype.getThisMonday = function() {
     return new Date(d.setDate(diff));
 };
 
-Date.prototype.getThisFriday = function() {
+Date.prototype.getThisDayofWeek = function(dayOfWeek) {
     var d = this.getThisMonday();
-    return new Date(d.setDate(d.getDate() + 4));
+    return new Date(d.setDate(d.getDate() + dayOfWeek - 1));
+};
+
+Date.prototype.getNextDayofWeek = function(dayOfWeek) {
+    var d = this.getThisMonday();
+    return new Date(d.setDate(d.getDate() + dayOfWeek - 1 + 7));
 };
 
 function whatDayIsToday() {
     console.log("");
-    console.log("today is " + getDayOfWeek());
+    console.log("today is " + getNameDayOfWeek());
 }
 
-function getDayOfWeek() {
+function getNameDayOfWeek() {
     var today = new Date();
     switch (today.getDay()) {
         case 0:
@@ -64,4 +78,9 @@ function getDayOfWeek() {
         case 6:
             return "Saturday";
     }
+}
+
+function getDayOfWeek() {
+    var today = new Date();
+    return today.getDay();
 }
