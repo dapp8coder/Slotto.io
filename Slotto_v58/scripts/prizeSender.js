@@ -57,14 +57,14 @@ async function downloadWinners() {
     winnerString = "<br><h3>Winners</h3>";
 
     for (let i = 0; i < winners.length; i++) {
-        calcPrize(winners[i]);
-
         // add bonus data (for prize calculation)
         for (let b = 0; b < bonusBlocks.length; b++) {
             if (bonusBlocks[b].winningDraw == winners[i].winningDraw) {
                 winners[i].bonusesSent = bonusBlocks[b];
             }
         }
+
+        calcPrize(winners[i]);
 
         // winner names
         for (let w = 0; w < winners[i].winnerNames.length; w++) {
@@ -285,6 +285,10 @@ function calcPrize(data) {
     let steem = null;
     let sbd = null;
 
+    //console.log("");
+    //console.log("---calculating prize---");
+    //console.log(data);
+
     // @ts-ignore
     if (document.getElementById("operationalFee").checked) {
         steem = Math.trunc((data.sum.STEEM * 0.99 * 1000 / namesArray.length)) / 1000;
@@ -292,6 +296,10 @@ function calcPrize(data) {
     } else {
         steem = Number(data.sum.STEEM);
         sbd = Number(data.sum.SBD);
+    }
+
+    if (data.bonusesSent != null) {
+        steem -= data.bonusesSent.subTotal.toFixed(3);
     }
 
     let winningDraw = data.winningDraw;
@@ -303,6 +311,10 @@ function calcPrize(data) {
         packet.SBD = sbd;
         packet.winningDraw = winningDraw;
         sendList.push(packet);
+
+        console.log("");
+        console.log("---prize packet info---");
+        console.log(packet);
     }
 }
 
