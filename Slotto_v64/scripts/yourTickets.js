@@ -60,6 +60,7 @@ async function procFind(account) {
 
 function showOnPage(data) {
     let currentTickets = "";
+    let bonuses = "";
     let previousTickets = "";
     let winningTickets = "";
     let wins = data.wins;
@@ -75,7 +76,8 @@ function showOnPage(data) {
         document.getElementById("congrats").style.display = "block";
         for (let i = 0; i < wins.length; i++) {
             winningTickets += wins[i].winningDraw + "<br>";
-            winningTickets += "<div style='color:rgb(255, 234, 47)'>" + wins[i].sum.STEEM + " STEEM<br><br></div>";
+            let p = Number(wins[i].sum.STEEM);
+            winningTickets += "<div style='color:rgb(255, 234, 47)'>" + p.toFixed(1) + " STEEM<br><br></div>";
         }
     }
 
@@ -87,6 +89,8 @@ function showOnPage(data) {
         }
     }
 
+    bonuses += "None<br><br>";
+
     if (previous.length == 0) {
         previousTickets += "None<br><br>";
     } else {
@@ -97,6 +101,7 @@ function showOnPage(data) {
 
     document.getElementById("wins").innerHTML = winningTickets;
     document.getElementById("currentTickets").innerHTML = currentTickets;
+    document.getElementById("bonuses").innerHTML = bonuses;
     document.getElementById("previousTickets").innerHTML = previousTickets;
 }
 
