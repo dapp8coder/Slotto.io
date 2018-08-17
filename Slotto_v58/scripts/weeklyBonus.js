@@ -81,12 +81,14 @@ function sortCandidates(data) {
             if (transfer.op[1].memo.includes("checkpoint")) {
                 if (startAddingCandidates == false) {
                     console.log("");
-                    console.log("start adding candidates");
+                    console.log("---start adding candidates---");
                     console.log(transfer);
                     startAddingCandidates = true;
                 } else {
                     startAddingCandidates = false;
-                    console.log("stop adding");
+                    console.log("");
+                    console.log("---end of candidates---");
+                    console.log(transfer);
                     break;
                 }
             }
