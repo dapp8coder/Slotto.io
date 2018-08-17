@@ -4,30 +4,6 @@ function initWeeklyBonus() {
     document.getElementById("results").style.display = "none";
 }
 
-/*async function updateWeeklyBonus() {
-    document.getElementById("bonusButton").style.display = "none";
-    document.getElementById("results").style.display = "block";
-    document.getElementById("eligibleTickets").innerHTML = "loading..";
-    console.clear();
-
-    // @ts-ignore
-    let sender = document.getElementById("sender").value;
-
-    // @ts-ignore steemHistory.js
-    let receivehistory = new SteemHistory(sender);
-    // @ts-ignore steemHistory.js
-    receivehistory.setSearchLimit(getMemoLimit().memo, getMemoLimit().sender, null);
-    await receivehistory.download();
-
-    // @ts-ignore steemTransfers.js
-    let receiveTransfers = new SteemTransfers();
-    receiveTransfers.filterTransfers(null, sender, receivehistory.result);
-
-    // @ts-ignore watcher.js
-    let watcher = new Watcher();
-    watcher.getWinners(receiveTransfers.result);
-}*/
-
 async function setCheckpoint() {
     // @ts-ignore
     let sender = document.getElementById("cpMarker").value;
@@ -128,6 +104,19 @@ function pickCandidate() {
     console.log(winner);
 
     document.getElementById("luckyWinner").innerHTML = winner;
+    luckyWinner = winner;
+}
+
+async function sendSmallPot() {
+    // @ts-ignore
+    let sender = document.getElementById("sender").value;
+    // @ts-ignore
+    let senderKey = document.getElementById("senderKey").value;
+    // @ts-ignore
+    let amount = document.getElementById("bonusAmount").value;
+    let message = "bonus"
+
+    await simpleSend(senderKey, sender, luckyWinner, amount, message);
 }
 
 async function simpleSend(key, sender, receiver, amount, message) {
@@ -146,3 +135,4 @@ async function simpleSend(key, sender, receiver, amount, message) {
 }
 
 let candidatesArray = null;
+let luckyWinner = null;
