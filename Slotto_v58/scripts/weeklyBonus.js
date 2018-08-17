@@ -4,7 +4,7 @@ function initWeeklyBonus() {
     document.getElementById("results").style.display = "none";
 }
 
-async function updateWeeklyBonus() {
+/*async function updateWeeklyBonus() {
     document.getElementById("bonusButton").style.display = "none";
     document.getElementById("results").style.display = "block";
     document.getElementById("eligibleTickets").innerHTML = "loading..";
@@ -26,7 +26,7 @@ async function updateWeeklyBonus() {
     // @ts-ignore watcher.js
     let watcher = new Watcher();
     watcher.getWinners(receiveTransfers.result);
-}
+}*/
 
 async function setCheckpoint() {
     // @ts-ignore
@@ -55,6 +55,10 @@ async function confirmCheckpoint() {
 }
 
 async function takeSnapshot() {
+    document.getElementById("results").style.display = "block";
+    document.getElementById("eligibleTickets").innerHTML = "loading..";
+    document.getElementById("luckyWinner").innerHTML = "loading..";
+
     // @ts-ignore
     let sender = document.getElementById("sender").value;
 
@@ -68,12 +72,14 @@ async function takeSnapshot() {
     let t = new SteemTransfers();
     t.filterTransfers(null, sender, h.result);
 
-    sortCandidates(t.result);
+    await sortCandidates(t.result);
+    pickCandidate();
 }
 
-function sortCandidates(data) {
+async function sortCandidates(data) {
     let startAddingCandidates = false;
-    let candidatesArray = new Array();
+    let str = "";
+    candidatesArray = new Array();
 
     for (let i = 0; i < data.length; i++) {
         let transfer = data[i];
@@ -95,15 +101,33 @@ function sortCandidates(data) {
         }
 
         if (startAddingCandidates) {
+            // @ts-ignore
             if (isSlottoFormat(transfer)) {
+                str += transfer.op[1].from + " " + transfer.op[1].memo + "<br>";
                 candidatesArray.push(transfer.op[1].from);
             }
         }
+
+        document.getElementById("eligibleTickets").innerHTML = str;
     }
 
     console.log("");
     console.log("---bonus candidates---");
     console.log(candidatesArray);
+}
+
+function pickCandidate() {
+    // @ts-ignore fortunaGenerator.js
+    let luckyIndex = getFortunaRand(0, candidatesArray.length, 0);
+    luckyIndex = Number(luckyIndex);
+    let winner = candidatesArray[luckyIndex];
+
+    console.log("");
+    console.log("---lucky winner---");
+    console.log(luckyIndex);
+    console.log(winner);
+
+    document.getElementById("luckyWinner").innerHTML = winner;
 }
 
 async function simpleSend(key, sender, receiver, amount, message) {

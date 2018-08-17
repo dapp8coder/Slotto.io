@@ -31,24 +31,28 @@
     <div class=leftPad>
         <h1>Weekly Bonus</h1>
         <div id="bonusButton">
-            <br> Sender Account:<br><input id="sender" value="slotto.register" type="text" value="">
+            <br>Sender Account:<br><input id="sender" value="slotto.register" type="text" value="">
             <br><br> Active Key:<br><input id="senderKey" type="password" value="">
             <br><br>
-            <br> Checkpoint Marker:<br><input id="cpMarker" value="slotto.game" type="text" value="">
+            <br>Checkpoint Marker:<br><input id="cpMarker" value="slotto.game" type="text" value="">
             <br><br> Active Key:<br><input id="cpKey" type="password" value="">
-
+            <br><br>
+            <br>Bonus Amount:<br><input id="bonusAmount" value="5 STEEM" type="text" value="">
             <br><br>
 
             <br><br><button class="buttonGreen button1" onclick="setCheckpoint();">Set Checkpoint</button>
             <br><br><button class="buttonGreen button1" onclick="confirmCheckpoint();">Confirm Checkpoint</button>
             <br><br><button class="buttonGreen button1" onclick="takeSnapshot();">Take Snapshot</button>
-            <br><br><button class="buttonGreen button1" onclick="updateWeeklyBonus();">Send Bonus</button>
         </div>
 
         <div id="results">
             <br>
             <h3>Eligible Tickets</h3>
             <div id="eligibleTickets"></div>
+            <br>
+            <h3>Lucky Winner</h3>
+            <div id="luckyWinner"></div>
+            <br>
         </div>
 
     </div>
