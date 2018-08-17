@@ -2,6 +2,8 @@
 
 function initBonusSend() {
     document.getElementById("results").style.display = "none";
+    // @ts-ignore
+    document.getElementById("repeat").checked = true;
 }
 
 async function updateBonuses() {
@@ -46,7 +48,10 @@ async function updateBonuses() {
     console.log("check time: " + d);
     console.log("updating again in 3 mins");
 
-    setTimeout("updateBonuses();", 3 * 60 * 1000);
+    // @ts-ignore
+    if (document.getElementById("repeat").checked) {
+        setTimeout("updateBonuses();", 3 * 60 * 1000);
+    }
 }
 
 function showOutstandingTickets(outstanding) {
@@ -110,9 +115,13 @@ async function getBonusData(sender) {
                         bonusStr += bd.account + " " + bd.amount + " " + bd.ticket + " " + bd.matchingTime + "<br>";
                         bonusDataArray.push(bd);
                         tempBag.push(bd);
+
+
                     }
-                    // outgoing transfer that doesn't include "bonus" is a jackpot
-                    else {
+                    // do nothing
+                    else if (tr.result[i].op[1].memo.includes("manual")) {}
+                    // outgoing transfer that doesn't include "bonus" or "manual" is a jackpot
+                    else if (tr.result[i].op[1].memo != "") {
                         jackpotArray.push(tr.result[i]);
                         let bonusBlock = new BonusBlock();
 
