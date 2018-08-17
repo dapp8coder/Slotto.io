@@ -221,7 +221,7 @@ function getBonusAmount() {
     } else if (b <= 70 && b >= 41) {
         return 0.01;
     } else if (b <= 90 && b >= 71) {
-        0.02;
+        return 0.02;
     } else if (b <= 100 && b >= 91) {
         return 0.03;
     }
