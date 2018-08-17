@@ -77,7 +77,12 @@ function showOnPage(data) {
         for (let i = 0; i < wins.length; i++) {
             winningTickets += wins[i].winningDraw + "<br>";
             let p = Number(wins[i].sum.STEEM);
-            winningTickets += "<div style='color:rgb(255, 234, 47)'>" + p.toFixed(1) + " STEEM<br><br></div>";
+
+            if (wins[i].bonusesSent != null) {
+                p -= wins[i].bonusesSent.subTotal;
+            }
+
+            winningTickets += "<div style='color:rgb(255, 234, 47)'>" + p.toFixed(3) + " STEEM<br><br></div>";
         }
     }
 
@@ -125,10 +130,26 @@ async function getYours(account) {
 
     let wins = new Array();
 
+    //get bonus data (to subtract from total prize amount)
+    // @ts-ignore
+    await getBonusData(defaultRegister);
+    console.log("");
+    console.log("---bonus data---");
+    // @ts-ignore
+    let bonusBlocks = getBonusBlocks();
+    console.log(bonusBlocks);
+
     for (let i = 0; i < watcher.result.length; i++) {
         console.log("");
         console.log(watcher.result[i].winningDraw);
         for (let w = 0; w < watcher.result[i].winnerNames.length; w++) {
+            // add bonus data (for prize calculation)
+            for (let b = 0; b < bonusBlocks.length; b++) {
+                if (bonusBlocks[b].winningDraw == watcher.result[i].winningDraw) {
+                    watcher.result[i].bonusesSent = bonusBlocks[b];
+                }
+            }
+
             console.log(watcher.result[i].winnerNames[w]);
             if (watcher.result[i].winnerNames[w] == account) {
                 wins.push(watcher.result[i]);
