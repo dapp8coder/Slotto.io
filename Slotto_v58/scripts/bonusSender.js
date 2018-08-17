@@ -148,6 +148,8 @@ async function getBonusData(sender) {
         }
     }
 
+    bonusStr += "↑ bonuses for outstanding tickets: " + subTotal.toFixed(3) + " STEEM" + "<br>";
+
     bonusStr += "<br>";
     bonusStr += "total bonuses sent: " + totalBonuses.toFixed(3) + " STEEM" + "<br>";
 

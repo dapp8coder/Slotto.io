@@ -61,7 +61,13 @@ async function showWinners() {
         }
 
         if (skip == false) {
-            str += "<div style='color:rgb(255, 234, 47)'>" + (winners[i].sum.STEEM - sentBonus).toFixed(1) + " STEEM </div>";
+            let finalCalc = winners[i].sum.STEEM - sentBonus;
+            if (finalCalc < 10) {
+                finalCalc = finalCalc.toFixed(3);
+            } else {
+                finalCalc.toFixed(1);
+            }
+            str += "<div style='color:rgb(255, 234, 47)'>" + finalCalc + " STEEM </div>";
             str += winners[i].winningDraw + "<br><br>";
         }
     }
