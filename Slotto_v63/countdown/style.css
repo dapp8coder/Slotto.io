@@ -82,7 +82,7 @@
     display: flex;
     -ms-flex-pack: distribute;
     justify-content: space-around;
-    width: auto;
+    width: 90%;
 }
 
 .countDown_interval_basic_cont {

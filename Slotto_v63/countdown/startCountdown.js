@@ -1,6 +1,6 @@
 function startCountdown() {
     var date = new Date();
-    const deadLineDayOfWeek = 5;
+    const deadLineDayOfWeek = 6;
     var deadline = null;
     var dayOfWeek = getDayOfWeek();
 
