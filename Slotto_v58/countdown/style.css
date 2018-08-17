@@ -1,3 +1,68 @@
+/* Smallest devices (portrait tablets and large phones, 600px and up) */
+
+@media only screen and (min-width: 100px) {
+    .countDown_digit_cont {
+        -webkit-perspective: 3.2em;
+        perspective: 3.2em;
+        box-shadow: 0.1em 0.1em 0.1em rgba(0, 0, 0, 0.2);
+        width: 1em;
+        height: 1.6em;
+        position: relative;
+        line-height: 1.6em;
+        font-size: 2.2em;
+        font-weight: bold;
+        border-radius: 0.08em;
+    }
+    .countDown_interval_basic_cont_description {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 0.5em;
+        font-size: 0.9em;
+        font-weight: bold;
+        color: white;
+        text-shadow: 0.1em 0.1em 0.1em #000000;
+    }
+    .countDown_interval_cont:nth-child(n+1):not(:last-child) {
+        margin-right: 0.5em;
+    }
+}
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+
+@media only screen and (min-width: 600px) {
+    .countDown_digit_cont {
+        -webkit-perspective: 3.2em;
+        perspective: 3.2em;
+        box-shadow: 0.1em 0.1em 0.1em rgba(0, 0, 0, 0.2);
+        width: 1em;
+        height: 1.6em;
+        position: relative;
+        line-height: 1.6em;
+        font-size: 4em;
+        font-weight: bold;
+        border-radius: 0.08em;
+    }
+    .countDown_interval_basic_cont_description {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1em;
+        font-size: 1.25em;
+        font-weight: bold;
+        color: white;
+        text-shadow: 0.1em 0.1em 0.1em #000000;
+    }
+    .countDown_interval_cont:nth-child(n+1):not(:last-child) {
+        margin-right: 1em;
+    }
+}
+
 .countDown_cont {
     font-family: Lato, Arial, Gadget, sans-serif;
     font-size: 13px;
@@ -18,10 +83,6 @@
     width: auto;
 }
 
-.countDown_interval_cont:nth-child(n+1):not(:last-child) {
-    margin-right: 1em;
-}
-
 .countDown_interval_basic_cont {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -30,32 +91,6 @@
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
-}
-
-.countDown_interval_basic_cont_description {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0.5em;
-    font-size: 1.2em;
-    font-weight: bold;
-    color: white;
-    text-shadow: 0.1em 0.1em 0.1em #000000;
-}
-
-.countDown_digit_cont {
-    -webkit-perspective: 3.2em;
-    perspective: 3.2em;
-    box-shadow: 0.1em 0.1em 0.1em rgba(0, 0, 0, 0.2);
-    width: 1em;
-    height: 1.6em;
-    position: relative;
-    line-height: 1.6em;
-    font-size: 5em;
-    font-weight: bold;
-    border-radius: 0.08em;
 }
 
 .countDown_digit_cont:nth-child(n+1):not(:last-child) {
