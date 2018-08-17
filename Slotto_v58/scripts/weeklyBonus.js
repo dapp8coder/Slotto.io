@@ -59,7 +59,8 @@ async function sortCandidates(data) {
 
     for (let i = 0; i < data.length; i++) {
         let transfer = data[i];
-        if (transfer.op[1].from == "slotto.pool") {
+        if (transfer.op[1].from == "slotto.pool" ||
+            transfer.op[1].from == "slotto.game") {
             if (transfer.op[1].memo.includes("checkpoint")) {
                 if (startAddingCandidates == false) {
                     console.log("");
@@ -79,7 +80,8 @@ async function sortCandidates(data) {
         if (startAddingCandidates) {
             // @ts-ignore
             if (isSlottoFormat(transfer)) {
-                if (transfer.op[1].from != "slotto.gen") {
+                if (transfer.op[1].from != "slotto.gen" &&
+                    transfer.op[1].from != "roundbeargames") {
                     str += transfer.op[1].from + " " + transfer.op[1].memo + "<br>";
                     candidatesArray.push(transfer.op[1].from);
                 }

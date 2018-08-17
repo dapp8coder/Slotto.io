@@ -190,6 +190,7 @@ async function procBonus(sender) {
             }
         }
 
+        // shouldn't give self bonuses
         if (outstandingDataArray[i].buyer == "roundbeargames") {
             alreadySent = true;
         }
