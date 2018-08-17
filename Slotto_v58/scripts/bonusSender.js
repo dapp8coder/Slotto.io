@@ -115,13 +115,11 @@ async function getBonusData(sender) {
                         bonusStr += bd.account + " " + bd.amount + " " + bd.ticket + " " + bd.matchingTime + "<br>";
                         bonusDataArray.push(bd);
                         tempBag.push(bd);
-
-
                     }
                     // do nothing
-                    else if (tr.result[i].op[1].memo.includes("manual")) {}
-                    // outgoing transfer that doesn't include "bonus" or "manual" is a jackpot
-                    else if (tr.result[i].op[1].memo != "") {
+                    else if (tr.result[i].op[1].memo == "") {}
+                    // outgoing transfer memo that isn't "bonus" or "" is a jackpot
+                    else {
                         jackpotArray.push(tr.result[i]);
                         let bonusBlock = new BonusBlock();
 
