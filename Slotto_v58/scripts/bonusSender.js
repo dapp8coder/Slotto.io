@@ -94,7 +94,7 @@ async function getBonusData(sender) {
     for (let i = tr.result.length - 1; i >= 0; i--) {
         if (tr.result[i].op[1].from == "slotto.register") {
             if (tr.result[i].op[1].to != "slotto.gen") {
-                if (!tr.result[i].op[1].memo.includes("checkpoint")) {
+                if (tr.result[i].op[1].memo.includes("checkpoint") == false) {
                     if (tr.result[i].op[1].memo.includes("bonus")) {
                         let bd = new BonusData();
                         bd.account = tr.result[i].op[1].to;
@@ -188,6 +188,10 @@ async function procBonus(sender) {
                     }
                 }
             }
+        }
+
+        if (outstandingDataArray[i].buyer == "roundbeargames") {
+            alreadySent = true;
         }
 
         if (alreadySent == false) {

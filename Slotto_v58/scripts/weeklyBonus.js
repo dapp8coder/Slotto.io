@@ -117,9 +117,14 @@ async function sendSmallPot() {
     // @ts-ignore
     let amount = document.getElementById("bonusAmount").value;
     amount = String(Number(amount).toFixed(3)) + " STEEM";
-    let message = "bonus"
 
-    await simpleSend(senderKey, sender, luckyWinner, amount, message);
+    await simpleSend(senderKey, sender, luckyWinner, amount, "bonus");
+
+    // @ts-ignore
+    let fee = document.getElementById("fee").value;
+    fee = String(Number(fee).toFixed(3)) + " STEEM";
+
+    await simpleSend(senderKey, sender, "slotto.pool", fee, "bonus")
 }
 
 async function simpleSend(key, sender, receiver, amount, message) {
