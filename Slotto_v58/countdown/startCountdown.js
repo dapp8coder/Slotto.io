@@ -34,7 +34,7 @@ function startCountdown() {
 Date.prototype.getThisMonday = function() {
     var date = new Date();
 
-    date.setUTCHours(15 - 9); // South Korea is 9 hours ahead of Coordinated Universal Time
+    date.setUTCHours(21 - 9); // South Korea is 9 hours ahead of Coordinated Universal Time
     date.setUTCMinutes(0);
     date.setUTCSeconds(0);
     date.setUTCMilliseconds(0);
