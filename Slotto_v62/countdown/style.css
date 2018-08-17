@@ -19,6 +19,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        margin-top: 0.25em;
         margin-right: 0.5em;
         font-size: 0.9em;
         font-weight: bold;
@@ -52,10 +53,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        margin-top: 0.5em;
         margin-right: 1em;
         font-size: 1.25em;
         font-weight: bold;
-        color: white;
+        color: #ccc;
         text-shadow: 0.1em 0.1em 0.1em #000000;
     }
     .countDown_interval_cont:nth-child(n+1):not(:last-child) {
@@ -64,7 +66,7 @@
 }
 
 .countDown_cont {
-    font-family: Lato, Arial, Gadget, sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     font-size: 13px;
     display: -webkit-box;
     display: -ms-flexbox;
