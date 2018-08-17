@@ -6,13 +6,16 @@ async function getRecentDraws() {
     // @ts-ignore slowLoad.js
     setSlowLoad();
 
-    console.log("");
+    /*console.log("");
     console.log("---prev draw---");
     console.log(prevDraw);
 
     if (prevDraw == null) {
-        document.getElementById("verifierLoader").style.display = "none";
-    }
+        let vl = document.getElementById("verifierLoader");
+        if (vl != null) {
+            vl.style.display = "none";
+        }
+    }*/
 
     let history = null;
 
@@ -38,7 +41,7 @@ async function getRecentDraws() {
             draws += all[i].op[1].memo.substring(0, 8) + " (" + all[i].timestamp + ")" + "<br><br>";
         }
 
-        if (i >= 99) {
+        if (i >= 9) {
             break;
         }
     }
@@ -49,7 +52,7 @@ async function getRecentDraws() {
 
     document.getElementById("recentDraws").innerHTML = draws;
 
-    let latest = draws.substring(0, 30);
+    /*let latest = draws.substring(0, 30);
 
     if (prevDraw != null) {
         if (latest != prevDraw) {
@@ -57,7 +60,7 @@ async function getRecentDraws() {
         }
     }
 
-    prevDraw = latest;
+    prevDraw = latest;*/
 
     // @ts-ignore slowLoad.js
     hideSlowLoad();
@@ -67,7 +70,7 @@ async function getRecentDraws() {
 
 //@ts-check
 
-function initCountDown() {
+/*function initCountDown() {
     const date = new Date();
     const min = date.getUTCMinutes();
 
@@ -94,38 +97,20 @@ function initCountDown() {
 
     document.getElementById("timer").textContent = countDown;
     setTimeout("initCountDown()", interval);
-}
+}*/
 
-function stampCurrentTime() {
+/*function stampCurrentTime() {
     const date = new Date();
     const utc = date.toUTCString()
     lastGen = utc;
 
     console.log("");
     console.log("stamp time: " + utc);
-}
+}*/
 
-function setDrawDescription() {
-    //let mins = getGenerationMin();
-    //let str = "Random numbers are generated every " + mins + " minutes until winner is found";
-
-    /*if (generationMinsIsFound()) {
-        document.getElementById("drawDescription").innerHTML = str;
-    }
-
-    if (minCheckCount < 10) {
-        minCheckCount++;
-        //console.log(minCheckCount);
-        setTimeout("setDrawDescription();", 1 * 1000);
-    } else if (generationMinsIsFound() == false) {
-        //console.log("checking generation mins again..");
-        setTimeout("setDrawDescription();", 1 * 1000);
-    }*/
-}
-
-let lastGen = "None";
-let interval = 50 //milliseconds
-let prevDraw = null;
+//let lastGen = "None";
+//let interval = 50 //milliseconds
+//let prevDraw = null;
 // @ts-ignore slottoSettings.js
-let halfMin = Math.floor(getGenerationMin() / 2);
-let minCheckCount = 0;
+//let halfMin = Math.floor(getGenerationMin() / 2);
+//let minCheckCount = 0;

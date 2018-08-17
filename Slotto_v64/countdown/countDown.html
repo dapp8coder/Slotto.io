@@ -11,18 +11,45 @@
     <script src="startCountdown.js"></script>
     <link href="style.css" media="all" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../scripts/recentDraws.css">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+
+    <script src="https://cdn.steemjs.com/lib/latest/steem.min.js"></script>
+    <script type="text/javascript" src="../scripts/slottoSettings.js"></script>
+    <script type="text/javascript" src="../scripts/steemNode.js"></script>
+    <script type="text/javascript" src="../scripts/sortSteem.js"></script>
+    <script type="text/javascript" src="../scripts/steemHistory.js"></script>
+    <script type="text/javascript" src="../scripts/steemTransfers.js"></script>
+    <script type="text/javascript" src="../scripts/watcher.js"></script>
+    <script type="text/javascript" src="../scripts/slowLoad.js"></script>
+    <script type="text/javascript" src="../scripts/recentDraws.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../scripts/recentDraws.css">
+    <link rel="stylesheet" type="text/css" href="../scripts/loading.css">
+    <link rel="stylesheet" type="text/css" href="../scripts/yourTickets.css">
 </head>
 
 <body>
-    <div class="drawTimer">Next Draw</div>
-    <br>
+    <div style="margin:10px" class="drawTimer">Countdown</div>
     <div class="container "></div>
 
     <script>
         startCountdown();
         whatDayIsToday();
+    </script>
+
+    <div id="canBeSlow" class="smallLetters">Blockchain response can be slow during peak hours</div>
+
+    <div style="margin:80px 0 10px" class="drawTimer">Recent Draws</div>
+
+    <div class="drawStatus" id="recentDraws">Loading
+        <div>
+            <div class="lds-dual-ring"></div>
+        </div>
+    </div>
+
+    <script>
+        hideSlowLoad();
+        getRecentDraws();
     </script>
 </body>
 
