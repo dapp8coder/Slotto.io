@@ -89,51 +89,53 @@ async function getBonusData(sender) {
     for (let i = tr.result.length - 1; i >= 0; i--) {
         if (tr.result[i].op[1].from == "slotto.register") {
             if (tr.result[i].op[1].to != "slotto.gen") {
-                if (tr.result[i].op[1].memo.includes("bonus")) {
-                    let bd = new BonusData();
-                    bd.account = tr.result[i].op[1].to;
-                    bd.amount = tr.result[i].op[1].amount;
-                    bd.ticket = tr.result[i].op[1].memo;
+                if (!tr.result[i].op[1].memo.includes("checkpoint")) {
+                    if (tr.result[i].op[1].memo.includes("bonus")) {
+                        let bd = new BonusData();
+                        bd.account = tr.result[i].op[1].to;
+                        bd.amount = tr.result[i].op[1].amount;
+                        bd.ticket = tr.result[i].op[1].memo;
 
-                    totalBonuses += Number(bd.amount.replace(" STEEM", ""));
-                    subTotal += Number(bd.amount.replace(" STEEM", ""));
+                        totalBonuses += Number(bd.amount.replace(" STEEM", ""));
+                        subTotal += Number(bd.amount.replace(" STEEM", ""));
 
-                    // extract transfer time from memo
-                    let t = bd.ticket.substr(bd.ticket.length - 19, 19);
-                    bd.matchingTime = t;
+                        // extract transfer time from memo
+                        let t = bd.ticket.substr(bd.ticket.length - 19, 19);
+                        bd.matchingTime = t;
 
-                    // extract ticket number from memo
-                    bd.ticket = bd.ticket.replace("bonus ", "");
-                    bd.ticket = bd.ticket.substr(0, bd.ticket.length - 20);
+                        // extract ticket number from memo
+                        bd.ticket = bd.ticket.replace("bonus ", "");
+                        bd.ticket = bd.ticket.substr(0, bd.ticket.length - 20);
 
-                    bonusStr += bd.account + " " + bd.amount + " " + bd.ticket + " " + bd.matchingTime + "<br>";
-                    bonusDataArray.push(bd);
-                    tempBag.push(bd);
-                }
-                // outgoing transfer that doesn't include "bonus" is a jackpot
-                else {
-                    jackpotArray.push(tr.result[i]);
-                    let bonusBlock = new BonusBlock();
-
-                    // add sent bonuses into a block
-                    for (let t = 0; t < tempBag.length; t++) {
-                        bonusBlock.bonusDataArray.push(tempBag[t]);
+                        bonusStr += bd.account + " " + bd.amount + " " + bd.ticket + " " + bd.matchingTime + "<br>";
+                        bonusDataArray.push(bd);
+                        tempBag.push(bd);
                     }
+                    // outgoing transfer that doesn't include "bonus" is a jackpot
+                    else {
+                        jackpotArray.push(tr.result[i]);
+                        let bonusBlock = new BonusBlock();
 
-                    // name the block with the winning draw
-                    bonusBlock.winningDraw = tr.result[i].op[1].memo;
+                        // add sent bonuses into a block
+                        for (let t = 0; t < tempBag.length; t++) {
+                            bonusBlock.bonusDataArray.push(tempBag[t]);
+                        }
 
-                    if (tempBag.length > 0) {
-                        bonusBlock.subTotal = Number(subTotal.toFixed(3));
-                        bonusBlockArray.push(bonusBlock);
-                        bonusStr += "↑ winning draw: " + bonusBlock.winningDraw + "<br>";
-                        bonusStr += "subtotal: " + subTotal.toFixed(3) + " STEEM" + "<br>";
-                        bonusStr += "<br>";
+                        // name the block with the winning draw
+                        bonusBlock.winningDraw = tr.result[i].op[1].memo;
+
+                        if (tempBag.length > 0) {
+                            bonusBlock.subTotal = Number(subTotal.toFixed(3));
+                            bonusBlockArray.push(bonusBlock);
+                            bonusStr += "↑ winning draw: " + bonusBlock.winningDraw + "<br>";
+                            bonusStr += "subtotal: " + subTotal.toFixed(3) + " STEEM" + "<br>";
+                            bonusStr += "<br>";
+                        }
+
+                        // clear bag
+                        tempBag = new Array();
+                        subTotal = 0;
                     }
-
-                    // clear bag
-                    tempBag = new Array();
-                    subTotal = 0;
                 }
             }
         }
