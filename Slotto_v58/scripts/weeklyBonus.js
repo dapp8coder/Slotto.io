@@ -54,6 +54,10 @@ async function confirmCheckpoint() {
     await simpleSend(senderKey, sender, receiver, amount, message);
 }
 
+async function takeSnapshot() {
+
+}
+
 async function simpleSend(key, sender, receiver, amount, message) {
     console.log("");
     console.log("---sending steem---");
