@@ -79,8 +79,10 @@ async function sortCandidates(data) {
         if (startAddingCandidates) {
             // @ts-ignore
             if (isSlottoFormat(transfer)) {
-                str += transfer.op[1].from + " " + transfer.op[1].memo + "<br>";
-                candidatesArray.push(transfer.op[1].from);
+                if (transfer.op[1].from != "slotto.gen") {
+                    str += transfer.op[1].from + " " + transfer.op[1].memo + "<br>";
+                    candidatesArray.push(transfer.op[1].from);
+                }
             }
         }
 
