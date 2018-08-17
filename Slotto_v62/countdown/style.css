@@ -94,7 +94,7 @@
 }
 
 .countDown_digit_cont:nth-child(n+1):not(:last-child) {
-    margin-right: 0.05em;
+    margin-right: 0.08em;
 }
 
 .countDown_digit_last_placeholder,
