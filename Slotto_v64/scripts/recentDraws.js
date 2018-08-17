@@ -41,7 +41,7 @@ async function getRecentDraws() {
             draws += all[i].op[1].memo.substring(0, 8) + " (" + all[i].timestamp + ")" + "<br><br>";
         }
 
-        if (i >= 9) {
+        if (i >= 49) {
             break;
         }
     }

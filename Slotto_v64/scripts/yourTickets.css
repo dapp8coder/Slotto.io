@@ -82,6 +82,13 @@ a:hover {
         font-family: 'Ubuntu', sans-serif;
         margin: 30px 0 0 0;
     }
+    .bigLetters {
+        text-align: center;
+        color: #009cd0;
+        font-size: 16px;
+        font-family: 'Ubuntu', sans-serif;
+        margin: 30px 0 0 0;
+    }
 }
 
 
@@ -149,6 +156,13 @@ a:hover {
         text-align: center;
         color: #009cd0;
         font-size: 16px;
+        font-family: 'Ubuntu', sans-serif;
+        margin: 30px 0 0 0;
+    }
+    .bigLetters {
+        text-align: center;
+        color: #009cd0;
+        font-size: 18px;
         font-family: 'Ubuntu', sans-serif;
         margin: 30px 0 0 0;
     }
