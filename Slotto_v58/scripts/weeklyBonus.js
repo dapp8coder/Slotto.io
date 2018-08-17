@@ -59,7 +59,7 @@ async function sortCandidates(data) {
 
     for (let i = 0; i < data.length; i++) {
         let transfer = data[i];
-        if (transfer.op[1].from == "slotto.game") {
+        if (transfer.op[1].from == "slotto.pool") {
             if (transfer.op[1].memo.includes("checkpoint")) {
                 if (startAddingCandidates == false) {
                     console.log("");
