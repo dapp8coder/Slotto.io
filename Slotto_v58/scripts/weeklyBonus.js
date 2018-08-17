@@ -55,6 +55,9 @@ async function confirmCheckpoint() {
 }
 
 async function simpleSend(key, sender, receiver, amount, message) {
+    console.log("");
+    console.log("---sending steem---");
+
     let result = null;
     try {
         // @ts-ignore
