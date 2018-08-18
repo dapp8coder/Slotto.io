@@ -74,14 +74,6 @@ function showOutstandingTickets(outstanding) {
 async function getBonusData(accountHistory) {
     let bonusStr = "";
     bonusDataArray = new Array();
-    /*
-    
-
-    // @ts-ignore
-    let sendHistory = new SteemHistory(sender);
-    // @ts-ignore
-    sendHistory.setSearchLimit(getMemoLimit().memo, getMemoLimit().sender, null);
-    await sendHistory.download();*/
 
     // @ts-ignore
     let tr = new SteemTransfers();
@@ -148,6 +140,13 @@ async function getBonusData(accountHistory) {
                 }
             }
         }
+    }
+
+    if (tempBag.length > 0) {
+        let outstandingBonuses = new BonusBlock();
+        outstandingBonuses.winningDraw = "outstanding bonuses";
+        outstandingBonuses.subTotal = Number(subTotal.toFixed(3));
+        bonusBlockArray.push(outstandingBonuses);
     }
 
     bonusStr += "↑ bonuses for outstanding tickets: " + subTotal.toFixed(3) + " STEEM" + "<br>";

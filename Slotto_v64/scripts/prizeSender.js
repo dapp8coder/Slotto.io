@@ -65,6 +65,16 @@ async function downloadWinners() {
             }
         }
 
+        // subtract all unchecked bonuses from the latest winning prize
+        if (i == winners.length - 1) {
+            for (let b = 0; b < bonusBlocks.length; b++) {
+                if (bonusBlocks[b].winningDraw == "outstanding bonuses") {
+                    winners[i].bonusesSent = bonusBlocks[b];
+                    break;
+                }
+            }
+        }
+
         calcPrize(winners[i]);
 
         // winner names
@@ -260,9 +270,9 @@ function calcPrize(data) {
     let steem = null;
     let sbd = null;
 
-    //console.log("");
-    //console.log("---calculating prize---");
-    //console.log(data);
+    console.log("");
+    console.log("---calculating prize---");
+    console.log(data);
 
     steem = Number(data.sum.STEEM);
     sbd = Number(data.sum.SBD);
