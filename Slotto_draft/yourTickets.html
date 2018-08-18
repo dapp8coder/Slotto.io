@@ -1,0 +1,86 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Your Tickets</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:800" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="scripts/yourTickets.css" />
+    <link rel="stylesheet" type="text/css" href="scripts/loading.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <script src="https://cdn.steemjs.com/lib/latest/steem.min.js"></script>
+
+    <script type="text/javascript" src="scripts/steemNode.js"></script>
+    <script type="text/javascript" src="scripts/sortSteem.js"></script>
+    <script type="text/javascript" src="scripts/steemHistory.js"></script>
+    <script type="text/javascript" src="scripts/steemTransfers.js"></script>
+    <script type="text/javascript" src="scripts/watcher.js"></script>
+    <script type="text/javascript" src="scripts/slottoSettings.js"></script>
+    <script type="text/javascript" src="scripts/prizeSender.js"></script>
+    <script type="text/javascript" src="scripts/bonusSender.js"></script>
+    <script type="text/javascript" src="scripts/yourTickets.js"></script>
+    <script type="text/javascript" src="scripts/slowLoad.js"></script>
+</head>
+
+<body>
+    <div class="smallLetters">It may take a minute for your purchase to be verified on the blockchain</div>
+
+    <div class="container" id="buttonWrapper">
+        <div class="container__item">
+            <div class="formDesc">Your Steem Account Name</div>
+            <input id="accountName" type="text" class="form__field" placeholder="Your Steem Account Name" />
+            <button id="findButton" onclick="findYourTickets();" type="button" class="sbtn sbtn--primary sbtn--inside">Search</button>
+        </div>
+        <div class="container__item container__item--bottom">
+        </div>
+    </div>
+
+    <div id="loadingIcon" class="ticketStatus">
+        <div id="loadingText">Loading</div>
+        <div>
+            <div class="lds-dual-ring"></div>
+        </div>
+    </div>
+
+    <!--list of all your tickets-->
+    <div id="ticketsData">
+        <div class="ticketType">Jackpot</div>
+        <div id="congrats" class="celebration">Congratulations!</div>
+        <div id="wins" class="ticketStatus"></div>
+
+        <br>
+        <hr>
+
+        <div class="ticketType">Bonuses Earned</div>
+        <div id="bonuses" class="ticketStatus"></div>
+        <div id="bonusEligible" class="smallLetters">You don't have tickets for this week's bonus!<br><a href="https://slotto.io">Click here</a> to buy one<br><br></div>
+
+        <br>
+        <hr>
+
+        <div class="ticketType">Potential Jackpot</div>
+        <div id="currentTickets" class="ticketStatus"></div>
+
+        <br>
+        <hr>
+
+        <div class="ticketType">Losses</div>
+        <div id="previousTickets" class="ticketStatus"></div>
+
+        <br>
+    </div>
+
+    <div id="canBeSlow" class="smallLetters">Blockchain response can be slow during peak hours</div>
+
+    <div class="ticketStatus" id="notFound">Account not found: </div>
+
+    <script>
+        initTicketStatus();
+    </script>
+
+</body>
+
+</html>

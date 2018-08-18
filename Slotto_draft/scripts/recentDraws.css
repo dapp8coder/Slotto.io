@@ -1,0 +1,45 @@
+.slottoStatus {
+    text-align: center;
+    color: #ccc;
+    font-size: 70px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.drawStatus {
+    text-align: center;
+    color: #ccc;
+    font-size: 16px;
+    font-family: 'Ubuntu', sans-serif;
+    margin: 30px 0 0 0;
+}
+
+.drawStatus:link {
+    text-align: center;
+    color: #ccc;
+    font-size: 16px;
+    font-family: 'Ubuntu', sans-serif;
+    margin: 30px 0 0 0;
+}
+
+.drawStatus:visited {
+    text-align: center;
+    color: #ccc;
+    font-size: 16px;
+    font-family: 'Ubuntu', sans-serif;
+    margin: 30px 0 0 0;
+}
+
+.drawTimer {
+    text-align: center;
+    color: #ccc;
+    font-size: 16px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 30px;
+}
+
+.timerStatus {
+    text-align: center;
+    color: #ccc;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 80px;
+}

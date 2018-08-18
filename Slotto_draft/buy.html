@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <script src="https://steemit.github.io/example-steemconnect-angular/sc2.min.js"></script>
+
+    <script src="https://cdn.rawgit.com/emn178/js-sha512/master/build/sha512.min.js"></script>
+    <script src="https://cdn.rawgit.com/emn178/js-sha512/master/src/sha512.js"></script>
+
+    <script src="scripts/fortuna.min.js"></script>
+    <script type="text/javascript" src="scripts/fortunaGenerator.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+
+    <script src="https://cdn.steemjs.com/lib/latest/steem.min.js"></script>
+    <script type="text/javascript" src="scripts/steemConnect2.js"></script>
+    <script type="text/javascript" src="scripts/steemNode.js"></script>
+    <script type="text/javascript" src="scripts/slottoSettings.js"></script>
+    <script type="text/javascript" src="scripts/sortSteem.js"></script>
+    <script type="text/javascript" src="scripts/steemHistory.js"></script>
+    <script type="text/javascript" src="scripts/steemTransfers.js"></script>
+    <script type="text/javascript" src="scripts/watcher.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="particles/ub.css">
+    <link rel="stylesheet" type="text/css" href="scripts/buy.css">
+
+    <title>Slotto Home</title>
+    <style type="text/css">
+        body {
+            background: #222222;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="center darkBackground">
+        <div class="deepShadowSmall">PRIZE</div>
+    </div>
+
+    <div class="center darkBackground" id="steemPrize">
+        <div id="prizeSteem" class="deepShadow">LOADING</div>
+    </div>
+
+    <!--button particles-->
+    <div class="btn-wrapper">
+
+        <button class="btn" type="button" onclick="generateRandomTicket()">Generate Ticket</button>
+
+        <div class="center">
+            <!--ticket/purchase field-->
+            <input class="ticketNumber" id="num1" type="text">
+            <input class="ticketNumber" id="num2" type="text">
+            <input class="ticketNumber" id="num3" type="text">
+
+            <!--purchase button-->
+            <div>
+                <button class="drawbtn draw-border" onclick="buy()">Purchase <div class="ticketPrice">(0.1 STEEM)</div></button>
+            </div>
+        </div>
+
+        <!--notes-->
+        <div class="desc">Don't have an account? Sign up at <a class="desc" target="_blank" href="https://steemit.com">steemit.com</a> </div>
+
+    </div>
+
+    <canvas id="canvas"></canvas>
+
+    <script type="text/javascript" src="scripts/accountBalance.js"></script>
+    <script type="text/javascript" src="scripts/buy.js"></script>
+    <script type="text/javascript" src="particles/ub.js"></script>
+
+</body>
+
+</html>

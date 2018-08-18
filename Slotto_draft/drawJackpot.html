@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Draw Jackpot</title>
+
+    <script src="https://cdn.steemjs.com/lib/latest/steem.min.js"></script>
+    <script src="https://cdn.rawgit.com/emn178/js-sha512/master/build/sha512.min.js"></script>
+    <script src="https://cdn.rawgit.com/emn178/js-sha512/master/src/sha512.js"></script>
+
+    <script src="scripts/fortuna.min.js"></script>
+    <script type="text/javascript" src="scripts/slottoSettings.js"></script>
+    <script type="text/javascript" src="scripts/fortunaGenerator.js"></script>
+    <script type="text/javascript" src="scripts/steemNode.js"></script>
+    <script type="text/javascript" src="scripts/drawJackpot.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="scripts/basicFormat.css">
+</head>
+
+<body>
+    <div class="leftPad">
+        <h1>Draw Jackpot</h1>
+        <div class="utc" id="utcDisplay">UTC</div>
+    </div>
+
+    <br>
+
+    <div id="description" class="leftPad">
+        <br>Entropy:
+        <div id="entropy">None</div>
+    </div>
+
+    <br>
+
+    <div id="form1" class="leftPad">
+        <h2>Generator</h2>
+
+        <br>Account:
+        <br><input id="senderAccount" value="slotto.gen" type="text">
+
+        <br>Active Key:
+        <br><input id="senderActiveKey" type="password" value="">
+
+        <br><br>
+        <h2>Receiver</h2>
+
+        <br>Account:<br><input id="receiverAccount" value="slotto.register" type="text">
+        <br>Active Key:<br><input id="receiverActiveKey" type="password" value="">
+        <br>
+        <br>
+        <br>
+        <br><button class="buttonGreen button1" onclick="drawTicket();">Draw Ticket</button>
+    </div>
+
+    <script>
+        InitRandomGenerator();
+    </script>
+</body>
+
+</html>

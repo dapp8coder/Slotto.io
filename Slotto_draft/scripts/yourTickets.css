@@ -1,0 +1,296 @@
+:root {
+    background: #222222;
+    ;
+}
+
+a {
+    color: inherit;
+}
+
+a:hover {
+    color: #7f8ff4;
+}
+
+
+/* Smallest devices (portrait tablets and large phones, 600px and up) */
+
+@media only screen and (min-width: 100px) {
+    .formDesc {
+        text-align: center;
+        color: #ccc;
+        font-size: 15px;
+        font-family: 'Ubuntu', sans-serif;
+        padding: 0 28px 10px 0;
+    }
+    .form__field {
+        width: 180px;
+        background: #fff;
+        color: #a3a3a3;
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 14px;
+        border: 0;
+        outline: 0;
+        padding: 22px 18px;
+        box-shadow: 1.5px 1.5px 0 1px #ccc;
+    }
+     ::placeholder {
+        /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: #a3a3a3;
+        opacity: 0;
+        /* Firefox */
+    }
+    .ticketStatus {
+        text-align: center;
+        color: #ccc;
+        font-size: 16px;
+        font-family: 'Ubuntu', sans-serif;
+        margin: 15px 0 22px 0;
+    }
+    .ticketType {
+        text-align: center;
+        color: #ccc;
+        font-size: 18px;
+        font-family: 'Open Sans', sans-serif;
+        margin: 30px 0 0 0;
+    }
+    .celebration {
+        text-align: center;
+        color: #ccc;
+        font-size: 35px;
+        font-family: 'Caveat', cursive;
+        margin: 20px;
+        font-weight: bold;
+    }
+    .sbtn {
+        display: inline-block;
+        background: transparent;
+        color: inherit;
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 15px;
+        border: 0;
+        outline: 0;
+        padding: 0;
+        transition: all 200ms ease-in;
+        cursor: pointer;
+        height: 50px;
+        width: 80px;
+    }
+    .smallLetters {
+        text-align: center;
+        color: #009cd0;
+        font-size: 14px;
+        font-family: 'Ubuntu', sans-serif;
+        margin: 30px 0 0 0;
+    }
+    .bigLetters {
+        text-align: center;
+        color: #009cd0;
+        font-size: 16px;
+        font-family: 'Ubuntu', sans-serif;
+        margin: 30px 0 0 0;
+    }
+    hr {
+        width: 70%;
+        border: 0;
+        border-top: 1.25px solid #ccc;
+        opacity: 0.125;
+    }
+}
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+
+@media only screen and (min-width: 600px) {
+    .formDesc {
+        text-align: center;
+        opacity: 0;
+    }
+    .form__field {
+        width: 300px;
+        background: #fff;
+        color: #a3a3a3;
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 18px;
+        border: 0;
+        outline: 0;
+        padding: 22px 18px;
+        box-shadow: 1.5px 1.5px 0 1px #ccc;
+    }
+     ::placeholder {
+        /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: #a3a3a3;
+        opacity: 0.8;
+        /* Firefox */
+    }
+    .ticketStatus {
+        text-align: center;
+        color: #ccc;
+        font-size: 18px;
+        font-family: 'Ubuntu', sans-serif;
+        margin: 15px 0 22px 0;
+    }
+    .ticketType {
+        text-align: center;
+        color: #ccc;
+        font-size: 20px;
+        font-family: 'Open Sans', sans-serif;
+        margin: 30px 0 30px 0;
+    }
+    .celebration {
+        text-align: center;
+        color: #ccc;
+        font-size: 40px;
+        font-family: 'Caveat', cursive;
+        margin: 20px;
+        font-weight: bold;
+    }
+    .sbtn {
+        display: inline-block;
+        background: transparent;
+        color: inherit;
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 15px;
+        border: 0;
+        outline: 0;
+        padding: 0;
+        transition: all 200ms ease-in;
+        cursor: pointer;
+        height: 50px;
+        width: 100px;
+    }
+    .smallLetters {
+        text-align: center;
+        color: #009cd0;
+        font-size: 16px;
+        font-family: 'Ubuntu', sans-serif;
+        margin: 30px 0 0 0;
+    }
+    .bigLetters {
+        text-align: center;
+        color: #009cd0;
+        font-size: 18px;
+        font-family: 'Ubuntu', sans-serif;
+        margin: 30px 0 0 0;
+    }
+    hr {
+        width: 40%;
+        border: 0;
+        border-top: 1.25px solid #ccc;
+        opacity: 0.125;
+    }
+}
+
+.container {
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
+
+.sbtn--primary {
+    background: #7f8ff4;
+    color: #fff;
+    border-radius: 2px;
+}
+
+.sbtn--primary:hover {
+    background: #6c7ff2;
+}
+
+.sbtn--primary:active {
+    background: #7f8ff4;
+}
+
+.sbtn--inside {
+    margin-left: -50px;
+}
+
+
+/* refresh btn */
+
+.refreshButton {
+    text-align: center;
+    margin: 20px 0 50px 0;
+}
+
+.btn {
+    border-radius: 4px;
+    border: 2px solid #009cd0;
+    color: #009cd0;
+    display: inline-block;
+    margin: 0 0.25em;
+    overflow: hidden;
+    padding: 24px 60px 24px 16px;
+    position: relative;
+    text-decoration: none;
+    line-height: 1;
+}
+
+.btn .btn-content {
+    font-size: 1em;
+    line-height: 0.5;
+    padding: 0 26px;
+    position: relative;
+    right: 0;
+    transition: right 300ms ease;
+    display: block;
+    text-align: left;
+}
+
+.btn .icon {
+    border-left: 1px solid #009cd0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 50%;
+    transition: all 300ms ease;
+    transform: translateY(-50%);
+    width: 58px;
+    height: 70%;
+}
+
+.btn .icon i {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.btn:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: #009cd0;
+    opacity: 0;
+    transition: opacity 300ms ease;
+}
+
+.btn:hover .btn-content {
+    right: 100%;
+}
+
+.btn:hover .icon {
+    border-left: 0;
+    font-size: 1.8em;
+    width: 100%;
+}
+
+.btn:hover:after {
+    opacity: 0.2;
+}
+
+.btn.btn-alt-color {
+    border-color: salmon;
+    color: salmon;
+}
+
+.btn.btn-alt-color .icon {
+    border-left-color: salmon;
+}
+
+.btn.btn-alt-color:after {
+    background-color: salmon;
+}
