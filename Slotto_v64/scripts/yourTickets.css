@@ -89,6 +89,12 @@ a:hover {
         font-family: 'Ubuntu', sans-serif;
         margin: 30px 0 0 0;
     }
+    hr {
+        width: 70%;
+        border: 0;
+        border-top: 1.25px solid #ccc;
+        opacity: 0.125;
+    }
 }
 
 
@@ -165,6 +171,12 @@ a:hover {
         font-size: 18px;
         font-family: 'Ubuntu', sans-serif;
         margin: 30px 0 0 0;
+    }
+    hr {
+        width: 40%;
+        border: 0;
+        border-top: 1.25px solid #ccc;
+        opacity: 0.125;
     }
 }
 
@@ -281,11 +293,4 @@ a:hover {
 
 .btn.btn-alt-color:after {
     background-color: salmon;
-}
-
-hr {
-    width: 50%;
-    border: 0;
-    border-top: 1.25px solid #ccc;
-    opacity: 0.125;
 }

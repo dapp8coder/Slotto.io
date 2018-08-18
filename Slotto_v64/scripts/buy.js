@@ -9,13 +9,12 @@ async function getPrize() {
     // @ts-ignore accountBalance.js
     let result = await getSteemBalance("slotto.register");
     let steemBalance = Number(result.replace(" STEEM", ""));
-    let rounded = Math.round(steemBalance * 10) / 10;
 
     // @ts-ignore slottoSettings.js
     if (rounded < getReserveAmount()) {
         document.getElementById("prizeSteem").textContent = "LOADING";
     } else {
-        document.getElementById("prizeSteem").textContent = rounded + " STEEM";
+        document.getElementById("prizeSteem").textContent = Number(steemBalance.toFixed(1)) + " STEEM";
     }
 }
 
