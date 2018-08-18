@@ -68,6 +68,14 @@ async function showWinners() {
             }
 
             str += winners[i].winnerNames[w];
+
+            if (winners[i].winnerNames[w].includes("slotto.ninja") ||
+                winners[i].winnerNames[w].includes("slotto.game") ||
+                winners[i].winnerNames[w].includes("hitmanchoi") ||
+                winners[i].winnerNames[w].includes("roundbeargames")) {
+                str += " (testrun)"
+            }
+
             str += "<br>"
         }
 
