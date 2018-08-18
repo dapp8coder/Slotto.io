@@ -216,7 +216,7 @@ async function procUnsentList(unsentList) {
     }
 
     for (let i = 0; i < unsentList.length; i++) {
-        await sendPrize(unsentList[i].name, 0.1 /*unsentList[i].STEEM*/ , unsentList[i].SBD, unsentList[i].winningDraw);
+        await sendPrize(unsentList[i].name, unsentList[i].STEEM, unsentList[i].SBD, unsentList[i].winningDraw);
     }
 }
 
@@ -227,40 +227,35 @@ async function sendPrize(name, STEEM, SBD, message) {
     // @ts-ignore
     let senderKey = document.getElementById("senderKey").value;
 
-    if (senderKey != "") {
-        try {
-            console.log("");
-            console.log(name + " " + STEEM + " STEEM" + " and " + SBD + " SBD");
-            if (STEEM <= 0) {
-                STEEM = 0.001;
-            }
-            let fixed = STEEM.toFixed(3);
-            let amount = fixed + " STEEM";
-
-            // @ts-ignore
-            if (document.getElementById("limitTestPrize").checked) {
-                if (name == "roundbeargames" ||
-                    name == "hitmanchoi" ||
-                    name == "slotto.register" ||
-                    name == "slotto.gen" ||
-                    name == "slotto.game" ||
-                    name == "slotto.ninja" ||
-                    name == "imaginalex") {
-                    amount = "0.100 STEEM";
-                }
-            }
-
-            // @ts-ignore
-            let result = await steem.broadcast.transferAsync(senderKey, sender, name, amount, message);
-            console.log(result);
-        } catch (err) {
-            console.log("");
-            console.log("---error sending prize---");
-            console.log(err);
-        }
-    } else {
+    try {
         console.log("");
-        console.log("no active key (skipping send)");
+        console.log(name + " " + STEEM + " STEEM" + " and " + SBD + " SBD");
+        if (STEEM <= 0) {
+            STEEM = 0.001;
+        }
+        let fixed = STEEM.toFixed(3);
+        let amount = fixed + " STEEM";
+
+        // @ts-ignore
+        if (document.getElementById("limitTestPrize").checked) {
+            if (name == "roundbeargames" ||
+                name == "hitmanchoi" ||
+                name == "slotto.register" ||
+                name == "slotto.gen" ||
+                name == "slotto.game" ||
+                name == "slotto.ninja" ||
+                name == "imaginalex") {
+                amount = "0.100 STEEM";
+            }
+        }
+
+        // @ts-ignore
+        let result = await steem.broadcast.transferAsync(senderKey, sender, name, amount, message);
+        console.log(result);
+    } catch (err) {
+        console.log("");
+        console.log("---error sending prize---");
+        console.log(err);
     }
 }
 
@@ -285,7 +280,7 @@ function calcPrize(data) {
     for (let i = 0; i < namesArray.length; i++) {
         let packet = new PrizeReceiver();
         packet.name = namesArray[i];
-        packet.STEEM = steem;
+        packet.STEEM = Number((steem / namesArray.length).toFixed(3));
         packet.SBD = sbd;
         packet.winningDraw = winningDraw;
         sendList.push(packet);
