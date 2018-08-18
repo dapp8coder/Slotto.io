@@ -255,6 +255,20 @@ function getBonusBlocks() {
     return bonusBlockArray;
 }
 
+function getTotalBonuses(accountName, bonusBlockData) {
+    let total = 0;
+    for (let i = 0; i < bonusBlockData.length; i++) {
+        for (let d = 0; d < bonusBlockData[i].bonusDataArray.length; d++) {
+            if (accountName == bonusBlockData[i].bonusDataArray[d].account) {
+                let b = Number(bonusBlockData[i].bonusDataArray[d].amount.replace(" STEEM", ""));
+                total += b;
+            }
+        }
+    }
+
+    return total;
+}
+
 let jackpotArray = null;
 let outstandingDataArray = null;
 let bonusDataArray = null;

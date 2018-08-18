@@ -66,6 +66,7 @@ function showOnPage(data) {
     let wins = data.wins;
     let outStanding = data.outStanding;
     let previous = data.previous;
+    let totalBonus = data.totalBonus;
 
     document.getElementById("loadingIcon").style.display = "none";
     document.getElementById("congrats").style.display = "none";
@@ -94,7 +95,11 @@ function showOnPage(data) {
         }
     }
 
-    bonuses += "None<br><br>";
+    if (totalBonus <= 0) {
+        bonuses += "None<br><br>";
+    } else {
+        bonuses += "<div style='color:rgb(255, 234, 47)'>" + totalBonus.toFixed(3) + " STEEM<br><br>";
+    }
 
     if (previous.length == 0) {
         previousTickets += "None<br><br>";
@@ -192,7 +197,8 @@ async function getYours(account) {
     console.log("---your previous tickets---");
     console.log(prevTickets);
 
-    let allTickets = { outStanding: outStanding, previous: prevTickets, wins: wins };
+    let totalBonus = getTotalBonuses(account, bonusBlocks);
+    let allTickets = { outStanding: outStanding, previous: prevTickets, wins: wins, totalBonus: totalBonus };
 
     return allTickets;
 }
