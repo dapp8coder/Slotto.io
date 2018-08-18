@@ -46,7 +46,7 @@ async function downloadWinners() {
     //get bonus data (to subtract from total prize amount)
 
     // @ts-ignore bonusSender.js
-    await getBonusData(sender);
+    await getBonusData(receivehistory);
     console.log("");
     console.log("---bonus data---");
     // @ts-ignore bonusSender.js

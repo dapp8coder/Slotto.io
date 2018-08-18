@@ -22,7 +22,7 @@ async function showWinners() {
     watcher.getWinners(receiveTransfers.result);
 
     //get bonus data (to subtract from total prize amount)
-    await getBonusData(sender);
+    await getBonusData(receivehistory);
     console.log("");
     console.log("---bonus data---");
     let bonusBlocks = getBonusBlocks();
@@ -57,16 +57,18 @@ async function showWinners() {
 
         let sentBonus = 0;
         if (winners[i].bonusesSent != null) {
-            sentBonus = winners[i].bonusesSent.subTotal;
+            sentBonus = Number(winners[i].bonusesSent.subTotal);
         }
 
         if (skip == false) {
-            let finalCalc = winners[i].sum.STEEM - sentBonus;
+            let finalCalc = Number(winners[i].sum.STEEM) - sentBonus;
+
             if (finalCalc < 10) {
                 finalCalc = finalCalc.toFixed(3);
             } else {
-                finalCalc.toFixed(1);
+                finalCalc = finalCalc.toFixed(1);
             }
+
             str += "<div style='color:rgb(255, 234, 47)'>" + finalCalc + " STEEM </div>";
             str += winners[i].winningDraw + "<br><br>";
         }

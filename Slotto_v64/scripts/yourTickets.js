@@ -132,7 +132,7 @@ async function getYours(account) {
 
     //get bonus data (to subtract from total prize amount)
     // @ts-ignore
-    await getBonusData(defaultRegister);
+    await getBonusData(receivehistory);
     console.log("");
     console.log("---bonus data---");
     // @ts-ignore

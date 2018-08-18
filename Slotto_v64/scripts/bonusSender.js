@@ -32,7 +32,7 @@ async function updateBonuses() {
 
     showOutstandingTickets(watcher.outstandingTickets);
 
-    await getBonusData(sender);
+    await getBonusData(receivehistory);
     await procBonus(sender);
 
     console.log("");
@@ -71,19 +71,21 @@ function showOutstandingTickets(outstanding) {
     document.getElementById("outstandingTickets").innerHTML = outstandingStr;
 }
 
-async function getBonusData(sender) {
+async function getBonusData(accountHistory) {
     let bonusStr = "";
     bonusDataArray = new Array();
+    /*
+    
 
     // @ts-ignore
     let sendHistory = new SteemHistory(sender);
     // @ts-ignore
     sendHistory.setSearchLimit(getMemoLimit().memo, getMemoLimit().sender, null);
-    await sendHistory.download();
+    await sendHistory.download();*/
 
     // @ts-ignore
     let tr = new SteemTransfers();
-    tr.filterTransfers(null, null, sendHistory.result);
+    tr.filterTransfers(null, null, accountHistory.result);
 
     let totalBonuses = 0;
     let subTotal = 0;
