@@ -180,6 +180,34 @@ function findWinner(blocks, node) {
     return results;
 }
 
+function isMatch(ticketMemo, drawMemo) {
+    let t1 = Number(ticketMemo.substring(0, 2));
+    let t2 = Number(ticketMemo.substring(3, 5));
+    let t3 = Number(ticketMemo.substring(6, 8));
+
+    let ticketsArray = new Array();
+    ticketsArray.push(t1);
+    ticketsArray.push(t2);
+    ticketsArray.push(t3);
+
+    let d1 = Number(drawMemo.substring(0, 2));
+    let d2 = Number(drawMemo.substring(3, 5));
+    let d3 = Number(drawMemo.substring(6, 8));
+
+    let drawArray = new Array();
+    drawArray.push(d1);
+    drawArray.push(d2);
+    drawArray.push(d3);
+
+    for (let i = 0; i < ticketsArray.length; i++) {
+        if (drawArray.includes(ticketsArray[i]) == false) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 function searchBlock(draw, block, prize, node) {
     /*console.log("");
     console.log("searching for winner on draw: " + draw);
@@ -189,6 +217,8 @@ function searchBlock(draw, block, prize, node) {
     for (let i = 0; i < block.tickets.length; i++) {
         let t = String(block.tickets[i].op[1].memo);
         t = t.substring(0, 8);
+
+        let d = draw.substring(0, 8);
 
         if (t == "51,51,51") {
             prize.sum.sortCurrency(block.tickets[i].op[1].amount, "STEEM");
@@ -202,7 +232,7 @@ function searchBlock(draw, block, prize, node) {
 
         //console.log(draw.substr(0, 8) + " vs " + t);
 
-        if (draw.substr(0, 8) == t) {
+        if (isMatch(t, d) == true) {
             if (node.prevWinningDraws.includes(draw) == false) {
                 node.prevWinningDraws.push(draw);
             }

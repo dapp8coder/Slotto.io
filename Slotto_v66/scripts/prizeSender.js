@@ -205,7 +205,7 @@ async function procUnsentList(unsentList) {
     if (steemBalance <= unsentSteem) {
         console.log("");
         console.log("---adjusting prize pool---");
-        let newAmount = Math.trunc((steemBalance * 0.99 * 1000 / unsentList.length)) / 1000;
+        let newAmount = Math.trunc((steemBalance * 0.9 * 1000 / unsentList.length)) / 1000;
         console.log(newAmount + " each");
         console.log(newAmount * unsentList.length + " total");
 
@@ -217,7 +217,7 @@ async function procUnsentList(unsentList) {
     }
 
     for (let i = 0; i < unsentList.length; i++) {
-        await sendPrize(unsentList[i].name, unsentList[i].STEEM, unsentList[i].SBD, unsentList[i].winningDraw);
+        await sendPrize(unsentList[i].name, 0.1 /*unsentList[i].STEEM*/ , unsentList[i].SBD, unsentList[i].winningDraw);
     }
 }
 

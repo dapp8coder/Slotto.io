@@ -51,6 +51,22 @@ async function showWinners() {
                 }
             }
 
+            if (showEarlyErrors == false) {
+                if (winners[i].winningDraw == "46,18,24 2018-08-14T19:46:03" || //zecbroaswk
+                    winners[i].winningDraw == "30,06,39 2018-08-14T12:22:03" || //mow
+                    winners[i].winningDraw == "16,05,37 2018-08-14T06:42:03" || //nyakmat
+                    winners[i].winningDraw == "37,29,03 2018-08-14T05:38:03" || //nyakmat
+                    winners[i].winningDraw == "14,22,30 2018-08-11T21:00:00" || //channarong
+                    winners[i].winningDraw == "18,08,46 2018-08-10T03:00:00" || //razzor
+                    winners[i].winningDraw == "15,20,29 2018-08-06T01:00:00" || //sandyprasasty
+                    winners[i].winningDraw == "43,24,40 2018-08-04T03:30:03" || //chireerocks
+                    winners[i].winningDraw == "24,06,41 2018-08-02T23:25:00" //razzor
+                ) {
+                    skip = true;
+                    break;
+                }
+            }
+
             str += winners[i].winnerNames[w];
             str += "<br>"
         }
@@ -76,3 +92,4 @@ async function showWinners() {
 }
 
 let showTestWinners = true;
+let showEarlyErrors = false;
