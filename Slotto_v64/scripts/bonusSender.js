@@ -269,6 +269,24 @@ function getTotalBonuses(accountName, bonusBlockData) {
     return total;
 }
 
+function isBonusEligible(accountName, slottoHistory) {
+    //console.log("");
+    //console.log("---checking bonus eligibility---");
+    //console.log(slottoHistory);
+
+    for (let i = 0; i < slottoHistory.length; i++) {
+        if (slottoHistory[i].op[1].from == accountName) {
+            return true;
+        }
+
+        if (slottoHistory[i].op[1].memo.includes("checkpoint")) {
+            break;
+        }
+    }
+
+    return false;
+}
+
 let jackpotArray = null;
 let outstandingDataArray = null;
 let bonusDataArray = null;

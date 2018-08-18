@@ -67,6 +67,7 @@ function showOnPage(data) {
     let outStanding = data.outStanding;
     let previous = data.previous;
     let totalBonus = data.totalBonus;
+    let bonusEligible = data.bonusEligible;
 
     document.getElementById("loadingIcon").style.display = "none";
     document.getElementById("congrats").style.display = "none";
@@ -103,6 +104,12 @@ function showOnPage(data) {
         bonuses += "None<br>";
     } else {
         bonuses += "<div style='color:rgb(255, 234, 47)'>" + Number(totalBonus.toFixed(3)) + " STEEM<br>";
+    }
+
+    if (bonusEligible == true) {
+        document.getElementById("bonusEligible").style.display = "none";
+    } else {
+        document.getElementById("bonusEligible").style.display = "block";
     }
 
     if (previous.length == 0) {
@@ -203,7 +210,10 @@ async function getYours(account) {
 
     // @ts-ignore bonusSender.js
     let totalBonus = getTotalBonuses(account, bonusBlocks);
-    let allTickets = { outStanding: outStanding, previous: prevTickets, wins: wins, totalBonus: totalBonus };
+    // @ts-ignore bonusSender.js
+    let eligible = isBonusEligible(account, receiveTransfers);
+
+    let allTickets = { outStanding: outStanding, previous: prevTickets, wins: wins, totalBonus: totalBonus, bonusEligible: eligible };
 
     return allTickets;
 }
