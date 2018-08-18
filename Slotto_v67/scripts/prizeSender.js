@@ -165,8 +165,8 @@ async function checkAndSend(outGoingTransfers) {
         let receiver = null;
         for (let k = 0; k < outGoingTransfers.length; k++) {
             // check for same account, same winning draw
-            //console.log(outGoingTransfers[k].op[1].memo + " vs " + sendList[i].winningDraw);
-            if (outGoingTransfers[k].op[1].memo == sendList[i].winningDraw) {
+            //console.log(outGoingTransfers[k].op[1].memo.substring(0, 8) + " vs " + sendList[i].winningDraw.substring(0, 8));
+            if (isMatch(outGoingTransfers[k].op[1].memo.substring(0, 8), sendList[i].winningDraw.substring(0, 8))) {
                 if (outGoingTransfers[k].op[1].to == sendList[i].name) {
                     alreadySent = true;
                     receiver = outGoingTransfers[k].op[1].to;
