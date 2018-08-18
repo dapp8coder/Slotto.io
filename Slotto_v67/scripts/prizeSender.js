@@ -137,7 +137,7 @@ async function downloadWinners() {
     }
 
     console.log("");
-    console.log("---prizes already sent---");
+    console.log("---outward transfers from register---");
     console.log(sentPrizes);
 
     await checkAndSend(sentPrizes);
@@ -164,9 +164,8 @@ async function checkAndSend(outGoingTransfers) {
         let alreadySent = false;
         let receiver = null;
         for (let k = 0; k < outGoingTransfers.length; k++) {
-            // check for same account, same winning draw
-            //console.log(outGoingTransfers[k].op[1].memo.substring(0, 8) + " vs " + sendList[i].winningDraw.substring(0, 8));
-            if (isMatch(outGoingTransfers[k].op[1].memo.substring(0, 8), sendList[i].winningDraw.substring(0, 8))) {
+            // check for same account, same winning draw time
+            if (outGoingTransfers[k].op[1].memo == sendList[i].winningDraw) {
                 if (outGoingTransfers[k].op[1].to == sendList[i].name) {
                     alreadySent = true;
                     receiver = outGoingTransfers[k].op[1].to;
