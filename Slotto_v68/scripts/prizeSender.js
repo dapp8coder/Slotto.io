@@ -19,9 +19,8 @@ async function downloadWinners() {
     document.getElementById("cancelSend").style.display = "block";
 
     let date = new Date();
-    let utc = date.toUTCString();
     document.getElementById("checkTimeLabel").style.display = "block";
-    document.getElementById("checkTime").textContent = utc;
+    document.getElementById("checkTime").textContent = String(date);
 
     console.clear();
 
@@ -147,8 +146,7 @@ async function downloadWinners() {
         console.log("");
         console.log("updating again in 3 mins..");
         date = new Date();
-        utc = date.toUTCString();
-        console.log(utc);
+        console.log("check time: " + date);
         setTimeout("downloadWinners()", 3 * 60 * 1000);
     }
 }
@@ -302,12 +300,11 @@ function PrizeReceiver() {
     this.winningDraw = null;
 }
 
-function getUTC() {
+function getLocalTime() {
     const date = new Date();
-    const utc = date.toUTCString();
-    document.getElementById("currentTime").textContent = utc;
+    document.getElementById("currentTime").textContent = String(date);
 
-    setTimeout("getUTC()", 1000);
+    setTimeout("getLocalTime()", 1000);
 }
 
 function cancelSend() {
