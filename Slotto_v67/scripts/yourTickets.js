@@ -97,6 +97,9 @@ function showOnPage(data) {
     } else {
         for (let i = 0; i < outStanding.length; i++) {
             currentTickets += outStanding[i].op[1].memo + " (" + outStanding[i].timestamp + ") <br>";
+            if (i != outStanding.length - 1) {
+                currentTickets += "<br>";
+            }
         }
     }
 
@@ -110,10 +113,7 @@ function showOnPage(data) {
         document.getElementById("bonusEligible").style.display = "none";
     } else {
         let today = new Date();
-        //console.log("");
-        //console.log("---today's day of week---");
-        //console.log(today.getUTCDay());
-        //console.log(getCountdownDayofWeek());
+        // @ts-ignore
         if (today.getUTCDay() != getCountdownDayofWeek()) {
             document.getElementById("bonusEligible").style.display = "block";
         } else {
