@@ -103,6 +103,10 @@ function showOnPage(data) {
         }
     }
 
+    //console.log("");
+    //console.log("---your data---");
+    //console.log(data);
+
     if (totalBonus <= 0) {
         bonuses += "None<br>";
     } else {

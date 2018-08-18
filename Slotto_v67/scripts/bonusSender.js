@@ -85,6 +85,10 @@ async function getBonusData(accountHistory) {
     jackpotArray = new Array();
     bonusBlockArray = new Array();
 
+    console.log("");
+    console.log("---checking for bonuses sent---");
+    console.log(tr);
+
     for (let i = tr.result.length - 1; i >= 0; i--) {
         if (tr.result[i].op[1].from == "slotto.register") {
             if (tr.result[i].op[1].to != "slotto.gen") {
@@ -110,8 +114,10 @@ async function getBonusData(accountHistory) {
                         bonusDataArray.push(bd);
                         tempBag.push(bd);
                     }
+
                     // do nothing
                     else if (tr.result[i].op[1].memo == "") {}
+
                     // outgoing transfer memo that isn't "bonus" or "" is a jackpot
                     else {
                         jackpotArray.push(tr.result[i]);
@@ -143,9 +149,18 @@ async function getBonusData(accountHistory) {
     }
 
     if (tempBag.length > 0) {
+        console.log("");
+        console.log("---non cleared bag (outstanding bonuses)---");
+        console.log(tempBag);
+
         let outstandingBonuses = new BonusBlock();
         outstandingBonuses.winningDraw = "outstanding bonuses";
         outstandingBonuses.subTotal = Number(subTotal.toFixed(3));
+
+        for (let i = 0; i < tempBag.length; i++) {
+            outstandingBonuses.bonusDataArray.push(tempBag[i]);
+        }
+
         bonusBlockArray.push(outstandingBonuses);
     }
 
