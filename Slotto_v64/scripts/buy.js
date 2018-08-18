@@ -11,7 +11,7 @@ async function getPrize() {
     let steemBalance = Number(result.replace(" STEEM", ""));
 
     // @ts-ignore slottoSettings.js
-    if (rounded < getReserveAmount()) {
+    if (steemBalance < getReserveAmount()) {
         document.getElementById("prizeSteem").textContent = "LOADING";
     } else {
         document.getElementById("prizeSteem").textContent = Number(steemBalance.toFixed(1)) + " STEEM";
