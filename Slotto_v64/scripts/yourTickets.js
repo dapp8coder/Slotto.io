@@ -117,6 +117,10 @@ function showOnPage(data) {
     } else {
         for (let i = 0; i < previous.length; i++) {
             previousTickets += previous[i].op[1].memo + " (" + previous[i].timestamp + ") <br>";
+
+            if (i != previous.length - 1) {
+                previousTickets += "<br>";
+            }
         }
     }
 
