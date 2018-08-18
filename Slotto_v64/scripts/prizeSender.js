@@ -135,37 +135,11 @@ async function downloadWinners() {
     // @ts-ignore
     if (document.getElementById("repeat").checked == true) {
         console.log("");
-        console.log("updating again in 5 mins..");
+        console.log("updating again in 3 mins..");
         date = new Date();
         utc = date.toUTCString();
         console.log(utc);
-        setTimeout("downloadWinners()", 5 * 60 * 1000); //5 mins
-    }
-}
-
-async function procSendReserve() {
-    console.log("");
-    console.log("---sending reserve---");
-
-    // @ts-ignore
-    let rAccount = document.getElementById("reserve").value;
-    // @ts-ignore
-    let rKey = document.getElementById("reserveKey").value;
-
-    let name = "slotto.register";
-    let amount = "100.000 STEEM";
-    let memo = "51,51,51";
-
-    if (rKey != "") {
-        try {
-            // @ts-ignore
-            let t = await steem.broadcast.transferAsync(rKey, rAccount, name, amount, memo);
-            console.log(t);
-        } catch (err) {
-            console.log(err);
-        }
-    } else {
-        console.log("active key missing (skipping)");
+        setTimeout("downloadWinners()", 3 * 60 * 1000);
     }
 }
 
@@ -233,11 +207,11 @@ async function procUnsentList(unsentList) {
     }
 
     for (let i = 0; i < unsentList.length; i++) {
-        await sendPrize(unsentList[i].name, unsentList[i].STEEM, unsentList[i].SBD, unsentList[i].winningDraw, 0);
+        await sendPrize(unsentList[i].name, unsentList[i].STEEM, unsentList[i].SBD, unsentList[i].winningDraw);
     }
 }
 
-async function sendPrize(name, STEEM, SBD, message, errCount) {
+async function sendPrize(name, STEEM, SBD, message) {
     // @ts-ignore
     let sender = document.getElementById("sender").value;
 
