@@ -285,6 +285,10 @@ function calcPrize(data) {
         packet.winningDraw = winningDraw;
         sendList.push(packet);
 
+        if (packet.STEEM <= 0) {
+            packet.STEEM = 0.1;
+        }
+
         console.log("");
         console.log("---prize packet info---");
         console.log(packet);

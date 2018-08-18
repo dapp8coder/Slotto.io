@@ -86,6 +86,11 @@ async function showWinners() {
 
         if (skip == false) {
             let finalCalc = Number(winners[i].sum.STEEM) - sentBonus;
+
+            if (finalCalc <= 0) {
+                finalCalc = 0.1;
+            }
+
             finalCalc = Number(finalCalc.toFixed(3));
 
             str += "<div style='color:rgb(255, 234, 47)'>" + finalCalc + " STEEM </div>";

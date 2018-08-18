@@ -152,6 +152,7 @@ async function getBonusData(accountHistory) {
         console.log("");
         console.log("---non cleared bag (outstanding bonuses)---");
         console.log(tempBag);
+        console.log(subTotal.toFixed(3));
 
         let outstandingBonuses = new BonusBlock();
         outstandingBonuses.winningDraw = "outstanding bonuses";
