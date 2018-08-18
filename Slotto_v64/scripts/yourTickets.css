@@ -128,7 +128,7 @@ a:hover {
         color: #ccc;
         font-size: 20px;
         font-family: 'Open Sans', sans-serif;
-        margin: 30px 0 0 0;
+        margin: 30px 0 30px 0;
     }
     .celebration {
         text-align: center;
@@ -281,4 +281,11 @@ a:hover {
 
 .btn.btn-alt-color:after {
     background-color: salmon;
+}
+
+hr {
+    width: 50%;
+    border: 0;
+    border-top: 1.25px solid #ccc;
+    opacity: 0.125;
 }

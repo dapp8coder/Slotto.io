@@ -72,7 +72,7 @@ function showOnPage(data) {
     document.getElementById("congrats").style.display = "none";
 
     if (wins.length == 0) {
-        winningTickets += "You haven't won a prize yet<br><br>";
+        winningTickets += "You haven't won a prize yet<br>";
     } else {
         document.getElementById("congrats").style.display = "block";
         for (let i = 0; i < wins.length; i++) {
@@ -83,29 +83,33 @@ function showOnPage(data) {
                 p -= wins[i].bonusesSent.subTotal;
             }
 
-            winningTickets += "<div style='color:rgb(255, 234, 47)'>" + p.toFixed(3) + " STEEM<br><br></div>";
+            winningTickets += "<div style='color:rgb(255, 234, 47)'>" + Number(p.toFixed(3)) + " STEEM<br></div>";
+
+            if (i != wins.length - 1) {
+                winningTickets += "<br>";
+            }
         }
     }
 
     if (outStanding.length == 0) {
-        currentTickets += "None<br><br>";
+        currentTickets += "None<br>";
     } else {
         for (let i = 0; i < outStanding.length; i++) {
-            currentTickets += outStanding[i].op[1].memo + " (" + outStanding[i].timestamp + ") <br><br>";
+            currentTickets += outStanding[i].op[1].memo + " (" + outStanding[i].timestamp + ") <br>";
         }
     }
 
     if (totalBonus <= 0) {
-        bonuses += "None<br><br>";
+        bonuses += "None<br>";
     } else {
-        bonuses += "<div style='color:rgb(255, 234, 47)'>" + totalBonus.toFixed(3) + " STEEM<br><br>";
+        bonuses += "<div style='color:rgb(255, 234, 47)'>" + Number(totalBonus.toFixed(3)) + " STEEM<br>";
     }
 
     if (previous.length == 0) {
-        previousTickets += "None<br><br>";
+        previousTickets += "None<br>";
     } else {
         for (let i = 0; i < previous.length; i++) {
-            previousTickets += previous[i].op[1].memo + " (" + previous[i].timestamp + ") <br><br>";
+            previousTickets += previous[i].op[1].memo + " (" + previous[i].timestamp + ") <br>";
         }
     }
 
@@ -197,6 +201,7 @@ async function getYours(account) {
     console.log("---your previous tickets---");
     console.log(prevTickets);
 
+    // @ts-ignore bonusSender.js
     let totalBonus = getTotalBonuses(account, bonusBlocks);
     let allTickets = { outStanding: outStanding, previous: prevTickets, wins: wins, totalBonus: totalBonus };
 
