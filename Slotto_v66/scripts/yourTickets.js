@@ -109,7 +109,16 @@ function showOnPage(data) {
     if (bonusEligible == true) {
         document.getElementById("bonusEligible").style.display = "none";
     } else {
-        document.getElementById("bonusEligible").style.display = "block";
+        let today = new Date();
+        //console.log("");
+        //console.log("---today's day of week---");
+        //console.log(today.getUTCDay());
+        //console.log(getCountdownDayofWeek());
+        if (today.getUTCDay() != getCountdownDayofWeek()) {
+            document.getElementById("bonusEligible").style.display = "block";
+        } else {
+            document.getElementById("bonusEligible").style.display = "none";
+        }
     }
 
     if (previous.length == 0) {

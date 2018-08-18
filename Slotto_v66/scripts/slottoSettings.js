@@ -69,5 +69,9 @@ function generationMinsIsFound() {
     return generationMinFound;
 }
 
+function getCountdownDayofWeek() {
+    return 5;
+}
+
 let generationMins = 60;
 let generationMinFound = false;

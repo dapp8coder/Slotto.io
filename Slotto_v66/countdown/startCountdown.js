@@ -1,6 +1,6 @@
 function startCountdown() {
     var date = new Date();
-    const deadLineDayOfWeek = 5;
+    const deadLineDayOfWeek = getCountdownDayofWeek();
     var deadline = null;
     var dayOfWeek = getDayOfWeek();
 
@@ -55,12 +55,12 @@ Date.prototype.getNextDayofWeek = function(dayOfWeek) {
     return new Date(d.setUTCDate(d.getUTCDate() + dayOfWeek - 1 + 7));
 };
 
-function whatDayIsToday() {
+/*function whatDayIsToday() {
     console.log("");
     console.log("today is " + getNameDayOfWeek() + " (utc)");
-}
+}*/
 
-function getNameDayOfWeek() {
+/*function getNameDayOfWeek() {
     var today = new Date();
     switch (today.getUTCDay()) {
         case 0:
@@ -78,7 +78,7 @@ function getNameDayOfWeek() {
         case 6:
             return "Saturday";
     }
-}
+}*/
 
 function getDayOfWeek() {
     var today = new Date();
