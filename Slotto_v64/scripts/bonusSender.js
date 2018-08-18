@@ -270,16 +270,19 @@ function getTotalBonuses(accountName, bonusBlockData) {
 }
 
 function isBonusEligible(accountName, slottoHistory) {
+    let history = slottoHistory.result;
     //console.log("");
     //console.log("---checking bonus eligibility---");
-    //console.log(slottoHistory);
+    //console.log(history);
 
-    for (let i = 0; i < slottoHistory.length; i++) {
-        if (slottoHistory[i].op[1].from == accountName) {
+    for (let i = 0; i < history.length; i++) {
+        //console.log(accountName + " vs " + history[i].op[1].from);
+
+        if (history[i].op[1].from == accountName) {
             return true;
         }
 
-        if (slottoHistory[i].op[1].memo.includes("checkpoint")) {
+        if (history[i].op[1].memo.includes("checkpoint")) {
             break;
         }
     }
