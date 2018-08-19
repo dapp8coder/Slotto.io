@@ -4,9 +4,16 @@ function startCountdown() {
     var deadline = null;
     var dayOfWeek = getDayOfWeek();
 
-    if (dayOfWeek <= deadLineDayOfWeek) {
+    // sunday(0)
+    if (dayOfWeek == 0) {
+        deadline = date.getNextDayofWeek(deadLineDayOfWeek);
+    }
+    // monday(1) ~ friday(5)
+    else if (dayOfWeek <= getCountdownDayofWeek()) {
         deadline = date.getThisDayofWeek(deadLineDayOfWeek);
-    } else {
+    }
+    //saturday
+    else {
         deadline = date.getNextDayofWeek(deadLineDayOfWeek);
     }
 
