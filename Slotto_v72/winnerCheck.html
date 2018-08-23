@@ -17,6 +17,7 @@
 
     <script type="text/javascript" src="scripts/bonusSender.js"></script>
     <script type="text/javascript" src="scripts/prizeSender.js"></script>
+    <script type="text/javascript" src="scripts/weeklyBonus.js"></script>
     <script type="text/javascript" src="scripts/winnerCheck.js"></script>
 
     <link rel="stylesheet" type="text/css" href="scripts/basicFormat.css">
@@ -28,10 +29,12 @@
         <h3>
             <div id="currentTime">CURRENT TIME</div>
         </h3>
-
+        <br> Check ticket:<br><input id="ticketCheck" value="51,51,51" type="text" value="">
         <div id=inputSection>
-            <br><button class="buttonGreen button1" onclick="getOutstanding()">Get Outstanding Tickets</button>
+            <br><button class="buttonGreen button1" onclick="checkWinner()">CheckWinner</button>
         </div>
+        <div id=winnerFound></div>
+        <div id=otTickets></div>
     </div>
 
     <script>
