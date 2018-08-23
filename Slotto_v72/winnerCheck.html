@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Winner Check</title>
+
+    <script src="https://cdn.steemjs.com/lib/latest/steem.min.js"></script>
+    <script type="text/javascript" src="scripts/steemNode.js"></script>
+    <script type="text/javascript" src="scripts/sortSteem.js"></script>
+    <script type="text/javascript" src="scripts/steemHistory.js"></script>
+    <script type="text/javascript" src="scripts/steemTransfers.js"></script>
+    <script type="text/javascript" src="scripts/watcher.js"></script>
+    <script type="text/javascript" src="scripts/slottoSettings.js"></script>
+    <script type="text/javascript" src="scripts/accountBalance.js"></script>
+
+    <script type="text/javascript" src="scripts/bonusSender.js"></script>
+    <script type="text/javascript" src="scripts/prizeSender.js"></script>
+    <script type="text/javascript" src="scripts/winnerCheck.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="scripts/basicFormat.css">
+</head>
+
+<body>
+    <div class=leftPad>
+        <h1>Winner Check</h1>
+        <h3>
+            <div id="currentTime">CURRENT TIME</div>
+        </h3>
+
+        <div id=inputSection>
+            <br><button class="buttonGreen button1" onclick="getOutstanding()">Get Outstanding Tickets</button>
+        </div>
+    </div>
+
+    <script>
+        getLocalTime();
+    </script>
+</body>
+
+</html>
