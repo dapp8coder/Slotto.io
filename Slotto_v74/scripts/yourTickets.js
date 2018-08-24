@@ -117,12 +117,16 @@ function showOnPage(data) {
         document.getElementById("bonusEligible").style.display = "none";
     } else {
         let today = new Date();
+        document.getElementById("bonusEligible").style.display = "block";
+
+        /*
         // @ts-ignore
         if (today.getUTCDay() != getCountdownDayofWeek()) {
             document.getElementById("bonusEligible").style.display = "block";
         } else {
             document.getElementById("bonusEligible").style.display = "none";
         }
+        */
     }
 
     if (previous.length == 0) {
@@ -229,6 +233,9 @@ async function getYours(account) {
     let totalBonus = getTotalBonuses(account, bonusBlocks);
     // @ts-ignore bonusSender.js
     let eligible = isBonusEligible(account, receiveTransfers);
+
+    console.log("");
+    console.log("bonus eligible: " + eligible);
 
     let allTickets = { outStanding: outStanding, previous: prevTickets, wins: wins, totalBonus: totalBonus, bonusEligible: eligible };
 
