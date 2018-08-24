@@ -200,7 +200,12 @@ function isMatch(ticketMemo, drawMemo) {
     drawArray.push(d3);
 
     for (let i = 0; i < ticketsArray.length; i++) {
-        if (drawArray.includes(ticketsArray[i]) == false) {
+        //console.log("");
+        //console.log("---winner check---");
+        //console.log(ticketMemo + " vs " + drawMemo);
+        //console.log(ticketsArray);
+        //console.log(drawArray);
+        if (drawArray[i] != ticketsArray[i]) {
             return false;
         }
     }
