@@ -89,6 +89,8 @@ function purchaseTicket(memo) {
 
     console.log("transfer link: ", link)
     window.open(link);
+
+    generateRandomTicket();
 }
 
 function generateRandomTicket() {
