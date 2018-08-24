@@ -46,6 +46,10 @@ async function checkWinner() {
 
             winnerString += "<br>";
         }
+    } else {
+        winnerString += "<br><h3>No winner today!</h3>";
+        winnerString += "Draw: " + document.getElementById("ticketCheck").value;
+        winnerString += "<br>";
     }
 
     document.getElementById("otTickets").innerHTML = otstring;

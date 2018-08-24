@@ -199,13 +199,62 @@ function isMatch(ticketMemo, drawMemo) {
     drawArray.push(d2);
     drawArray.push(d3);
 
-    for (let i = 0; i < ticketsArray.length; i++) {
-        //console.log("");
-        //console.log("---winner check---");
-        //console.log(ticketMemo + " vs " + drawMemo);
-        //console.log(ticketsArray);
-        //console.log(drawArray);
-        if (drawArray[i] != ticketsArray[i]) {
+    let combo1 = new Array();
+    let combo2 = new Array();
+    let combo3 = new Array();
+    let combo4 = new Array();
+    let combo5 = new Array();
+    let combo6 = new Array();
+
+    combo1.push(d1);
+    combo1.push(d2);
+    combo1.push(d3);
+
+    combo2.push(d1);
+    combo2.push(d3);
+    combo2.push(d2);
+
+    combo3.push(d2);
+    combo3.push(d1);
+    combo3.push(d3);
+
+    combo4.push(d2);
+    combo4.push(d3);
+    combo4.push(d1);
+
+    combo5.push(d3);
+    combo5.push(d1);
+    combo5.push(d2);
+
+    combo6.push(d3);
+    combo6.push(d2);
+    combo6.push(d1);
+
+    if (arrayMatch(ticketsArray, combo1) == true) {
+        return true;
+    }
+    if (arrayMatch(ticketsArray, combo2) == true) {
+        return true;
+    }
+    if (arrayMatch(ticketsArray, combo3) == true) {
+        return true;
+    }
+    if (arrayMatch(ticketsArray, combo4) == true) {
+        return true;
+    }
+    if (arrayMatch(ticketsArray, combo5) == true) {
+        return true;
+    }
+    if (arrayMatch(ticketsArray, combo6) == true) {
+        return true;
+    }
+
+    return false;
+}
+
+function arrayMatch(array1, array2) {
+    for (let i = 0; i < array1.length; i++) {
+        if (array1[i] != array2[i]) {
             return false;
         }
     }
