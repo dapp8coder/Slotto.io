@@ -3,6 +3,7 @@
 function initBuy() {
     generateRandomTicket();
     getPrize();
+    getTicketNumbers();
 }
 
 async function getPrize() {
@@ -111,6 +112,28 @@ function generateRandomTicket() {
     const num3 = document.getElementById("num3").value;
     const string = num1 + "," + num2 + "," + num3;
     console.log(string);
+}
+
+async function getTicketNumbers() {
+    // @ts-ignore steemHistory.js
+    let receivehistory = new SteemHistory("slotto.register");
+    // @ts-ignore steemHistory.js
+    receivehistory.setSearchLimit(getMemoLimit().memo, getMemoLimit().sender, null);
+    await receivehistory.download();
+
+    // @ts-ignore steemTransfers.js
+    let receiveTransfers = new SteemTransfers();
+    receiveTransfers.filterTransfers(null, "slotto.register", receivehistory.result);
+
+    // @ts-ignore watcher.js
+    let watcher = new Watcher();
+    watcher.getWinners(receiveTransfers.result);
+
+    let tCount = watcher.outstandingTickets.length;
+
+    console.log("");
+    console.log("---total outstanding tickets---");
+    console.log(tCount);
 }
 
 initBuy();
