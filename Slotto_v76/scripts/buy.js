@@ -127,13 +127,17 @@ async function getTicketNumbers() {
 
     // @ts-ignore watcher.js
     let watcher = new Watcher();
-    watcher.getWinners(receiveTransfers.result);
+    await watcher.getWinners(receiveTransfers.result);
 
     let tCount = watcher.outstandingTickets.length;
 
     console.log("");
     console.log("---total outstanding tickets---");
     console.log(tCount);
+
+    ;
+    let ticketsStr = "Total tickets sold: " + tCount + "<br>(current round)";
+    document.getElementById("totalTicketsSold").innerHTML = ticketsStr;
 }
 
 initBuy();
