@@ -18,16 +18,17 @@ a:hover {
     .formDesc {
         text-align: center;
         color: #ccc;
-        font-size: 15px;
+        font-size: 14px;
         font-family: 'Ubuntu', sans-serif;
         padding: 0 28px 10px 0;
     }
     .form__field {
-        width: 220px;
+        width: 210px;
+        height: 50px;
         background: #fff;
         color: #a3a3a3;
         font-family: 'Ubuntu', sans-serif;
-        font-size: 14px;
+        font-size: 12px;
         border: 0;
         outline: 0;
         padding: 22px 18px;
@@ -72,7 +73,7 @@ a:hover {
         padding: 0;
         transition: all 200ms ease-in;
         cursor: pointer;
-        height: 45px;
+        height: 35px;
         width: 50px;
     }
     .smallLetters {
@@ -107,6 +108,7 @@ a:hover {
     }
     .form__field {
         width: 350px;
+        height: 70px;
         background: #fff;
         color: #a3a3a3;
         font-family: 'Ubuntu', sans-serif;
