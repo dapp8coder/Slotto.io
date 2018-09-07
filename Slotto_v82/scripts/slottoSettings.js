@@ -73,5 +73,5 @@ function getCountdownDayofWeek() {
     return 5;
 }
 
-let generationMins = 60;
+let generationMins = 2;
 let generationMinFound = false;

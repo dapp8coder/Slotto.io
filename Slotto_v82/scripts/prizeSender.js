@@ -202,7 +202,7 @@ async function procUnsentList(unsentList) {
     if (steemBalance <= unsentSteem) {
         console.log("");
         console.log("---adjusting prize pool---");
-        let newAmount = Math.trunc((steemBalance * 0.9 * 1000 / unsentList.length)) / 1000;
+        let newAmount = Math.trunc((steemBalance * 0.99999 * 1000 / unsentList.length)) / 1000;
         console.log(newAmount + " each");
         console.log(newAmount * unsentList.length + " total");
 
