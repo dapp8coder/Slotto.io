@@ -9,7 +9,7 @@ function initBuy() {
 async function getPrize() {
     // @ts-ignore accountBalance.js
     let result = await getSteemBalance("slotto.register");
-    let steemBalance = Number(result.replace(" STEEM", ""));
+    let steemBalance = 0; /*Number(result.replace(" STEEM", ""));*/
 
     document.getElementById("prizeSteem").textContent = Number(steemBalance.toFixed(1)) + " STEEM";
 
@@ -89,7 +89,8 @@ function purchaseTicket(memo) {
     }, "https://slotto.io");
 
     console.log("transfer link: ", link)
-    window.open(link);
+        //window.open(link);
+    window.open("https://busy.org/@roundbeargames");
 
     generateRandomTicket();
 }
