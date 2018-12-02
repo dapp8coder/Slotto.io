@@ -89,8 +89,8 @@ function purchaseTicket(memo) {
     }, "https://slotto.io");
 
     console.log("transfer link: ", link)
-        //window.open(link);
-    window.open("https://busy.org/@roundbeargames");
+    window.open(link);
+    //window.open("https://busy.org/@roundbeargames");
 
     generateRandomTicket();
 }
